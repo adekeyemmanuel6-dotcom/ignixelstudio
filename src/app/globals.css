@@ -96,6 +96,10 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   .dots { background-image: radial-gradient(rgba(255,255,255,.18) 1.2px, transparent 1.2px); background-size: 22px 22px; }
   .prose-ig { @apply text-[18px] leading-[1.8] text-text; max-width: 70ch; }
   .prose-ig h2 { @apply mt-12 mb-4 text-h3; scroll-margin-top: 110px; } .prose-ig h3 { @apply mt-8 mb-3 text-h4; scroll-margin-top: 110px; }
+  .prose-ig > :first-child { margin-top: 0; }
+  .prose-ig > :last-child { margin-bottom: 0; }
+  .prose-ig strong, .prose-ig b { @apply font-semibold text-text; }
+  .prose-ig em, .prose-ig i { font-style: italic; }
   .prose-ig p { @apply my-5; } .prose-ig ul { @apply my-5 list-disc pl-6; } .prose-ig ol { @apply my-5 list-decimal pl-6; } .prose-ig li { @apply my-1.5; }
   .prose-ig a { @apply text-brand underline underline-offset-4 hover:text-brand-deep; }
   .prose-ig blockquote { @apply my-8 border-l-4 border-brand pl-6 font-heading text-xl italic text-text; }

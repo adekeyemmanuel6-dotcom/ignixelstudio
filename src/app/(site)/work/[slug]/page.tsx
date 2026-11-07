@@ -8,6 +8,8 @@ import { BrowserMockup, PhoneMockup } from "@/components/ui/Visuals";
 import { CtaBand } from "@/components/ui/CtaBand";
 import { getCaseImages, getCaseStudies, getCaseStudy } from "@/lib/content";
 import { SITE_URL } from "@/lib/supabase/env";
+import { cleanHtml } from "@/lib/html";
+import { toRichHtml } from "@/lib/utils";
 
 export const revalidate = 60;
 export async function generateStaticParams() { return (await getCaseStudies()).map((c) => ({ slug: c.slug })); }
@@ -31,8 +33,8 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
       <section className="section bg-white"><div className="container-x">
         {(hasImages || p.is_placeholder) && <div className="relative mx-auto mb-24 max-w-5xl"><BrowserMockup src={p.desktop_image || p.featured_image} alt={`${p.title} desktop`} className="!border-line" />{(p.mobile_image || p.is_placeholder) && <PhoneMockup src={p.mobile_image} alt={`${p.title} mobile`} className="absolute -bottom-8 right-2 sm:-right-8" />}</div>}
         <div className="grid gap-12 lg:grid-cols-2">
-          <div><SectionHead eyebrow="Challenge" title="The challenge" /><p className="mt-5 text-lg text-text-2">{p.challenge}</p></div>
-          <div><SectionHead eyebrow="Solution" title="Our solution" /><p className="mt-5 text-lg text-text-2">{p.solution}</p></div>
+          <div><SectionHead eyebrow="Challenge" title="The challenge" /><div className="prose-ig mt-5 !text-text-2" dangerouslySetInnerHTML={{ __html: cleanHtml(toRichHtml(p.challenge)) }} /></div>
+          <div><SectionHead eyebrow="Solution" title="Our solution" /><div className="prose-ig mt-5 !text-text-2" dangerouslySetInnerHTML={{ __html: cleanHtml(toRichHtml(p.solution)) }} /></div>
         </div>
         {p.results.length > 0 && <div className="mt-20"><SectionHead eyebrow="Results" title="Measured outcomes" /><dl className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{p.results.map((r) => <div key={r.label} className="card p-6"><dd className="font-heading text-4xl font-semibold text-brand">{r.value}</dd><dt className="mt-1 text-text-2">{r.label}</dt></div>)}</dl></div>}
         {gallery.length > 0 && <ul className="mt-20 grid gap-4 sm:grid-cols-2">{gallery.map((g) => <li key={g.id} className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-line"><Image src={g.url} alt={g.alt || `${p.title} screenshot`} fill sizes="(max-width:640px) 100vw, 600px" className="object-cover object-top" /></li>)}</ul>}

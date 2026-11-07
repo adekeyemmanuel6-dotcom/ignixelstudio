@@ -54,7 +54,7 @@ export const RESOURCES: Record<string, Resource> = {
       { name: "title", label: "Project name", type: "text", required: true }, { name: "slug", label: "URL slug", type: "slug", slugFrom: "title" },
       { name: "client_name", label: "Client name", type: "text" }, { name: "industry", label: "Industry", type: "text" },
       { name: "services", label: "Services delivered", type: "list" }, { name: "technologies", label: "Technologies used", type: "list" },
-      { name: "description", label: "Short description", type: "textarea" }, { name: "challenge", label: "Challenge", type: "textarea" }, { name: "solution", label: "Solution", type: "textarea" },
+      { name: "description", label: "Short description", type: "textarea" }, { name: "challenge", label: "Challenge", type: "richtext", help: "Use the toolbar for bold, italic, bullet lists and paragraphs." }, { name: "solution", label: "Solution", type: "richtext", help: "Use the toolbar for bold, italic, bullet lists and paragraphs." },
       { name: "results", label: "Result", type: "repeater", shape: [{ name: "value", label: "Value (e.g. +42%)", type: "text" }, { name: "label", label: "Label", type: "text" }] },
       { name: "featured_image", label: "Featured image", type: "image", folder: "projects" }, { name: "desktop_image", label: "Desktop mockup image", type: "image", folder: "projects" },
       { name: "mobile_image", label: "Mobile mockup image", type: "image", folder: "projects" }, { name: "website_url", label: "Live website URL", type: "text" },

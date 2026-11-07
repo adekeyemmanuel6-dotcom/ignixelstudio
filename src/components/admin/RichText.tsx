@@ -5,12 +5,13 @@ import Image from "@tiptap/extension-image";
 import { Bold, Italic, Heading2, Heading3, List, ListOrdered, Quote, Code2, Link2, ImageIcon, Undo2, Redo2, Pilcrow } from "lucide-react";
 import { useAdmin } from "@/lib/admin/ctx";
 import { uploadImage } from "./upload";
+import { toRichHtml } from "@/lib/utils";
 
 export function RichText({ value, onChange }: { value: string; onChange: (html: string) => void }) {
   const { db, toast } = useAdmin();
   const editor = useEditor({
     extensions: [StarterKit.configure({ heading: { levels: [2, 3] }, link: { openOnClick: false, autolink: true } }), Image],
-    content: value, immediatelyRender: false,
+    content: toRichHtml(value), immediatelyRender: false,
     editorProps: { attributes: { class: "prose-ig !max-w-none focus:outline-none", "aria-label": "Rich text editor" } },
     onUpdate: ({ editor }) => onChange(editor.getHTML()),
   });
