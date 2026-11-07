@@ -8,7 +8,7 @@ export function PageHero({ crumbs, eyebrow, title, description, ctas, visual = t
   ctas?: { label: string; href: string; secondary?: boolean }[]; visual?: boolean; children?: ReactNode;
 }) {
   return (
-    <section className="dark-surface relative overflow-hidden pb-20 pt-36 sm:pb-28 sm:pt-44">
+    <section data-spotlight className="dark-surface relative overflow-hidden pb-20 pt-36 sm:pb-28 sm:pt-44">
       <div className="grid-bg pointer-events-none absolute inset-0" aria-hidden />
       <div className="pointer-events-none absolute -left-32 top-10 h-[420px] w-[420px] rounded-full bg-brand/25 blur-[120px]" aria-hidden />
       <div className="container-x relative">

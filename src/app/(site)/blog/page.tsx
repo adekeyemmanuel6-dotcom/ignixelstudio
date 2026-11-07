@@ -49,7 +49,7 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
           </nav>
         )}
       </div></section>
-      <section className="section bg-paper"><div className="container-x grid items-center gap-8 lg:grid-cols-2"><div><h2 className="!text-h3">Get new articles in your inbox</h2><p className="mt-3 text-text-2">Practical insights, no spam. Unsubscribe any time.</p></div><NewsletterForm /></div></section>
+      <section className="section bg-white"><div className="container-x grid items-center gap-8 lg:grid-cols-2"><div><h2 className="!text-h3">Get new articles in your inbox</h2><p className="mt-3 text-text-2">Practical insights, no spam. Unsubscribe any time.</p></div><NewsletterForm /></div></section>
     </>
   );
 }

@@ -24,7 +24,7 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   .eyebrow { @apply inline-flex items-center gap-2.5 text-[13px] font-medium uppercase leading-snug tracking-[0.1em] text-[#0b3b38]; }
   .eyebrow::before { content: ""; @apply h-2 w-2 shrink-0 rounded-full bg-[#6fdc5a]; box-shadow: 0 0 0 3px rgba(111,220,90,.18); }
   .dark-surface .eyebrow { @apply text-[#d4efe6]; }
-  .dark-surface { @apply bg-ink text-white/80; }
+  .dark-surface { @apply text-white/80; background: radial-gradient(900px 520px at 88% -8%, rgba(1,11,204,.30), transparent 62%), radial-gradient(700px 420px at 4% 108%, rgba(1,11,204,.16), transparent 60%), linear-gradient(180deg, #000 0%, #07080c 52%, #000 100%); }
   .dark-surface h1, .dark-surface h2, .dark-surface h3, .dark-surface h4, .dark-surface h5 { @apply text-white; }
   .lead { @apply text-lg sm:text-xl leading-relaxed text-text-2; }
   .dark-surface .lead { @apply text-white/70; }
@@ -73,3 +73,18 @@ html.js:not([data-motion="off"]) [data-img-reveal] { clip-path: inset(100% 0 0 0
 .tt-editor .ProseMirror p.is-editor-empty:first-child::before { content: attr(data-placeholder); color: #9aa3b2; float: left; height: 0; pointer-events: none; }
 
 .split-mask { padding-bottom: .16em; margin-bottom: -.16em; }
+
+/* separate consecutive white sections */
+section.bg-white + section.bg-white { border-top: 1px solid #E5E8F0; }
+
+/* ── Mouse effects ── */
+[data-spotlight] { position: relative; }
+[data-spotlight]::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: var(--spot, 0); transition: opacity .5s ease; background: radial-gradient(520px circle at var(--mx, 70%) var(--my, 30%), rgba(40,60,255,.22), transparent 62%); }
+[data-tilt] { position: relative; transform-style: preserve-3d; will-change: transform; }
+[data-tilt]::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .35s ease; z-index: 5; background: radial-gradient(380px circle at var(--gx, 50%) var(--gy, 50%), rgba(1,11,204,.09), transparent 55%); }
+[data-tilt="dark"]::after { background: radial-gradient(380px circle at var(--gx, 50%) var(--gy, 50%), rgba(255,255,255,.22), transparent 55%); }
+[data-tilt]:hover::after { opacity: 1; }
+.cursor-dot, .cursor-ring { position: fixed; left: 0; top: 0; z-index: 120; pointer-events: none; opacity: 0; mix-blend-mode: difference; border-radius: 9999px; background: #fff; }
+.cursor-dot { width: 7px; height: 7px; }
+.cursor-ring { width: 40px; height: 40px; background: transparent; border: 1.5px solid #fff; }
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) { .cursor-dot, .cursor-ring { display: none; } }

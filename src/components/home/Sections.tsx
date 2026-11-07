@@ -26,7 +26,7 @@ const BAND = [
 export async function Hero({ c }: { c: C }) {
   const cats = await getCategories();
   return (
-    <section className="dark-surface relative overflow-hidden pb-20 pt-32 sm:pb-28 sm:pt-40">
+    <section data-spotlight className="dark-surface relative overflow-hidden pb-20 pt-32 sm:pb-28 sm:pt-40">
       <div className="grid-bg pointer-events-none absolute inset-0" aria-hidden />
       <div className="pointer-events-none absolute -left-40 -top-20 h-[560px] w-[560px] rounded-full bg-brand/30 blur-[140px]" aria-hidden />
       <div className="pointer-events-none absolute -right-40 top-1/3 h-[460px] w-[460px] rounded-full bg-[#4a4aff]/20 blur-[130px]" aria-hidden />
@@ -91,7 +91,7 @@ export async function Trusted({ c }: { c: C }) {
 export async function Services({ c }: { c: C }) {
   const [cats, subs] = await Promise.all([getCategories(), getAllServices()]);
   return (
-    <section className="section bg-paper">
+    <section className="section bg-white">
       <div className="container-x">
         <div className="flex flex-wrap items-end justify-between gap-6"><SectionHead eyebrow="What we do" title={c.heading} description={c.description} /><Link href="/services" className="btn-ghost" data-magnetic>All services <ArrowRight /></Link></div>
         <div className="mt-14 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4" data-stagger>
@@ -107,7 +107,7 @@ export async function Projects({ c }: { c: C }) {
   const projects = (await getCaseStudies()).filter((p) => p.featured).slice(0, 3);
   if (!projects.length) return null;
   return (
-    <section className="dark-surface section relative overflow-hidden">
+    <section data-spotlight className="dark-surface section relative overflow-hidden">
       <div className="grid-bg pointer-events-none absolute inset-0 opacity-60" aria-hidden />
       <div className="container-x relative">
         <div className="flex flex-wrap items-end justify-between gap-6"><SectionHead eyebrow="Selected work" title={c.heading} description={c.description} />
@@ -148,7 +148,7 @@ export function Why({ c }: { c: C }) {
 export function Process({ c }: { c: C }) {
   const items: C[] = c.items ?? [];
   return (
-    <section className="section bg-paper">
+    <section className="section bg-white">
       <div className="container-x">
         <SectionHead eyebrow="Our process" title={c.heading} description={c.description} />
         <div className="relative mt-16">
@@ -171,7 +171,7 @@ export function Process({ c }: { c: C }) {
 export function Solutions({ c }: { c: C }) {
   const items: C[] = c.items ?? [];
   return (
-    <section className="dark-surface section relative overflow-hidden">
+    <section data-spotlight className="dark-surface section relative overflow-hidden">
       <div className="pointer-events-none absolute -right-40 top-20 h-[480px] w-[480px] rounded-full bg-brand/20 blur-[140px]" aria-hidden />
       <div className="container-x relative">
         <div className="grid gap-10 lg:grid-cols-[5fr_7fr] lg:gap-16">
@@ -222,7 +222,7 @@ const SPAN = ["lg:col-span-2 lg:row-span-2", "", "", "", "", "lg:col-span-2", ""
 export function Industries({ c }: { c: C }) {
   const items: C[] = c.items ?? [];
   return (
-    <section className="dark-surface section">
+    <section data-spotlight className="dark-surface section">
       <div className="container-x">
         <SectionHead eyebrow="Industries" title={c.heading} description={c.description} />
         <ul className="mt-14 grid auto-rows-[260px] gap-4 sm:grid-cols-2 lg:auto-rows-[230px] lg:grid-cols-4" data-stagger>
@@ -249,7 +249,7 @@ export async function Testimonials({ c }: { c: C }) {
   const items = (await getTestimonials()).filter((t) => t.featured).slice(0, 6);
   if (!items.length) return null;
   return (
-    <section className="section bg-paper">
+    <section className="section bg-white">
       <div className="container-x">
         <SectionHead eyebrow="Testimonials" title={c.heading} description={c.description} />
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3" data-stagger>{items.map((t) => <TestimonialCard key={t.id} t={t} />)}</div>
@@ -262,10 +262,10 @@ export async function TeamPreview({ c }: { c: C }) {
   const team = (await getTeam()).slice(0, 4);
   if (!team.length) return null;
   return (
-    <section className="section bg-white">
-      <div className="container-x">
-        <div className="flex flex-wrap items-end justify-between gap-6"><SectionHead eyebrow="Our team" title={c.heading} description={c.description} /><Link href="/about#team" className="btn-ghost" data-magnetic>{c.cta_label || "Meet Our Team"} <ArrowRight /></Link></div>
-        <div className="mt-12 grid grid-cols-2 gap-5 lg:grid-cols-4" data-stagger>{team.map((m) => <TeamCard key={m.id} m={m} />)}</div>
+    <section data-spotlight className="dark-surface section relative overflow-hidden">
+      <div className="container-x relative">
+        <div className="flex flex-wrap items-end justify-between gap-6"><SectionHead eyebrow="Our team" title={c.heading} description={c.description} /><Link href="/about#team" className="btn-ghost-dark" data-magnetic>{c.cta_label || "Meet Our Team"} <ArrowRight /></Link></div>
+        <div className="mt-12 grid grid-cols-2 gap-5 lg:grid-cols-4" data-stagger>{team.map((m) => <TeamCard key={m.id} m={m} dark />)}</div>
       </div>
     </section>
   );
@@ -275,7 +275,7 @@ export async function BlogPreview({ c }: { c: C }) {
   const posts = await getLatestPosts(3);
   if (!posts.length) return null;
   return (
-    <section className="section bg-paper">
+    <section className="section bg-white">
       <div className="container-x">
         <div className="flex flex-wrap items-end justify-between gap-6"><SectionHead eyebrow="Insights" title={c.heading} description={c.description} /><Link href="/blog" className="btn-ghost" data-magnetic>{c.cta_label || "View All Articles"} <ArrowRight /></Link></div>
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3" data-stagger>{posts.map((p) => <PostCard key={p.id} p={p} />)}</div>

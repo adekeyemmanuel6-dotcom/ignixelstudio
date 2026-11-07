@@ -59,7 +59,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         </div>
       </article>
 
-      {related.length > 0 && <section className="section mt-12 bg-paper"><div className="container-x"><h2 className="!text-h3">Related articles</h2><div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">{related.map((r) => <PostCard key={r.id} p={r} />)}</div></div></section>}
+      {related.length > 0 && <section className="section mt-12 bg-white"><div className="container-x"><h2 className="!text-h3">Related articles</h2><div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">{related.map((r) => <PostCard key={r.id} p={r} />)}</div></div></section>}
       <section className="section bg-white"><div className="container-x grid items-center gap-8 lg:grid-cols-2"><div><h2 className="!text-h3">Enjoyed this? Get the next one by email.</h2></div><NewsletterForm /></div></section>
       <CtaBand title="Want to put this into practice?" description="Talk to our team about your website, store or AI project." />
       <JsonLd data={{ "@context": "https://schema.org", "@type": "Article", headline: p.title, description: p.excerpt, image: p.og_image || p.featured_image || undefined, datePublished: p.published_at, author: { "@type": "Person", name: p.author_name }, publisher: { "@type": "Organization", name: settings.site_name, url: SITE_URL }, mainEntityOfPage: url }} />

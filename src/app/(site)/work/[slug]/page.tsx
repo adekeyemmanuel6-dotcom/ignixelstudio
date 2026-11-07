@@ -37,7 +37,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
         {gallery.length > 0 && <ul className="mt-20 grid gap-4 sm:grid-cols-2">{gallery.map((g) => <li key={g.id} className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-line"><Image src={g.url} alt={g.alt || `${p.title} screenshot`} fill sizes="(max-width:640px) 100vw, 600px" className="object-cover object-top" /></li>)}</ul>}
         {p.website_url && <p className="mt-12"><a className="btn-ghost" href={p.website_url} target="_blank" rel="noopener noreferrer">Visit live website</a></p>}
       </div></section>
-      {others.length > 0 && <section className="section bg-paper"><div className="container-x"><SectionHead eyebrow="More work" title="Other projects" /><ul className="mt-10 grid gap-5 md:grid-cols-2">{others.map((o) => <li key={o.id}><Link href={`/work/${o.slug}`} className="card block p-7 transition hover:border-brand/40"><p className="eyebrow">{o.industry}</p><h3 className="mt-2 !text-2xl">{o.title}</h3><p className="mt-2 line-clamp-2 text-text-2">{o.description}</p></Link></li>)}</ul></div></section>}
+      {others.length > 0 && <section className="section bg-white"><div className="container-x"><SectionHead eyebrow="More work" title="Other projects" /><ul className="mt-10 grid gap-5 md:grid-cols-2">{others.map((o) => <li key={o.id}><Link href={`/work/${o.slug}`} className="card block p-7 transition hover:border-brand/40"><p className="eyebrow">{o.industry}</p><h3 className="mt-2 !text-2xl">{o.title}</h3><p className="mt-2 line-clamp-2 text-text-2">{o.description}</p></Link></li>)}</ul></div></section>}
       <CtaBand />
     </>
   );

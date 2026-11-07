@@ -1,5 +1,7 @@
 import Script from "next/script";
 import { Motion } from "@/components/Motion";
+import { Cursor } from "@/components/Cursor";
+import { BackToTop } from "@/components/BackToTop";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/ui/JsonLd";
@@ -15,6 +17,8 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
     <>
       <Header logoUrl={s.logo_url || undefined} categories={cats.map((c) => ({ slug: c.slug, title: c.title }))} />
       <Motion />
+      <Cursor />
+      <BackToTop />
       <main id="main">{children}</main>
       <Footer />
       <JsonLd data={{ "@context": "https://schema.org", "@type": "Organization", name: s.site_name, url: SITE_URL, logo: s.logo_url || `${SITE_URL}/brand/ignixel-mark.svg`, email: s.contact_email || undefined, telephone: s.phone || undefined, description: s.seo_description, sameAs }} />

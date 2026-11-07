@@ -45,7 +45,7 @@ export function ProjectTabs({ projects, fallback }: { projects: CaseStudy[]; fal
       </div>
 
       <div ref={panel} role="tabpanel" id="ppanel" aria-labelledby={`ptab-${i}`} className="mt-10 grid gap-10 lg:grid-cols-[5fr_7fr] lg:gap-16">
-        <div className="relative mx-auto aspect-[3/4] w-full max-w-[460px] overflow-hidden rounded-xl bg-ink-2 lg:mx-0">
+        <div data-tilt="dark" data-tilt-max="5" className="relative mx-auto aspect-[3/4] w-full max-w-[460px] overflow-hidden rounded-xl bg-ink-2 lg:mx-0">
           <Image data-tab-img src={img} alt={`${p.title} preview`} fill sizes="(min-width:1024px) 40vw, 90vw" className="object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" aria-hidden />
           {p.is_placeholder && <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-base font-medium text-text">Sample layout</span>}

@@ -3,7 +3,7 @@ import { TechLogo } from "./ui/TechLogo";
 
 export function TechCard({ t }: { t: Technology }) {
   return (
-    <li className="group flex flex-col items-center gap-3 rounded-2xl border border-line bg-white px-4 py-6 text-center transition duration-300 hover:-translate-y-1 hover:border-brand/40 hover:shadow-card">
+    <li data-tilt data-tilt-max="9" className="group flex flex-col items-center gap-3 rounded-xl border border-line bg-white px-4 py-6 text-center transition-[border-color,box-shadow] duration-300 hover:border-brand/40 hover:shadow-card">
       <span className="transition duration-300 group-hover:scale-110"><TechLogo tech={t} size={44} /></span>
       <span className="font-medium text-text">{t.name}</span>
     </li>

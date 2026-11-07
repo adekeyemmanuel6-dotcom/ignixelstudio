@@ -14,7 +14,7 @@ const SVC_PHOTO = { "web-design": "wireframe", "web-development": "webdev", "eco
 export function ServiceCategoryCard({ c, subs, i }: { c: ServiceCategory; subs: Service[]; i: number }) {
   const src = c.image_url || photo((SVC_PHOTO as Record<string, keyof typeof PHOTO>)[c.slug] ?? "office", 1200, 900);
   return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-line bg-white transition duration-500 hover:-translate-y-1.5 hover:border-brand/40 hover:shadow-glow">
+    <article data-tilt="dark" className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-line bg-white transition-[border-color,box-shadow] duration-500 hover:border-brand/40 hover:shadow-glow">
       <div className="relative aspect-[4/3] overflow-hidden bg-ink">
         <Image src={src} alt="" fill sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" className="object-cover transition duration-700 ease-out group-hover:scale-110" />
         <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/15 to-transparent" aria-hidden />
@@ -71,7 +71,7 @@ export function ProjectShowcase({ p, i }: { p: CaseStudy; i: number }) {
 
 export function PostCard({ p, featured }: { p: BlogPost; featured?: boolean }) {
   return (
-    <article className={`group relative flex overflow-hidden rounded-2xl border border-line bg-white transition duration-300 hover:-translate-y-1 hover:shadow-card ${featured ? "flex-col lg:flex-row" : "flex-col"}`}>
+    <article data-tilt data-tilt-max="4" className={`group relative flex overflow-hidden rounded-xl border border-line bg-white transition-shadow duration-300 hover:shadow-card ${featured ? "flex-col lg:flex-row" : "flex-col"}`}>
       <div className={`relative shrink-0 overflow-hidden bg-gradient-to-br from-brand to-brand-deep ${featured ? "aspect-[16/10] lg:aspect-auto lg:w-1/2" : "aspect-[16/10]"}`}>
         {p.featured_image ? <Image src={p.featured_image} alt="" fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover transition duration-500 group-hover:scale-105" /> :
           <div className="dots absolute inset-0 grid place-items-center" aria-hidden><span className="font-heading text-5xl font-bold text-white/30">{p.category?.name?.slice(0, 2) ?? "IX"}</span></div>}
@@ -89,10 +89,10 @@ export function PostCard({ p, featured }: { p: BlogPost; featured?: boolean }) {
   );
 }
 
-export function TeamCard({ m }: { m: TeamMember }) {
+export function TeamCard({ m, dark }: { m: TeamMember; dark?: boolean }) {
   const links = [[m.linkedin_url, "linkedin", "LinkedIn"], [m.twitter_url, "x", "X"], [m.website_url, "web", "Website"]] as const;
   return (
-    <article className="group">
+    <article data-tilt="dark" data-tilt-max="6" className="group">
       <div className="relative aspect-[3/4] overflow-hidden rounded-xl bg-paper">
         <Avatar name={m.full_name} src={m.photo_url} className="h-full w-full text-6xl transition duration-500 group-hover:scale-105" />
         <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 to-transparent p-5 pt-16 opacity-0 transition group-hover:opacity-100 group-focus-within:opacity-100">
@@ -100,15 +100,15 @@ export function TeamCard({ m }: { m: TeamMember }) {
         </div>
       </div>
       <h3 className="mt-4 !text-xl">{m.full_name}</h3>
-      <p className="font-medium text-brand">{m.job_title}</p>
-      {m.bio && <p className="mt-2 text-text-2">{m.bio}</p>}
+      <p className={`font-medium ${dark ? "text-[#9a9aff]" : "text-brand"}`}>{m.job_title}</p>
+      {m.bio && <p className={`mt-2 ${dark ? "text-white/65" : "text-text-2"}`}>{m.bio}</p>}
     </article>
   );
 }
 
 export function TestimonialCard({ t }: { t: Testimonial }) {
   return (
-    <figure className="flex h-full flex-col rounded-2xl border border-line bg-white p-7 shadow-card">
+    <figure data-tilt data-tilt-max="5" className="flex h-full flex-col rounded-xl border border-line bg-white p-7 shadow-card">
       <Quote className="h-8 w-8 text-brand" aria-hidden />
       <blockquote className="mt-4 flex-1 text-lg text-text">{t.quote}</blockquote>
       <figcaption className="mt-6 flex items-center gap-3">

@@ -37,7 +37,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
           </div>
         </div>
       </section>
-      <section className="section bg-paper">
+      <section className="section bg-white">
         <div className="container-x"><SectionHead eyebrow="Related" title="Other challenges we solve" />
           <ul className="mt-10 grid gap-4 md:grid-cols-2">{all.map((x) => <li key={x.slug}><Link href={`/solutions/${x.slug}`} className="card block p-6 font-heading text-xl font-semibold transition hover:border-brand/40 hover:text-brand">&ldquo;{x.problem}&rdquo; →</Link></li>)}</ul></div>
       </section>

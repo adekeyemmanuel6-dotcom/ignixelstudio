@@ -25,7 +25,7 @@ export default async function ServicesPage() {
           {cats.map((c, i) => <Reveal key={c.id}><ServiceCategoryCard c={c} subs={subs.filter((s) => s.category_id === c.id)} i={i} /></Reveal>)}
         </div>
       </section>
-      <section className="section bg-paper">
+      <section className="section bg-white">
         <div className="container-x">
           <SectionHead eyebrow="Every service" title="All the ways we can help" />
           <div className="mt-12 grid gap-8 md:grid-cols-2">

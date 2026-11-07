@@ -76,6 +76,32 @@ export function Motion() {
           gsap.fromTo(el, { "--p": 0 }, { "--p": 1, ease: "none", scrollTrigger: { trigger: el.parentElement ?? el, start: "top 75%", end: "bottom 60%", scrub: 0.5 } });
         });
 
+        // Mouse-driven effects: card tilt + glare, section spotlight (mouse devices only)
+        if (fine) {
+          q("[data-tilt]").forEach((el) => {
+            const max = Number(el.dataset.tiltMax ?? 7);
+            gsap.set(el, { transformPerspective: 900 });
+            const rx = gsap.quickTo(el, "rotationX", { duration: 0.6, ease: "power3" });
+            const ry = gsap.quickTo(el, "rotationY", { duration: 0.6, ease: "power3" });
+            const enter = () => gsap.to(el, { y: -6, duration: 0.45, ease: "power3.out", overwrite: "auto" });
+            const move = (e: MouseEvent) => {
+              const r = el.getBoundingClientRect(); const px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+              ry((px - 0.5) * max * 2); rx(-(py - 0.5) * max * 2);
+              el.style.setProperty("--gx", `${px * 100}%`); el.style.setProperty("--gy", `${py * 100}%`);
+            };
+            const leave = () => { rx(0); ry(0); gsap.to(el, { y: 0, duration: 0.6, ease: "power3.out", overwrite: "auto" }); };
+            el.addEventListener("mouseenter", enter); el.addEventListener("mousemove", move); el.addEventListener("mouseleave", leave);
+          });
+          q("[data-spotlight]").forEach((el) => {
+            const mx = gsap.quickTo(el, "--mx", { duration: 0.8, ease: "power3", unit: "px" });
+            const my = gsap.quickTo(el, "--my", { duration: 0.8, ease: "power3", unit: "px" });
+            const move = (e: MouseEvent) => { const r = el.getBoundingClientRect(); mx(e.clientX - r.left); my(e.clientY - r.top); };
+            el.addEventListener("mouseenter", () => el.style.setProperty("--spot", "1"));
+            el.addEventListener("mouseleave", () => el.style.setProperty("--spot", "0"));
+            el.addEventListener("mousemove", move);
+          });
+        }
+
         // Magnetic buttons
         if (fine) {
           q("[data-magnetic]").forEach((el) => {

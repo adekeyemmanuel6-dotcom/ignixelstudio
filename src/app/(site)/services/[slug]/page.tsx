@@ -53,7 +53,7 @@ export default async function ServiceCategoryPage({ params }: { params: Promise<
         </div>
       </section>
 
-      <section className="section bg-paper">
+      <section className="section bg-white">
         <div className="container-x">
           <SectionHead eyebrow="In detail" title="What each service includes" />
           <div className="mt-12 space-y-6">
@@ -109,7 +109,7 @@ export default async function ServiceCategoryPage({ params }: { params: Promise<
       )}
 
       {tech.length > 0 && (
-        <section className="section bg-paper">
+        <section className="section bg-white">
           <div className="container-x"><SectionHead eyebrow="Technology" title="The stack behind this service" /><div className="mt-10"><TechGrid items={tech} grouped={false} /></div></div>
         </section>
       )}
@@ -124,7 +124,7 @@ export default async function ServiceCategoryPage({ params }: { params: Promise<
       )}
 
       {c.faqs.length > 0 && (
-        <section className="section bg-paper">
+        <section className="section bg-white">
           <div className="container-x grid gap-12 lg:grid-cols-[1fr_1.6fr]">
             <SectionHead eyebrow="FAQs" title="Questions we hear most" /><FaqList faqs={c.faqs} />
           </div>
