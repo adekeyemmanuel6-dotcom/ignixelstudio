@@ -6,7 +6,8 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Icon } from "@/components/ui/Icon";
 import { Ico } from "@/components/ui/Ico";
 import { TechCard, TechMarquee } from "@/components/TechGrid";
-import { ServiceCategoryCard, PostCard, TeamCard, TestimonialCard } from "@/components/Cards";
+import { ServiceCategoryCard, PostCard, TestimonialCard } from "@/components/Cards";
+import { TeamGrid } from "@/components/team/TeamGrid";
 import { InquiryForm } from "@/components/InquiryForm";
 import { CtaBand } from "@/components/ui/CtaBand";
 import { CtaPair } from "@/components/ui/CtaPair";
@@ -256,14 +257,19 @@ export async function Testimonials({ c }: { c: C }) {
   );
 }
 
+const OLD_TEAM_HEADING = "The People Behind Your Project";
 export async function TeamPreview({ c }: { c: C }) {
-  const team = (await getTeam()).slice(0, 3);
+  const team = (await getTeam()).slice(0, 4);
   if (!team.length) return null;
+  const heading = !c.heading || c.heading === OLD_TEAM_HEADING ? "Meet the Team Behind Your Next Digital Breakthrough." : c.heading;
   return (
-    <section data-spotlight className="dark-surface section relative overflow-hidden">
-      <div className="container-x relative">
-        <div className="flex flex-wrap items-end justify-between gap-6"><SectionHead eyebrow="Our team" title={c.heading} description={c.description} /><Link href="/about#team" className="btn-ghost-dark" data-magnetic>{c.cta_label || "Meet Our Team"} <ArrowRight /></Link></div>
-        <div className="team-list mt-sect" data-stagger>{team.map((m) => <TeamCard key={m.id} m={m} dark />)}</div>
+    <section className="section bg-white">
+      <div className="container-x">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <SectionHead eyebrow="The people behind Ignixel" title={heading} description="Strategists, designers and engineers who care about the details, and about the results your business sees." />
+          <Link href="/about#team" className="btn-secondary" data-magnetic>{c.cta_label || "Meet Our Team"} <ArrowRight /></Link>
+        </div>
+        <div className="mt-sect"><TeamGrid members={team} /></div>
       </div>
     </section>
   );
@@ -273,9 +279,9 @@ export async function BlogPreview({ c }: { c: C }) {
   const posts = await getLatestPosts(3);
   if (!posts.length) return null;
   return (
-    <section className="section bg-white">
+    <section data-spotlight className="dark-surface section relative overflow-hidden">
       <div className="container-x">
-        <div className="flex flex-wrap items-end justify-between gap-6"><SectionHead eyebrow="Insights" title={c.heading} description={c.description} /><Link href="/blog" className="btn-ghost" data-magnetic>{c.cta_label || "View All Articles"} <ArrowRight /></Link></div>
+        <div className="flex flex-wrap items-end justify-between gap-6"><SectionHead eyebrow="Insights" title={c.heading} description={c.description} /><Link href="/blog" className="btn-secondary-dark" data-magnetic>{c.cta_label || "View All Articles"} <ArrowRight /></Link></div>
         <div className="mt-sect grid gap-card md:grid-cols-2 lg:grid-cols-3" data-stagger>{posts.map((p) => <PostCard key={p.id} p={p} />)}</div>
       </div>
     </section>

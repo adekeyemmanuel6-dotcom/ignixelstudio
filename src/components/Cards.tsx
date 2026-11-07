@@ -89,35 +89,6 @@ export function PostCard({ p, featured }: { p: BlogPost; featured?: boolean }) {
   );
 }
 
-/**
- * Team profile card: ONE card per row at every breakpoint (lists use .team-list, a single-column grid).
- * ≥768px: portrait left, details right. <768px: small portrait beside name/role, bio and links full width below.
- */
-export function TeamCard({ m, dark }: { m: TeamMember; dark?: boolean }) {
-  const links = [[m.linkedin_url, "linkedin", "LinkedIn"], [m.twitter_url, "x", "X"], [m.website_url, "web", "Website"]] as const;
-  const live = links.filter(([u]) => u);
-  return (
-    <article data-tilt="dark" data-tilt-max="2" className={`grid grid-cols-[104px_minmax(0,1fr)] gap-x-4 gap-y-4 rounded-xl border p-[var(--card-pad)] md:grid-cols-[240px_minmax(0,1fr)] md:grid-rows-[1fr_auto_1fr] md:gap-x-8 md:gap-y-3 lg:grid-cols-[280px_minmax(0,1fr)] lg:gap-x-10 ${dark ? "border-white/15 bg-white/[0.04]" : "border-line bg-white shadow-card"}`}>
-      <div className="relative aspect-[3/4] self-start overflow-hidden rounded-lg bg-ink-2 md:row-span-3">
-        <Avatar name={m.full_name} src={m.photo_url} className="absolute inset-0 h-full w-full object-cover object-top text-4xl md:text-7xl" />
-      </div>
-      <header className="min-w-0 self-center md:self-end">
-        <p className="eyebrow mb-2">{m.category}</p>
-        <h3 className="!text-[1.35rem] !leading-tight md:!text-3xl">{m.full_name}</h3>
-        <p className={`mt-1 font-medium ${dark ? "text-[#9a9aff]" : "text-brand"}`}>{m.job_title}</p>
-      </header>
-      {m.bio && <p className={`col-span-2 max-w-2xl md:col-span-1 ${dark ? "text-white/70" : "text-text-2"}`}>{m.bio}</p>}
-      {live.length > 0 && (
-        <ul className="col-span-2 flex gap-2 md:col-span-1 md:self-start" aria-label={`${m.full_name} on social media`}>
-          {live.map(([u, k, n]) => (
-            <li key={n}><a href={u!} target="_blank" rel="noopener noreferrer" aria-label={`${m.full_name} on ${n}`} className={`grid h-11 w-11 place-items-center rounded-[5px] border transition ${dark ? "border-white/25 text-white hover:border-white hover:bg-white/10" : "border-line text-text hover:border-brand hover:text-brand"}`}>{k === "web" ? <Globe className="h-5 w-5" /> : <Social name={k} />}</a></li>
-          ))}
-        </ul>
-      )}
-    </article>
-  );
-}
-
 export function TestimonialCard({ t }: { t: Testimonial }) {
   return (
     <figure data-tilt data-tilt-max="5" className="card-pad flex h-full flex-col rounded-xl border border-line bg-white shadow-card">

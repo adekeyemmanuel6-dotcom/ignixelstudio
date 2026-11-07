@@ -55,7 +55,6 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   .card-pad { padding: var(--card-pad); }
   .cta-gap { margin-top: 24px; }
   @media (min-width: 768px) { .cta-gap { margin-top: 32px; } }
-  .team-list { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--card-gap); }
   .eyebrow { @apply inline-flex items-center gap-2.5 text-[13px] font-medium uppercase leading-snug tracking-[0.1em] text-[#0b3b38]; }
   .eyebrow::before { content: ""; @apply h-2 w-2 shrink-0 rounded-full bg-[#6fdc5a]; box-shadow: 0 0 0 3px rgba(111,220,90,.18); }
   .dark-surface .eyebrow { @apply text-[#d4efe6]; }
@@ -143,3 +142,9 @@ section.bg-white + section.bg-white { border-top: 1px solid #E5E8F0; }
 .cursor-dot { width: 7px; height: 7px; }
 .cursor-ring { width: 30px; height: 30px; background: transparent; border: 1.5px solid #fff; }
 @media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) { .cursor-dot, .cursor-ring { display: none; } }
+
+.team-dialog { animation: tdFade .25s ease-out both; }
+.team-dialog-panel { animation: tdPop .35s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes tdFade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes tdPop { from { opacity: 0; transform: translateY(16px) scale(.97); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .team-dialog, .team-dialog-panel { animation: none; } }

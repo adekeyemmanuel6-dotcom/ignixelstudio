@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionHead } from "@/components/ui/Heading";
-import { TeamCard } from "@/components/Cards";
+import { TeamGrid } from "@/components/team/TeamGrid";
 import { CtaBand } from "@/components/ui/CtaBand";
 import { Reveal } from "@/components/ui/Reveal";
 import { Icon } from "@/components/ui/Icon";
@@ -37,10 +37,8 @@ export default async function AboutPage() {
       </div></section>
 
       <section id="team" className="section scroll-mt-20 bg-white"><div className="container-x">
-        <SectionHead eyebrow="Our team" title="The people behind your project" description="Strategists, designers and engineers who care about getting the details right." />
-        {CATS.map((cat) => { const m = team.filter((t) => t.category === cat); return m.length ? (
-          <div key={cat} className="mt-14"><h3 className="mb-6 border-b border-line pb-3 !text-2xl">{cat}</h3>
-            <div className="team-list">{m.map((x) => <TeamCard key={x.id} m={x} />)}</div></div>) : null; })}
+        <SectionHead eyebrow="The people behind Ignixel" title="Meet the Team Behind Your Next Digital Breakthrough." description="Strategists, designers and engineers who care about the details, and about the results your business sees." />
+        <div className="mt-sect"><TeamGrid members={[...team].sort((x, y) => CATS.indexOf(x.category) - CATS.indexOf(y.category))} /></div>
       </div></section>
 
       <section className="section bg-white"><div className="container-x">

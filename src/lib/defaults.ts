@@ -371,7 +371,7 @@ export const defaultHomepageSections: HomepageSection[] = [
     ],
   } },
   { id: id("s-testimonials"), key: "testimonials", title: "Testimonials", enabled: true, sort_order: 10, content: { heading: "What Clients Say", description: "Verified client feedback appears here once added in the admin." } },
-  { id: id("s-team"), key: "team", title: "Team preview", enabled: true, sort_order: 11, content: { heading: "The People Behind Your Project", description: "Designers, engineers and strategists working as one team.", cta_label: "Meet Our Team" } },
+  { id: id("s-team"), key: "team", title: "Team preview", enabled: true, sort_order: 11, content: { heading: "Meet the Team Behind Your Next Digital Breakthrough.", description: "Strategists, designers and engineers who care about the details, and about the results your business sees.", cta_label: "Meet Our Team" } },
   { id: id("s-blog"), key: "blog", title: "Blog preview", enabled: true, sort_order: 12, content: { heading: "Insights for Growing Businesses", description: "Practical advice on design, development, eCommerce and AI.", cta_label: "View All Articles" } },
   { id: id("s-cta"), key: "cta", title: "Final CTA", enabled: true, sort_order: 13, content: {
     heading: "Let's Build Something That Moves Your Business Forward.", description: "Have an idea, a challenge, or a digital product in mind? Let's discuss what's possible.",
