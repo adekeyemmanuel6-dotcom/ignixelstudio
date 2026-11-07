@@ -1,0 +1,4 @@
+/* Enabled by NEXT_PUBLIC_CRAFTWORK_FONT=true. Place licensed Craftwork Grotesk files next to this file. */
+@font-face { font-family: "Craftwork Grotesk"; src: url("/fonts/CraftworkGrotesk-Medium.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Craftwork Grotesk"; src: url("/fonts/CraftworkGrotesk-SemiBold.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Craftwork Grotesk"; src: url("/fonts/CraftworkGrotesk-Bold.woff2") format("woff2"); font-weight: 700; font-display: swap; }

@@ -1,0 +1,60 @@
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/space-grotesk";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { --font-heading: "Craftwork Grotesk"; color-scheme: light; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
+
+@layer base {
+  body { @apply bg-white font-body text-[17px] leading-[1.65] text-text antialiased; overflow-x: hidden; }
+  h1, h2, h3, h4, h5 { @apply font-heading font-semibold text-text; }
+  h1 { @apply text-h1; } h2 { @apply text-h2; } h3 { @apply text-h3; } h4 { @apply text-h4; } h5 { @apply text-h5; }
+  p, li, label, input, select, textarea, button, a, span, small, td, th { font-size: inherit; }
+  :focus-visible { outline: 2px solid #1010E8; outline-offset: 3px; border-radius: 6px; }
+  .dark-surface :focus-visible { outline-color: #8b8bff; }
+  ::selection { background: #1010E8; color: #fff; }
+}
+
+@layer components {
+  .container-x { @apply mx-auto w-full max-w-[1280px] px-5 sm:px-8; }
+  .section { @apply py-20 sm:py-28; }
+  .eyebrow { @apply inline-flex items-center gap-2 text-base font-semibold uppercase tracking-[0.12em] text-brand; }
+  .dark-surface .eyebrow { @apply text-[#9a9aff]; }
+  .eyebrow::before { content: ""; @apply h-px w-8 bg-current opacity-70; }
+  .dark-surface { @apply bg-ink text-white/80; }
+  .dark-surface h1, .dark-surface h2, .dark-surface h3, .dark-surface h4, .dark-surface h5 { @apply text-white; }
+  .lead { @apply text-lg sm:text-xl leading-relaxed text-text-2; }
+  .dark-surface .lead { @apply text-white/70; }
+
+  .btn { @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full px-6 py-3 text-base font-semibold transition duration-200 active:scale-[.98] disabled:opacity-60 disabled:pointer-events-none; }
+  .btn-primary { @apply btn bg-brand text-white shadow-[0_8px_24px_-8px_rgba(16,16,232,.7)] hover:bg-[#2a2af0] hover:-translate-y-0.5; }
+  .btn-dark { @apply btn bg-ink text-white hover:bg-ink-2 hover:-translate-y-0.5; }
+  .btn-ghost { @apply btn border border-line bg-white text-text hover:border-brand hover:text-brand; }
+  .btn-ghost-dark { @apply btn border border-white/20 text-white hover:border-white/60 hover:bg-white/5; }
+
+  .card { @apply rounded-2xl border border-line bg-white shadow-card; }
+  .field { @apply w-full rounded-xl border border-line bg-white px-4 py-3 text-base text-text placeholder:text-text-2/70 transition focus:border-brand focus:outline-none focus:ring-4 focus:ring-brand/10; }
+  .dark-field { @apply w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-base text-white placeholder:text-white/45 transition focus:border-[#7b7bff] focus:outline-none focus:ring-4 focus:ring-brand/30; }
+  .dark-field option { @apply bg-ink text-white; }
+  .label { @apply mb-1.5 block text-base font-medium; }
+
+  .grid-bg { background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size: 56px 56px; mask-image: radial-gradient(ellipse at 50% 30%, #000 30%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse at 50% 30%, #000 30%, transparent 75%); }
+  .grid-bg-light { background-image: linear-gradient(rgba(16,16,232,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(16,16,232,.06) 1px, transparent 1px); background-size: 56px 56px; mask-image: radial-gradient(ellipse at 50% 0%, #000 20%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse at 50% 0%, #000 20%, transparent 75%); }
+  .dots { background-image: radial-gradient(rgba(255,255,255,.18) 1.2px, transparent 1.2px); background-size: 22px 22px; }
+  .prose-ig { @apply text-[18px] leading-[1.8] text-text; max-width: 70ch; }
+  .prose-ig h2 { @apply mt-12 mb-4 text-h3; scroll-margin-top: 110px; } .prose-ig h3 { @apply mt-8 mb-3 text-h4; scroll-margin-top: 110px; }
+  .prose-ig p { @apply my-5; } .prose-ig ul { @apply my-5 list-disc pl-6; } .prose-ig ol { @apply my-5 list-decimal pl-6; } .prose-ig li { @apply my-1.5; }
+  .prose-ig a { @apply text-brand underline underline-offset-4 hover:text-brand-deep; }
+  .prose-ig blockquote { @apply my-8 border-l-4 border-brand pl-6 font-heading text-xl italic text-text; }
+  .prose-ig pre { @apply my-6 overflow-x-auto rounded-xl bg-ink p-5 text-base text-white; } .prose-ig code { @apply rounded bg-paper px-1.5 py-0.5 text-[0.9em]; } .prose-ig pre code { @apply bg-transparent p-0; }
+  .prose-ig img { @apply my-8 rounded-2xl; }
+}
+.page-enter { animation: pageIn .5s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes pageIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.skip-link { position: absolute; left: -9999px; top: 8px; z-index: 100; background: #1010E8; color: #fff; padding: 10px 16px; border-radius: 8px; }
+.skip-link:focus { left: 12px; }
+.tt-editor .ProseMirror { min-height: 340px; outline: none; padding: 16px; }
+.tt-editor .ProseMirror p.is-editor-empty:first-child::before { content: attr(data-placeholder); color: #9aa3b2; float: left; height: 0; pointer-events: none; }
