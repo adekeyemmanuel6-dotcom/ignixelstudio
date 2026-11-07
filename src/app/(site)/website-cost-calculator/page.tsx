@@ -15,7 +15,7 @@ export default async function CalculatorPage() {
   const all = Object.values(icons).filter((v: any) => v && v.slug) as any[];
   for (const [label, slug] of Object.entries(PLATFORM_ICONS)) { const i = all.find((x) => x.slug === slug); if (i) iconMap[label] = { path: i.path, hex: i.hex }; }
   return (
-    <section className="dark-surface relative min-h-screen overflow-hidden pb-20 pt-32 sm:pt-40">
+    <section className="dark-surface relative min-h-screen overflow-hidden pb-sect pt-hero">
       <div className="grid-bg pointer-events-none absolute inset-0" aria-hidden />
       <div className="pointer-events-none absolute left-1/2 top-0 h-[480px] w-[720px] -translate-x-1/2 rounded-full bg-brand/25 blur-[130px]" aria-hidden />
       <div className="container-x relative"><Breadcrumbs items={[{ name: "Website Cost Calculator" }]} dark /><div className="mt-8"><Calculator settings={settings} questions={questions} icons={iconMap} /></div></div>

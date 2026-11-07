@@ -5,6 +5,28 @@
 @tailwind utilities;
 
 :root { --font-heading: "Craftwork Grotesk"; color-scheme: light; }
+/* ───────── Ignixel layout & component tokens ─────────
+   Mobile-first scale. Breakpoints: ≤374 small mobile · 375–430 standard · 431–767 large mobile · 768 tablet · 1024 desktop. */
+:root {
+  --content-max: 1300px;
+  --header-h: 72px;
+  --page-pad: 20px;      /* horizontal gutter */
+  --section-y: 56px;     /* vertical section spacing */
+  --head-gap: 28px;      /* section heading → content */
+  --card-gap: 16px;      /* between cards */
+  --card-pad: 20px;      /* inside cards */
+  --button-height: 48px;
+  --button-min-width: 0px;
+  --button-gap: 12px;
+  --button-radius: 5px;
+  --button-pad-x: 24px;
+}
+@media (max-width: 374px) { :root { --page-pad: 16px; --section-y: 48px; } }
+@media (min-width: 431px) { :root { --page-pad: 24px; --section-y: 64px; } }
+@media (min-width: 640px) { :root { --head-gap: 36px; --card-gap: 20px; } }
+@media (min-width: 768px) { :root { --page-pad: 32px; --section-y: 80px; --head-gap: 44px; --card-pad: 28px; --button-height: 52px; --button-min-width: 160px; } }
+@media (min-width: 1024px) { :root { --page-pad: 48px; --section-y: 112px; --head-gap: 56px; --card-gap: 24px; --card-pad: 32px; } }
+
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
 
@@ -19,8 +41,20 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 }
 
 @layer components {
-  .container-x { @apply mx-auto w-full max-w-[1300px] px-5 sm:px-8; }
-  .section { @apply py-20 sm:py-28; }
+  /* Layout utilities (all driven by the tokens above) */
+  .container-x { width: 100%; max-width: var(--content-max); margin-inline: auto; padding-inline: var(--page-pad); }
+  .page-x { padding-inline: var(--page-pad); }
+  .section { padding-block: var(--section-y); }
+  .pt-sect { padding-top: var(--section-y); }
+  .pb-sect { padding-bottom: var(--section-y); }
+  .hero-pad { padding-top: calc(var(--header-h) + var(--section-y) * .75); padding-bottom: var(--section-y); }
+  .pt-hero { padding-top: calc(var(--header-h) + var(--section-y) * .75); }
+  .mt-sect { margin-top: var(--head-gap); }
+  .gap-card { gap: var(--card-gap); }
+  .card-pad { padding: var(--card-pad); }
+  .cta-gap { margin-top: 24px; }
+  @media (min-width: 768px) { .cta-gap { margin-top: 32px; } }
+  .team-list { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--card-gap); }
   .eyebrow { @apply inline-flex items-center gap-2.5 text-[13px] font-medium uppercase leading-snug tracking-[0.1em] text-[#0b3b38]; }
   .eyebrow::before { content: ""; @apply h-2 w-2 shrink-0 rounded-full bg-[#6fdc5a]; box-shadow: 0 0 0 3px rgba(111,220,90,.18); }
   .dark-surface .eyebrow { @apply text-[#d4efe6]; }
@@ -29,13 +63,29 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   .lead { @apply text-lg sm:text-xl leading-relaxed text-text-2; }
   .dark-surface .lead { @apply text-white/70; }
 
-  .btn { @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-[5px] px-6 py-3 text-base font-semibold transition duration-200 active:scale-[.98] disabled:opacity-60 disabled:pointer-events-none; }
-  .btn-primary { @apply btn bg-brand text-white shadow-[0_8px_24px_-8px_rgba(1,11,204,.7)] hover:bg-[#1722e0] hover:-translate-y-0.5; }
-  .btn-dark { @apply btn bg-ink text-white hover:bg-ink-2 hover:-translate-y-0.5; }
-  .btn-ghost { @apply btn border border-line bg-white text-text hover:border-brand hover:text-brand; }
-  .btn-ghost-dark { @apply btn border border-white/20 text-white hover:border-white/60 hover:bg-white/5; }
+  /* Buttons: one size system. Height/min-width/radius come from tokens; variants only change colour. */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; box-sizing: border-box; min-height: var(--button-height); min-width: var(--button-min-width); padding: 0 var(--button-pad-x); border-radius: var(--button-radius); font-family: inherit; font-size: 16px; font-weight: 600; line-height: 1.2; text-align: center; text-decoration: none; cursor: pointer; transition: background-color .2s, border-color .2s, color .2s, transform .2s, box-shadow .2s; }
+  .btn:active { transform: scale(.98); }
+  .btn:disabled { opacity: .6; pointer-events: none; }
+  .btn svg { width: 20px; height: 20px; flex: none; }
+  .btn-block { width: 100%; }
+  .btn-primary { @apply btn bg-brand text-white shadow-[0_8px_24px_-8px_rgba(1,11,204,.7)] hover:bg-[#1722e0]; }
+  .btn-dark { @apply btn bg-ink text-white hover:bg-ink-2; }
+  .btn-secondary, .btn-ghost { @apply btn border border-line bg-white text-text hover:border-brand hover:text-brand; }
+  .btn-secondary-dark, .btn-ghost-dark { @apply btn border border-white/25 text-white hover:border-white/70 hover:bg-white/5; }
+  .btn-white { @apply btn bg-white text-brand-deep hover:bg-paper; }
+  /* Two buttons together: equal-width columns, equal height, 12px gap; stacks full-width below 480px */
+  .cta-pair { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--button-gap); width: 100%; max-width: 600px; }
+  .cta-pair > .btn { width: 100%; min-width: 0; padding-block: 12px; }
+  @media (min-width: 480px) { .cta-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .cta-pair--center { margin-inline: auto; }
+  .cta-pair--full { max-width: none; }
+  .cta-stack { display: grid; gap: var(--button-gap); }
+  .cta-stack > .btn { width: 100%; }
 
   .card { @apply rounded-2xl border border-line bg-white shadow-card; }
+  .field:not(textarea), .dark-field:not(textarea) { height: var(--button-height); padding-block: 0; }
+  textarea.field, textarea.dark-field { padding-block: 12px; }
   .field { @apply w-full rounded-xl border border-line bg-white px-4 py-3 text-base text-text placeholder:text-text-2/70 transition focus:border-brand focus:outline-none focus:ring-4 focus:ring-brand/10; }
   .dark-field { @apply w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-base text-white placeholder:text-white/45 transition focus:border-[#7b7bff] focus:outline-none focus:ring-4 focus:ring-brand/30; }
   .dark-field option { @apply bg-ink text-white; }

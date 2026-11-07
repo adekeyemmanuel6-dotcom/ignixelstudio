@@ -37,14 +37,14 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
         ) : (
           <>
             {first && !filtered && <div className="mt-10"><PostCard p={first} featured /></div>}
-            <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">{(filtered ? posts : rest).map((p) => <PostCard key={p.id} p={p} />)}</div>
+            <div className="mt-8 grid gap-card md:grid-cols-2 lg:grid-cols-3">{(filtered ? posts : rest).map((p) => <PostCard key={p.id} p={p} />)}</div>
           </>
         )}
 
         {pages > 1 && (
           <nav aria-label="Pagination" className="mt-14 flex flex-wrap items-center justify-center gap-2">
             {page > 1 && <Link className="btn-ghost" href={qs({ page: String(page - 1) })}>Previous</Link>}
-            {Array.from({ length: pages }, (_, i) => i + 1).map((n) => <Link key={n} href={qs({ page: String(n) })} aria-current={n === page ? "page" : undefined} className={`grid h-12 w-12 place-items-center rounded-[5px] border font-medium ${n === page ? "border-brand bg-brand text-white" : "border-line hover:border-brand"}`}>{n}</Link>)}
+            {Array.from({ length: pages }, (_, i) => i + 1).map((n) => <Link key={n} href={qs({ page: String(n) })} aria-current={n === page ? "page" : undefined} className={`grid h-[var(--button-height)] w-[var(--button-height)] place-items-center rounded-[5px] border font-medium ${n === page ? "border-brand bg-brand text-white" : "border-line hover:border-brand"}`}>{n}</Link>)}
             {page < pages && <Link className="btn-ghost" href={qs({ page: String(page + 1) })}>Next</Link>}
           </nav>
         )}

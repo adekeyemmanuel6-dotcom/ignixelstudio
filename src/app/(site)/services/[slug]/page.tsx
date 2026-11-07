@@ -49,14 +49,14 @@ export default async function ServiceCategoryPage({ params }: { params: Promise<
       <section className="section bg-white" id="services">
         <div className="container-x">
           <SectionHead eyebrow="What We Do" title={`${c.title} services`} description={c.short_description} />
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{services.map((s, i) => <Reveal key={s.id} delay={(i % 3) * 0.07}><SubServiceCard s={s} i={i} /></Reveal>)}</div>
+          <div className="mt-sect grid gap-card sm:grid-cols-2 lg:grid-cols-3">{services.map((s, i) => <Reveal key={s.id} delay={(i % 3) * 0.07}><SubServiceCard s={s} i={i} /></Reveal>)}</div>
         </div>
       </section>
 
       <section className="section bg-white">
         <div className="container-x">
           <SectionHead eyebrow="In detail" title="What each service includes" />
-          <div className="mt-12 space-y-6">
+          <div className="mt-sect space-y-6">
             {services.map((s) => (
               <article key={s.id} id={s.slug} className="card scroll-mt-28 grid gap-8 p-7 sm:p-10 lg:grid-cols-[1fr_1.4fr]">
                 <div><h3>{s.title}</h3><p className="mt-3 text-text-2">{s.description}</p><Link href="/contact" className="btn-primary mt-6">Discuss this service</Link></div>
@@ -75,7 +75,7 @@ export default async function ServiceCategoryPage({ params }: { params: Promise<
         <section className="section bg-white">
           <div className="container-x">
             <SectionHead eyebrow="Capabilities" title={slug === "web-development" ? "Engineering that covers the whole stack" : `${c.title} capabilities`} />
-            <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="mt-sect grid gap-card sm:grid-cols-2 lg:grid-cols-3">
               {c.capabilities.map((k) => <li key={k.title} className="rounded-2xl border border-line p-6 transition hover:border-brand/40 hover:shadow-card"><span className="grid h-9 w-9 place-items-center rounded-full bg-brand-soft text-brand"><Check className="h-5 w-5" /></span><h3 className="mt-4 !text-xl">{k.title}</h3><p className="mt-2 text-text-2">{k.description}</p></li>)}
             </ul>
           </div>
@@ -87,7 +87,7 @@ export default async function ServiceCategoryPage({ params }: { params: Promise<
           <div className="grid-bg pointer-events-none absolute inset-0" aria-hidden />
           <div className="container-x relative">
             <SectionHead eyebrow="Process" title={slug === "web-design" ? "Our design process" : slug === "web-development" ? "Our technical process" : `How ${c.title} projects run`} />
-            <ol className="mt-12 grid gap-6 md:grid-cols-4">
+            <ol className="mt-sect grid gap-card md:grid-cols-4">
               {c.process.map((p, i) => <Reveal key={p.title} delay={i * 0.1}><li className="h-full rounded-2xl border border-white/10 bg-white/5 p-6"><span className="font-heading text-4xl font-bold text-[#8b8bff]">0{i + 1}</span><h3 className="mt-3 !text-2xl">{p.title}</h3><p className="mt-2 text-white/65">{p.description}</p></li></Reveal>)}
             </ol>
           </div>
@@ -98,7 +98,7 @@ export default async function ServiceCategoryPage({ params }: { params: Promise<
         <section className="section bg-white">
           <div className="container-x">
             <SectionHead eyebrow="Platform comparison" title="Which platform fits your project?" description="A practical overview. We recommend the best fit during discovery." />
-            <div className="mt-10 overflow-x-auto rounded-2xl border border-line">
+            <div className="mt-sect overflow-x-auto rounded-2xl border border-line">
               <table className="w-full min-w-[760px] text-left">
                 <thead className="bg-paper"><tr><th className="p-4" scope="col"><span className="sr-only">Criteria</span></th>{["WordPress", "Webflow", "Framer", "Shopify"].map((h) => <th key={h} scope="col" className="p-4 font-heading text-lg">{h}</th>)}</tr></thead>
                 <tbody>{COMPARE.map((r) => <tr key={r[0]} className="border-t border-line align-top"><th scope="row" className="p-4 font-semibold">{r[0]}</th>{r.slice(1).map((x, i) => <td key={i} className="p-4 text-text-2">{x}</td>)}</tr>)}</tbody>
@@ -118,7 +118,7 @@ export default async function ServiceCategoryPage({ params }: { params: Promise<
         <section className="section bg-white">
           <div className="container-x">
             <SectionHead eyebrow="Related work" title="Projects in this area" />
-            <div className="mt-14 space-y-24">{projects.map((p, i) => <ProjectShowcase key={p.id} p={p} i={i} />)}</div>
+            <div className="mt-sect space-y-24">{projects.map((p, i) => <ProjectShowcase key={p.id} p={p} i={i} />)}</div>
           </div>
         </section>
       )}

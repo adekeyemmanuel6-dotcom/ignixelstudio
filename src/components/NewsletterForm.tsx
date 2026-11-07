@@ -22,7 +22,7 @@ export function NewsletterForm({ dark }: { dark?: boolean }) {
       <div className="flex flex-col gap-3 sm:flex-row">
         <label className="sr-only" htmlFor={`nl-${dark ? "d" : "l"}`}>Email address</label>
         <input id={`nl-${dark ? "d" : "l"}`} name="email" type="email" required autoComplete="email" placeholder="you@company.com" className={dark ? "dark-field" : "field"} />
-        <button className={dark ? "btn-primary shrink-0" : "btn-dark shrink-0"} disabled={state === "loading"}>{state === "loading" ? "Subscribing…" : "Subscribe"}</button>
+        <button className={`${dark ? "btn-primary" : "btn-dark"} w-full shrink-0 sm:w-auto`} disabled={state === "loading"}>{state === "loading" ? "Subscribing…" : "Subscribe"}</button>
       </div>
       {state === "error" && <p role="alert" className="mt-2 text-red-500">{msg}</p>}
     </form>

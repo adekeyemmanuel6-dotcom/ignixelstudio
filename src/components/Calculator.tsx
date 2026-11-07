@@ -63,8 +63,8 @@ export function Calculator({ settings, questions, icons }: { settings: CalcSetti
             <div className="py-10 text-center sm:py-20">
               <p className="eyebrow mb-5">Website cost calculator</p>
               <h1 className="mx-auto max-w-3xl !text-h2">{settings.welcome_title}</h1>
-              <p className="lead mx-auto mt-6 max-w-2xl">{settings.welcome_description}</p>
-              <button onClick={() => go(1)} className="btn-primary mt-10 !px-10">{settings.welcome_cta} <ArrowRight className="h-5 w-5" /></button>
+              <p className="lead mx-auto mt-4 max-w-2xl">{settings.welcome_description}</p>
+              <button onClick={() => go(1)} className="btn-primary cta-gap">{settings.welcome_cta} <ArrowRight /></button>
               <p className="mt-5 text-white/55">Takes about two minutes.</p>
             </div>
           )}
@@ -104,7 +104,7 @@ export function Calculator({ settings, questions, icons }: { settings: CalcSetti
                 <div className="hidden" aria-hidden><input tabIndex={-1} autoComplete="off" value={contact.hp} onChange={(e) => setContact((c) => ({ ...c, hp: e.target.value }))} /></div>
               </div>
               {err && <p role="alert" className="mt-4 text-red-400">{err}</p>}
-              <div className="mt-8 flex items-center justify-between gap-3"><button type="button" onClick={() => go(-1)} className="btn-ghost-dark"><ArrowLeft className="h-5 w-5" /> Back</button><button className="btn-primary" disabled={busy}>{busy ? "Calculating…" : "Get My Estimate"} <ArrowRight className="h-5 w-5" /></button></div>
+              <div className="cta-pair cta-pair--full mt-8"><button type="button" onClick={() => go(-1)} className="btn-secondary-dark"><ArrowLeft /> Back</button><button className="btn-primary" disabled={busy}>{busy ? "Calculating…" : "Get My Estimate"} <ArrowRight /></button></div>
             </form>
           )}
 
@@ -123,7 +123,7 @@ export function Calculator({ settings, questions, icons }: { settings: CalcSetti
               </div>
               <p className="mt-5 rounded-xl border border-white/10 p-4 text-white/65">{settings.disclaimer}</p>
               {result.demo && <p className="mt-3 text-amber-300">Demo mode: Supabase isn&apos;t configured, so this submission was not saved.</p>}
-              <div className="mt-8 flex flex-wrap gap-3"><Link href="/contact" className="btn-primary">Book a Consultation</Link><button onClick={exportSummary} className="btn-ghost-dark"><Download className="h-5 w-5" /> Send My Project Details</button></div>
+              <div className="cta-pair mt-8"><Link href="/contact" className="btn-primary">Book a Consultation</Link><button onClick={exportSummary} className="btn-secondary-dark"><Download /> Send My Project Details</button></div>
               <p className="mt-3 text-white/55">We&apos;ve also saved your details so our team can follow up with you.</p>
             </div>
           )}
@@ -131,9 +131,9 @@ export function Calculator({ settings, questions, icons }: { settings: CalcSetti
       </AnimatePresence>
 
       {q && (
-        <div className="mt-8 flex items-center justify-between gap-3">
-          <button onClick={() => go(-1)} className="btn-ghost-dark"><ArrowLeft className="h-5 w-5" /> Back</button>
-          <button onClick={() => go(1)} disabled={!answers[q.id]} className="btn-primary">Next <ArrowRight className="h-5 w-5" /></button>
+        <div className="cta-pair cta-pair--full mt-8">
+          <button onClick={() => go(-1)} className="btn-secondary-dark"><ArrowLeft /> Back</button>
+          <button onClick={() => go(1)} disabled={!answers[q.id]} className="btn-primary">Next <ArrowRight /></button>
         </div>
       )}
     </div>

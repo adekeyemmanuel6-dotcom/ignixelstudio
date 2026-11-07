@@ -4,9 +4,9 @@ export function SectionHead({ eyebrow, title, description, center, as = "h2", cl
   const H = as;
   return (
     <div className={`${center ? "mx-auto text-center" : ""} max-w-3xl ${className}`}>
-      {eyebrow && <p className="eyebrow mb-5" data-reveal>{eyebrow}</p>}
+      {eyebrow && <p className="eyebrow mb-4" data-reveal>{eyebrow}</p>}
       <H data-split>{title}</H>
-      {description && <p className="lead mt-5" data-reveal data-delay="0.1">{description}</p>}
+      {description && <p className="lead mt-4" data-reveal data-delay="0.1">{description}</p>}
     </div>
   );
 }

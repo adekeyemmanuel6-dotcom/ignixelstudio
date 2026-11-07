@@ -23,7 +23,7 @@ export default async function SolutionsPage() {
                   <span className="font-heading text-5xl font-bold text-brand/15">0{i + 1}</span>
                   <h2 className="mt-1 !text-h3">&ldquo;{s.problem}&rdquo;</h2>
                   <p className="mt-4 text-text-2">{s.summary}</p>
-                  <Link href={`/solutions/${s.slug}`} className="btn-primary mt-7 after:absolute after:inset-0">{s.cta} <ArrowUpRight className="h-5 w-5" /></Link>
+                  <Link href={`/solutions/${s.slug}`} className="btn-primary mt-7 after:absolute after:inset-0">{s.cta} <ArrowUpRight /></Link>
                 </div>
                 <div><h3 className="!text-lg font-semibold uppercase tracking-wider text-text-2">Possible causes</h3>
                   <ul className="mt-4 grid gap-2.5 sm:grid-cols-2">{s.issues.map((x: string) => <li key={x} className="flex gap-2"><Check className="mt-1 h-5 w-5 shrink-0 text-brand" />{x}</li>)}</ul></div>

@@ -5,6 +5,7 @@ import { Check } from "lucide-react";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionHead } from "@/components/ui/Heading";
 import { CtaBand } from "@/components/ui/CtaBand";
+import { CtaPair } from "@/components/ui/CtaPair";
 import { getSection } from "@/lib/content";
 
 export const revalidate = 60;
@@ -33,13 +34,13 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
           <div>
             <SectionHead eyebrow="How we approach it" title="Our approach" />
             <p className="mt-6 text-lg text-text-2">{s.approach}</p>
-            <div className="mt-8 flex flex-wrap gap-3"><Link href="/contact" className="btn-primary">{s.cta}</Link><Link href="/services" className="btn-ghost">Explore services</Link></div>
+            <CtaPair tone="light" primary={{ label: s.cta, href: "/contact" }} secondary={{ label: "Explore services", href: "/services" }} />
           </div>
         </div>
       </section>
       <section className="section bg-white">
         <div className="container-x"><SectionHead eyebrow="Related" title="Other challenges we solve" />
-          <ul className="mt-10 grid gap-4 md:grid-cols-2">{all.map((x) => <li key={x.slug}><Link href={`/solutions/${x.slug}`} className="card block p-6 font-heading text-xl font-semibold transition hover:border-brand/40 hover:text-brand">&ldquo;{x.problem}&rdquo; →</Link></li>)}</ul></div>
+          <ul className="mt-sect grid gap-4 md:grid-cols-2">{all.map((x) => <li key={x.slug}><Link href={`/solutions/${x.slug}`} className="card block p-6 font-heading text-xl font-semibold transition hover:border-brand/40 hover:text-brand">&ldquo;{x.problem}&rdquo; →</Link></li>)}</ul></div>
       </section>
       <CtaBand />
     </>

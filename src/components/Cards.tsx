@@ -22,7 +22,7 @@ export function ServiceCategoryCard({ c, subs, i }: { c: ServiceCategory; subs: 
         <span className="absolute right-5 top-5 grid h-12 w-12 place-items-center rounded-lg bg-white/90 text-brand transition group-hover:bg-brand group-hover:text-white"><Icon name={c.icon} /></span>
         <h3 className="absolute inset-x-5 bottom-5 !text-[1.7rem] !leading-tight !text-white">{c.title}</h3>
       </div>
-      <div className="flex flex-1 flex-col p-6">
+      <div className="card-pad flex flex-1 flex-col">
         <p className="text-text-2">{c.short_description}</p>
         <ul className="mt-5 space-y-2">{subs.slice(0, 4).map((s) => <li key={s.id} className="flex items-start gap-2.5"><span aria-hidden className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />{s.title}</li>)}</ul>
         <Link href={`/services/${c.slug}`} className="mt-auto inline-flex items-center gap-2 pt-7 font-semibold text-brand after:absolute after:inset-0 after:content-['']">
@@ -35,11 +35,11 @@ export function ServiceCategoryCard({ c, subs, i }: { c: ServiceCategory; subs: 
 
 export function SubServiceCard({ s, i }: { s: Service; i: number }) {
   return (
-    <article className="group relative flex flex-col rounded-2xl border border-line bg-white p-6 transition duration-300 hover:-translate-y-1 hover:border-brand/40 hover:shadow-card">
+    <article className="group relative flex flex-col card-pad rounded-2xl border border-line bg-white transition duration-300 hover:-translate-y-1 hover:border-brand/40 hover:shadow-card">
       <div className="mb-5 overflow-hidden rounded-xl bg-paper p-3"><BrowserMockup src={s.image_url} alt={`${s.title} illustration`} tone={TONES[i % 4]} className="!shadow-none !border-line" /></div>
       <h3 className="!text-xl">{s.title}</h3>
       <p className="mt-2 flex-1 text-text-2">{s.description}</p>
-      <a href={`#${s.slug}`} className="mt-5 inline-flex items-center gap-1.5 font-semibold text-brand after:absolute after:inset-0">Learn More <ArrowUpRight className="h-5 w-5" /></a>
+      <a href={`#${s.slug}`} className="mt-5 inline-flex items-center gap-1.5 font-semibold text-brand after:absolute after:inset-0">Learn More <ArrowUpRight /></a>
     </article>
   );
 }
@@ -63,7 +63,7 @@ export function ProjectShowcase({ p, i }: { p: CaseStudy; i: number }) {
         {p.services?.length > 0 && <ul className="mt-5 flex flex-wrap gap-2" aria-label="Services delivered">{p.services.map((s) => <li key={s} className="rounded-full bg-brand-soft px-3 py-1 text-base font-medium text-brand-deep">{s}</li>)}</ul>}
         {p.technologies?.length > 0 && <p className="mt-4 text-text-2"><span className="font-medium text-text">Built with:</span> {p.technologies.join(", ")}</p>}
         {p.results?.length > 0 && <dl className="mt-6 grid grid-cols-2 gap-4">{p.results.map((r) => <div key={r.label} className="rounded-xl border border-line p-4"><dd className="font-heading text-2xl font-semibold text-brand">{r.value}</dd><dt className="text-text-2">{r.label}</dt></div>)}</dl>}
-        <Link href={`/work/${p.slug}`} className="btn-dark mt-7 after:absolute after:inset-0">View Case Study <ArrowUpRight className="h-5 w-5" /></Link>
+        <Link href={`/work/${p.slug}`} className="btn-dark mt-7 after:absolute after:inset-0">View Case Study <ArrowUpRight /></Link>
       </div>
     </article>
   );
@@ -76,39 +76,51 @@ export function PostCard({ p, featured }: { p: BlogPost; featured?: boolean }) {
         {p.featured_image ? <Image src={p.featured_image} alt="" fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover transition duration-500 group-hover:scale-105" /> :
           <div className="dots absolute inset-0 grid place-items-center" aria-hidden><span className="font-heading text-5xl font-bold text-white/30">{p.category?.name?.slice(0, 2) ?? "IX"}</span></div>}
       </div>
-      <div className="flex flex-1 flex-col p-6 sm:p-7">
+      <div className="card-pad flex flex-1 flex-col">
         <div className="flex flex-wrap items-center gap-x-3 text-base text-text-2">
           {p.category && <span className="font-semibold text-brand">{p.category.name}</span>}
           <time dateTime={p.published_at ?? undefined}>{formatDate(p.published_at)}</time><span>{p.reading_time} min read</span>
         </div>
         <h3 className={`mt-3 ${featured ? "" : "!text-[1.4rem]"}`}><Link href={`/blog/${p.slug}`} className="after:absolute after:inset-0 hover:text-brand">{p.title}</Link></h3>
         <p className="mt-3 flex-1 text-text-2">{p.excerpt}</p>
-        <span className="mt-5 inline-flex items-center gap-1.5 font-semibold text-brand">Read Article <ArrowUpRight className="h-5 w-5" /></span>
+        <span className="mt-5 inline-flex items-center gap-1.5 font-semibold text-brand">Read Article <ArrowUpRight /></span>
       </div>
     </article>
   );
 }
 
+/**
+ * Team profile card: ONE card per row at every breakpoint (lists use .team-list, a single-column grid).
+ * ≥768px: portrait left, details right. <768px: small portrait beside name/role, bio and links full width below.
+ */
 export function TeamCard({ m, dark }: { m: TeamMember; dark?: boolean }) {
   const links = [[m.linkedin_url, "linkedin", "LinkedIn"], [m.twitter_url, "x", "X"], [m.website_url, "web", "Website"]] as const;
+  const live = links.filter(([u]) => u);
   return (
-    <article data-tilt="dark" data-tilt-max="6" className="group">
-      <div className="relative aspect-[3/4] overflow-hidden rounded-xl bg-paper">
-        <Avatar name={m.full_name} src={m.photo_url} className="h-full w-full text-6xl transition duration-500 group-hover:scale-105" />
-        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 to-transparent p-5 pt-16 opacity-0 transition group-hover:opacity-100 group-focus-within:opacity-100">
-          <ul className="flex gap-2">{links.filter(([u]) => u).map(([u, k, n]) => <li key={n}><a href={u!} target="_blank" rel="noopener noreferrer" aria-label={`${m.full_name} on ${n}`} className="grid h-11 w-11 place-items-center rounded-full bg-white text-brand">{k === "web" ? <Globe className="h-5 w-5" /> : <Social name={k} />}</a></li>)}</ul>
-        </div>
+    <article data-tilt="dark" data-tilt-max="2" className={`grid grid-cols-[104px_minmax(0,1fr)] gap-x-4 gap-y-4 rounded-xl border p-[var(--card-pad)] md:grid-cols-[240px_minmax(0,1fr)] md:grid-rows-[1fr_auto_1fr] md:gap-x-8 md:gap-y-3 lg:grid-cols-[280px_minmax(0,1fr)] lg:gap-x-10 ${dark ? "border-white/15 bg-white/[0.04]" : "border-line bg-white shadow-card"}`}>
+      <div className="relative aspect-[3/4] self-start overflow-hidden rounded-lg bg-ink-2 md:row-span-3">
+        <Avatar name={m.full_name} src={m.photo_url} className="absolute inset-0 h-full w-full object-cover object-top text-4xl md:text-7xl" />
       </div>
-      <h3 className="mt-4 !text-xl">{m.full_name}</h3>
-      <p className={`font-medium ${dark ? "text-[#9a9aff]" : "text-brand"}`}>{m.job_title}</p>
-      {m.bio && <p className={`mt-2 ${dark ? "text-white/65" : "text-text-2"}`}>{m.bio}</p>}
+      <header className="min-w-0 self-center md:self-end">
+        <p className="eyebrow mb-2">{m.category}</p>
+        <h3 className="!text-[1.35rem] !leading-tight md:!text-3xl">{m.full_name}</h3>
+        <p className={`mt-1 font-medium ${dark ? "text-[#9a9aff]" : "text-brand"}`}>{m.job_title}</p>
+      </header>
+      {m.bio && <p className={`col-span-2 max-w-2xl md:col-span-1 ${dark ? "text-white/70" : "text-text-2"}`}>{m.bio}</p>}
+      {live.length > 0 && (
+        <ul className="col-span-2 flex gap-2 md:col-span-1 md:self-start" aria-label={`${m.full_name} on social media`}>
+          {live.map(([u, k, n]) => (
+            <li key={n}><a href={u!} target="_blank" rel="noopener noreferrer" aria-label={`${m.full_name} on ${n}`} className={`grid h-11 w-11 place-items-center rounded-[5px] border transition ${dark ? "border-white/25 text-white hover:border-white hover:bg-white/10" : "border-line text-text hover:border-brand hover:text-brand"}`}>{k === "web" ? <Globe className="h-5 w-5" /> : <Social name={k} />}</a></li>
+          ))}
+        </ul>
+      )}
     </article>
   );
 }
 
 export function TestimonialCard({ t }: { t: Testimonial }) {
   return (
-    <figure data-tilt data-tilt-max="5" className="flex h-full flex-col rounded-xl border border-line bg-white p-7 shadow-card">
+    <figure data-tilt data-tilt-max="5" className="card-pad flex h-full flex-col rounded-xl border border-line bg-white shadow-card">
       <Quote className="h-8 w-8 text-brand" aria-hidden />
       <blockquote className="mt-4 flex-1 text-lg text-text">{t.quote}</blockquote>
       <figcaption className="mt-6 flex items-center gap-3">

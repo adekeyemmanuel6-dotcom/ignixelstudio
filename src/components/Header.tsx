@@ -56,7 +56,7 @@ export function Header({ logoUrl, categories }: { logoUrl?: string; categories: 
 
           <div className="hidden items-center gap-3 lg:flex">
             <Link href="/website-cost-calculator" className={`text-base font-medium underline-offset-4 hover:underline ${dark ? "text-white/90" : "text-text"}`}>Calculate Project Cost</Link>
-            <Link href="/contact" className="btn-primary !min-h-[44px] !py-2">Let&apos;s Talk</Link>
+            <Link href="/contact" className="btn-primary">Let&apos;s Talk</Link>
           </div>
 
           <button type="button" className={`grid h-12 w-12 place-items-center rounded-[5px] lg:hidden ${dark ? "text-white" : "text-text"}`} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen((o) => !o)}>
@@ -73,8 +73,8 @@ export function Header({ logoUrl, categories }: { logoUrl?: string; categories: 
           </button>
           {mSub && <div className="border-b border-line py-2 pl-3">{categories.map((c) => <Link key={c.slug} href={`/services/${c.slug}`} className="block py-3 text-lg font-medium text-text-2">{c.title}</Link>)}</div>}
           {[["/work", "Our Work"], ["/about", "About"], ["/blog", "Blog"], ["/solutions", "Solutions"]].map(([h, l]) => <Link key={h} href={h} className="border-b border-line py-4 font-heading text-2xl font-semibold">{l}</Link>)}
-          <Link href="/contact" className="btn-primary mt-8">Let&apos;s Talk <ArrowUpRight className="h-5 w-5" /></Link>
-          <Link href="/website-cost-calculator" className="btn-ghost mt-3">Calculate Project Cost</Link>
+          <div className="cta-stack mt-8"><Link href="/contact" className="btn-primary">Let&apos;s Talk <ArrowUpRight /></Link>
+          <Link href="/website-cost-calculator" className="btn-secondary">Calculate Project Cost</Link></div>
         </nav>
       </div>
     </>

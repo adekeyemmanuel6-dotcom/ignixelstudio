@@ -40,7 +40,7 @@ export function InquiryForm({ services, variant = "hero" }: { services: string[]
         <CheckCircle2 className="h-14 w-14 text-emerald-500" />
         <h3 className={`mt-5 ${dark ? "!text-white" : ""}`}>Thank you. Your inquiry is in.</h3>
         <p className={`mt-3 max-w-sm ${dark ? "text-white/70" : "text-text-2"}`}>We&apos;ll review your project details and reply by email shortly. While you wait, you can estimate your investment.</p>
-        <Link href="/website-cost-calculator" className={`mt-6 ${dark ? "btn-primary" : "btn-dark"}`}>Calculate Project Cost <ArrowRight className="h-5 w-5" /></Link>
+        <Link href="/website-cost-calculator" className={`mt-6 ${dark ? "btn-primary" : "btn-dark"}`}>Calculate Project Cost <ArrowRight /></Link>
       </div>
     );
   }
@@ -65,7 +65,7 @@ export function InquiryForm({ services, variant = "hero" }: { services: string[]
       <div><label className={lbl} htmlFor={id("message")}>Project description</label><textarea {...common("message")} rows={dark ? 3 : 5} className={f} placeholder="What are you looking to build or improve?" />{err("message")}</div>
       <div className="hidden" aria-hidden="true"><label>Leave empty<input name="hp" tabIndex={-1} autoComplete="off" /></label></div>
       {state === "error" && <p role="alert" className="text-red-500">{serverError}</p>}
-      <button className="btn-primary w-full" disabled={state === "loading"}>{state === "loading" ? "Sending…" : variant === "hero" ? "Start My Project" : "Send Project Inquiry"} <ArrowRight className="h-5 w-5" /></button>
+      <button className="btn-primary w-full" disabled={state === "loading"}>{state === "loading" ? "Sending…" : variant === "hero" ? "Start My Project" : "Send Project Inquiry"} <ArrowRight /></button>
       <p className={`text-base ${dark ? "text-white/55" : "text-text-2"}`}>No spam. Your details are used only to respond to your inquiry.</p>
     </form>
   );
