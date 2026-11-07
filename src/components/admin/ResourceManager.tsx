@@ -25,6 +25,7 @@ export function ResourceManager({ res }: { res: Resource }) {
   async function save() {
     if (!editing) return;
     for (const f of res.fields) if (f.required && !String(editing[f.name] ?? "").trim()) return toast("err", `${f.label} is required.`);
+    for (const f of res.fields) if (f.type === "image" && editing[f.name] && !/^(https?:\/\/|\/)\S+$/i.test(editing[f.name])) return toast("err", `${f.label} is not a valid image link. Clear it and upload an image instead.`);
     setSaving(true);
     const payload: Row = {}; res.fields.forEach((f) => (payload[f.name] = editing[f.name] === "" ? null : editing[f.name]));
     if (res.reorder) payload.sort_order = editing.sort_order ?? 99;

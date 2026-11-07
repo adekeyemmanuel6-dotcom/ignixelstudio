@@ -28,7 +28,8 @@ export function ProjectTabs({ projects, fallback }: { projects: CaseStudy[]; fal
     e.preventDefault(); setI(t); refs.current[t]?.focus();
   };
   const p = projects[i];
-  const img = p.featured_image || fallback[i % fallback.length];
+  const own = p.featured_image || p.desktop_image || p.mobile_image;
+  const img = own || (p.is_placeholder ? fallback[i % fallback.length] : null);
 
   return (
     <div>
@@ -46,7 +47,9 @@ export function ProjectTabs({ projects, fallback }: { projects: CaseStudy[]; fal
 
       <div ref={panel} role="tabpanel" id="ppanel" aria-labelledby={`ptab-${i}`} className="mt-10 grid gap-10 lg:grid-cols-[5fr_7fr] lg:gap-16">
         <div data-tilt="dark" data-tilt-max="5" className="relative mx-auto aspect-[3/4] w-full max-w-[460px] overflow-hidden rounded-xl bg-ink-2 lg:mx-0">
-          <Image data-tab-img src={img} alt={`${p.title} preview`} fill sizes="(min-width:1024px) 40vw, 90vw" className="object-cover" />
+          {img ? <Image data-tab-img src={img} alt={`${p.title} preview`} fill sizes="(min-width:1024px) 40vw, 90vw" className="object-cover" /> : (
+            <div data-tab-img aria-hidden className="absolute inset-0 grid place-items-center bg-gradient-to-br from-brand to-brand-deep"><span className="font-heading text-[6rem] font-bold text-white/25">{p.title.slice(0, 2).toUpperCase()}</span></div>
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" aria-hidden />
           {p.is_placeholder && <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-base font-medium text-text">Sample layout</span>}
           {p.technologies?.length > 0 && <ul className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-2">{p.technologies.map((t) => <li key={t} className="rounded-full bg-white/15 px-3 py-1 text-base text-white backdrop-blur-sm">{t}</li>)}</ul>}

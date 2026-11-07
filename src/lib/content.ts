@@ -1,6 +1,7 @@
 import { cache } from "react";
 import { publicClient } from "./supabase/public";
 import * as D from "./defaults";
+import { imgUrl } from "./utils";
 import type { BlogPost, CalcQuestion, CaseStudy, HomepageSection, Service, ServiceCategory, SiteSettings, TeamMember, Technology, Testimonial, BlogCategory } from "./types";
 
 type Row = Record<string, any>;
@@ -50,10 +51,10 @@ export async function getSection(key: string) {
 }
 
 export const getCategories = cache(async () =>
-  (await load<ServiceCategory[]>(D.defaultCategories, (c) => c.from("service_categories").select("*").eq("published", true).order("sort_order"))).sort((a, b) => a.sort_order - b.sort_order));
+  (await load<ServiceCategory[]>(D.defaultCategories, (c) => c.from("service_categories").select("*").eq("published", true).order("sort_order"))).map((r) => ({ ...r, image_url: imgUrl(r.image_url) })).sort((a, b) => a.sort_order - b.sort_order));
 
 export const getAllServices = cache(async () =>
-  (await load<Service[]>(D.defaultServices, (c) => c.from("services").select("*").eq("published", true).order("sort_order"))).sort((a, b) => a.sort_order - b.sort_order));
+  (await load<Service[]>(D.defaultServices, (c) => c.from("services").select("*").eq("published", true).order("sort_order"))).map((r) => ({ ...r, image_url: imgUrl(r.image_url) })).sort((a, b) => a.sort_order - b.sort_order));
 
 export async function getCategory(slug: string) {
   const cats = await getCategories();
@@ -73,13 +74,14 @@ export const getTechnologies = cache(async () =>
   (await load<Technology[]>(D.defaultTechnologies, (c) => c.from("technologies").select("*").eq("visible", true).order("sort_order"))).sort((a, b) => a.sort_order - b.sort_order));
 
 export const getCaseStudies = cache(async () =>
-  (await load<CaseStudy[]>(D.defaultCaseStudies, (c) => c.from("case_studies").select("*").eq("published", true).order("sort_order"))).sort((a, b) => a.sort_order - b.sort_order));
+  (await load<CaseStudy[]>(D.defaultCaseStudies, (c) => c.from("case_studies").select("*").eq("published", true).order("sort_order")))
+    .map((r) => ({ ...r, featured_image: imgUrl(r.featured_image), desktop_image: imgUrl(r.desktop_image), mobile_image: imgUrl(r.mobile_image) })).sort((a, b) => a.sort_order - b.sort_order));
 export const getCaseStudy = async (slug: string) => (await getCaseStudies()).find((c) => c.slug === slug) ?? null;
 
 export const getTestimonials = cache(async () =>
-  (await load<Testimonial[]>(D.defaultTestimonials, (c) => c.from("testimonials").select("*").eq("published", true).order("sort_order"))).sort((a, b) => a.sort_order - b.sort_order));
+  (await load<Testimonial[]>(D.defaultTestimonials, (c) => c.from("testimonials").select("*").eq("published", true).order("sort_order"))).map((r) => ({ ...r, photo_url: imgUrl(r.photo_url) })).sort((a, b) => a.sort_order - b.sort_order));
 export const getTeam = cache(async () =>
-  (await load<TeamMember[]>(D.defaultTeam, (c) => c.from("team_members").select("*").eq("active", true).order("sort_order"))).sort((a, b) => a.sort_order - b.sort_order));
+  (await load<TeamMember[]>(D.defaultTeam, (c) => c.from("team_members").select("*").eq("active", true).order("sort_order"))).map((r) => ({ ...r, photo_url: imgUrl(r.photo_url) })).sort((a, b) => a.sort_order - b.sort_order));
 
 // ───────── blog ─────────
 const defaultPostsFull = (): BlogPost[] =>
@@ -92,7 +94,7 @@ const defaultPostsFull = (): BlogPost[] =>
   }));
 
 const normalizePost = (r: Row): BlogPost => ({
-  ...(r as BlogPost), category: r.category ?? null,
+  ...(r as BlogPost), featured_image: imgUrl(r.featured_image), og_image: imgUrl(r.og_image), author_image: imgUrl(r.author_image), category: r.category ?? null,
   tags: (r.post_tags ?? []).map((pt: Row) => pt.tag).filter(Boolean),
 });
 const POST_SELECT = "*, category:blog_categories(*), post_tags(tag:blog_tags(*))";

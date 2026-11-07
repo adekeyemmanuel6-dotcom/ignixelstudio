@@ -41,7 +41,8 @@ export function ImageField({ value, onChange, folder = "misc", label }: { value?
           <label htmlFor={`img-${label}`} className={`${btnGhost} cursor-pointer ${busy ? "pointer-events-none opacity-50" : ""}`}>{busy ? "Uploading…" : value ? "Replace" : "Upload"}</label>
           {value && <button type="button" className={btnGhost} onClick={() => onChange("")}><X className="h-4 w-4" /> Remove</button>}
         </div>
-        <input value={value ?? ""} onChange={(e) => onChange(e.target.value)} placeholder="…or paste an image URL" aria-label={`${label} URL`} className={`${inputCls} !py-1.5`} />
+        <input value={value ?? ""} onChange={(e) => onChange(e.target.value)} placeholder="…or paste an image URL (https://…)" aria-label={`${label} URL`} aria-invalid={!!value && !/^(https?:\/\/|\/)\S+$/i.test(value)} className={`${inputCls} !py-1.5`} />
+        {!!value && !/^(https?:\/\/|\/)\S+$/i.test(value) && <p role="alert" className="text-red-600">This is not an image link. Clear it and use Upload, or paste a full https:// image URL.</p>}
       </div>
     </div>
   );
