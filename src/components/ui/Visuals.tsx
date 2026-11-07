@@ -14,7 +14,6 @@ export function AbstractGraphic({ className = "" }: { className?: string }) {
         {[0, 1, 2, 3, 4].map((i) => <circle key={i} cx="200" cy="200" r={60 + i * 34} fill="none" stroke="url(#g2)" strokeWidth="1" strokeDasharray={i % 2 ? "2 8" : "none"} opacity={1 - i * 0.14} />)}
         <rect x="120" y="120" width="160" height="160" rx="36" fill="url(#g1)" transform="rotate(12 200 200)" />
         <rect x="150" y="150" width="100" height="100" rx="24" fill="none" stroke="#fff" strokeOpacity=".4" transform="rotate(12 200 200)" />
-        <path d="M178 170h16v60h-16zM204 170h18l-18 30 18 30h-18l-18-30z" fill="#fff" transform="rotate(12 200 200)" />
         {[[70, 90], [330, 120], [90, 320], [320, 310], [200, 40]].map(([x, y], i) => <circle key={i} cx={x} cy={y} r="5" fill="#8b8bff" />)}
       </svg>
     </div>
