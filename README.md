@@ -55,6 +55,5 @@ profiles, site_settings (`general`, `about`, `legal`), homepage_sections, servic
 
 ## Known gaps
 - AWS and OpenAI have no glyph in the bundled icon set (shown as monograms) — upload official logos in Admin → Technologies.
-- `case_study_images` (gallery) table exists but has no admin UI yet.
 - Legal pages are templates; have them reviewed.
 - Not verified against a live Supabase project in this build; run the migration and test the admin flows after setup.

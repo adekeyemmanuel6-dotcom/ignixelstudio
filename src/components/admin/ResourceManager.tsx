@@ -4,6 +4,7 @@ import { ArrowDown, ArrowUp, Download, Pencil, Plus, Search, Trash2 } from "luci
 import { useAdmin, useAsync } from "@/lib/admin/ctx";
 import type { Resource } from "@/lib/admin/resources";
 import { FormFields } from "./FormFields";
+import { CaseGallery } from "./CaseGallery";
 import { btnDanger, btnGhost, btnPrimary, downloadCsv, ErrorBox, inputCls, Modal, PageTitle, Spinner, Toggle } from "./ui";
 import { formatDate } from "@/lib/utils";
 
@@ -95,6 +96,7 @@ export function ResourceManager({ res }: { res: Resource }) {
       {editing && (
         <Modal title={`${editing.id ? "Edit" : "Add"} ${res.singular}`} onClose={() => setEditing(null)} wide>
           <FormFields fields={res.fields} value={editing} onChange={setEditing} />
+          {res.key === "projects" && (editing.id ? <CaseGallery caseId={editing.id} /> : <p className="mt-6 text-text-2">Save the project first to add gallery images.</p>)}
           <div className="mt-8 flex flex-wrap justify-between gap-3 border-t border-line pt-5">
             {editing.id ? <button className={btnDanger} onClick={() => { remove(editing); setEditing(null); }}><Trash2 className="h-4 w-4" /> Delete</button> : <span />}
             <div className="flex gap-2"><button className={btnGhost} onClick={() => setEditing(null)}>Cancel</button><button className={btnPrimary} disabled={saving} onClick={save}>{saving ? "Saving…" : "Save"}</button></div>

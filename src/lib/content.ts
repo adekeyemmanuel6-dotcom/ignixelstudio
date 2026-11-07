@@ -146,3 +146,10 @@ export async function getCalculator() {
     return { settings: s.data as Row as typeof D.defaultCalcSettings, questions, live: true };
   } catch { return fallback(); }
 }
+
+export async function getCaseImages(caseId: string): Promise<{ id: string; url: string; alt: string | null }[]> {
+  const c = publicClient();
+  if (!c || caseId.startsWith("default-")) return [];
+  const { data } = await c.from("case_study_images").select("id,url,alt").eq("case_study_id", caseId).order("sort_order");
+  return data ?? [];
+}

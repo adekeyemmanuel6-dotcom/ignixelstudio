@@ -6,7 +6,7 @@ import { PageHero } from "@/components/ui/PageHero";
 import { SectionHead } from "@/components/ui/Heading";
 import { BrowserMockup, PhoneMockup } from "@/components/ui/Visuals";
 import { CtaBand } from "@/components/ui/CtaBand";
-import { getCaseStudies, getCaseStudy } from "@/lib/content";
+import { getCaseImages, getCaseStudies, getCaseStudy } from "@/lib/content";
 import { SITE_URL } from "@/lib/supabase/env";
 
 export const revalidate = 60;
@@ -20,6 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
   const p = await getCaseStudy((await params).slug);
   if (!p) notFound();
+  const gallery = await getCaseImages(p.id);
   const others = (await getCaseStudies()).filter((x) => x.slug !== p.slug).slice(0, 2);
   return (
     <>
@@ -33,6 +34,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
           <div><SectionHead eyebrow="Solution" title="Our solution" /><p className="mt-5 text-lg text-text-2">{p.solution}</p></div>
         </div>
         {p.results.length > 0 && <div className="mt-20"><SectionHead eyebrow="Results" title="Measured outcomes" /><dl className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{p.results.map((r) => <div key={r.label} className="card p-6"><dd className="font-heading text-4xl font-semibold text-brand">{r.value}</dd><dt className="mt-1 text-text-2">{r.label}</dt></div>)}</dl></div>}
+        {gallery.length > 0 && <ul className="mt-20 grid gap-4 sm:grid-cols-2">{gallery.map((g) => <li key={g.id} className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-line"><Image src={g.url} alt={g.alt || `${p.title} screenshot`} fill sizes="(max-width:640px) 100vw, 600px" className="object-cover object-top" /></li>)}</ul>}
         {p.website_url && <p className="mt-12"><a className="btn-ghost" href={p.website_url} target="_blank" rel="noopener noreferrer">Visit live website</a></p>}
       </div></section>
       {others.length > 0 && <section className="section bg-paper"><div className="container-x"><SectionHead eyebrow="More work" title="Other projects" /><ul className="mt-10 grid gap-5 md:grid-cols-2">{others.map((o) => <li key={o.id}><Link href={`/work/${o.slug}`} className="card block p-7 transition hover:border-brand/40"><p className="eyebrow">{o.industry}</p><h3 className="mt-2 !text-2xl">{o.title}</h3><p className="mt-2 line-clamp-2 text-text-2">{o.description}</p></Link></li>)}</ul></div></section>}
