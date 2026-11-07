@@ -1,0 +1,1528 @@
+{
+  "base": "http://localhost:3100",
+  "crawled": 36,
+  "sitemapUrls": 35,
+  "robotsTxt": "User-Agent: *\nAllow: /\nDisallow: /admin\nDisallow: /api\n\nUser-Agent: Googlebot\nUser-Agent: Bingbot\nUser-Agent: OAI-SearchBot\nUser-Agent: ChatGPT-User\nUser-Agent: Claude-SearchBot\nUser-Agent: Claude-User\nUser-Agent: PerplexityBot\nUser-Agent: Perplexity-User\nUser-Agent: Applebot\nAllow: /\nDisallow: /admin\nDisallow: /api\n\nUser-Agent: GPTBot\nUser-Agent: ClaudeBot\nUser-Agent: Google-Extended\nUser-Agent: Applebot-Extended\nAllow: /\nDisallow: /admin\nDisallow: /api\n\nSitemap: http://localhost:3000/sitemap.xml\n",
+  "issues": [
+    {
+      "sev": "Low",
+      "path": "/",
+      "msg": "Meta description is 174 chars"
+    },
+    {
+      "sev": "Low",
+      "path": "/work/dubai-hospitality-website",
+      "msg": "Title is 86 chars (may truncate)"
+    },
+    {
+      "sev": "Low",
+      "path": "/work/richardson-direct-primary-care",
+      "msg": "Title is 94 chars (may truncate)"
+    },
+    {
+      "sev": "Low",
+      "path": "/work/premier-metabolic-and-men-s-health",
+      "msg": "Title is 102 chars (may truncate)"
+    },
+    {
+      "sev": "Low",
+      "path": "/work/platinum-pacific-rental-website",
+      "msg": "Title is 93 chars (may truncate)"
+    },
+    {
+      "sev": "Low",
+      "path": "/work/fullscope-restoration-and-remodeling-website",
+      "msg": "Title is 104 chars (may truncate)"
+    },
+    {
+      "sev": "Low",
+      "path": "/blog/shopify-vs-woocommerce-choosing-a-platform",
+      "msg": "Title is 68 chars (may truncate)"
+    }
+  ],
+  "broken": [],
+  "pages": [
+    {
+      "path": "/",
+      "status": 200,
+      "redirect": null,
+      "title": "Ignixel Studio | Web Design, Development & AI Solutions",
+      "description": "Ignixel Studio designs and builds high-performance websites, web applications, eCommerce platforms and AI-powered solutions that help businesses establish authority and grow.",
+      "canonical": "http://localhost:3000",
+      "ogTitle": "Ignixel Studio | Web Design, Development &amp; AI Solutions",
+      "ogUrl": "http://localhost:3000",
+      "ogImage": "http://localhost:3000/opengraph-image",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "http://localhost:3000/opengraph-image",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "Ignite every dead pixel and start generating real results."
+      ],
+      "h2": 13,
+      "words": 1641,
+      "images": 34,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 3,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/services",
+      "status": 200,
+      "redirect": null,
+      "title": "Web Design, Development, eCommerce & AI Services | Ignixel Studio",
+      "description": "Web design, web development, eCommerce and AI services from Ignixel Studio: strategy, design and engineering for businesses that want to grow.",
+      "canonical": "http://localhost:3000/services",
+      "ogTitle": "Web Design, Development, eCommerce &amp; AI Services",
+      "ogUrl": "http://localhost:3000/services",
+      "ogImage": "http://localhost:3000/opengraph-image",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "http://localhost:3000/opengraph-image",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "Design, Engineering and AI Under One Roof."
+      ],
+      "h2": 4,
+      "words": 528,
+      "images": 6,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 0,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/services/web-design",
+      "status": 200,
+      "redirect": null,
+      "title": "Web Design Services | Ignixel Studio",
+      "description": "Figma UI/UX, WordPress, Webflow, Shopify and Framer website design, redesigns, landing pages and migrations from Ignixel Studio.",
+      "canonical": "http://localhost:3000/services/web-design",
+      "ogTitle": "Web Design Services | Ignixel Studio",
+      "ogUrl": "http://localhost:3000/services/web-design",
+      "ogImage": "http://localhost:3000/opengraph-image",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "http://localhost:3000/opengraph-image",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "Web Design That Turns First Impressions Into Lasting Connections."
+      ],
+      "h2": 10,
+      "words": 1398,
+      "images": 14,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 0,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "FAQPage"
+        },
+        {
+          "ok": true,
+          "type": "Service"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/services/web-development",
+      "status": 200,
+      "redirect": null,
+      "title": "Web Development Services | Ignixel Studio",
+      "description": "Website development, web apps, dashboards, custom software and API integrations built with modern, scalable technology.",
+      "canonical": "http://localhost:3000/services/web-development",
+      "ogTitle": "Web Development Services | Ignixel Studio",
+      "ogUrl": "http://localhost:3000/services/web-development",
+      "ogImage": "http://localhost:3000/opengraph-image",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "http://localhost:3000/opengraph-image",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "Web Development Built for Performance, Scale and Possibility."
+      ],
+      "h2": 9,
+      "words": 1016,
+      "images": 11,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 0,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "FAQPage"
+        },
+        {
+          "ok": true,
+          "type": "Service"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/services/ecommerce-applications",
+      "status": 200,
+      "redirect": null,
+      "title": "Ecommerce Development & Shopify Services | Ignixel Studio",
+      "description": "Shopify and WooCommerce development, store design and eCommerce website builds focused on conversion and growth.",
+      "canonical": "http://localhost:3000/services/ecommerce-applications",
+      "ogTitle": "Ecommerce Development &amp; Shopify Services | Ignixel Studio",
+      "ogUrl": "http://localhost:3000/services/ecommerce-applications",
+      "ogImage": "http://localhost:3000/opengraph-image",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "http://localhost:3000/opengraph-image",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "eCommerce Experiences Designed to Sell More."
+      ],
+      "h2": 9,
+      "words": 956,
+      "images": 10,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 0,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "FAQPage"
+        },
+        {
+          "ok": true,
+          "type": "Service"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/services/ai-services",
+      "status": 200,
+      "redirect": null,
+      "title": "AI Services: Consulting, Agents & Integration | Ignixel Studio",
+      "description": "AI consulting, AI agent development, GPT integration, ChatGPT optimisation and AI marketing services from Ignixel Studio.",
+      "canonical": "http://localhost:3000/services/ai-services",
+      "ogTitle": "AI Services: Consulting, Agents &amp; Integration | Ignixel Studio",
+      "ogUrl": "http://localhost:3000/services/ai-services",
+      "ogImage": "http://localhost:3000/opengraph-image",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "http://localhost:3000/opengraph-image",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "Turn Artificial Intelligence Into a Competitive Advantage."
+      ],
+      "h2": 9,
+      "words": 1058,
+      "images": 11,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 0,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "FAQPage"
+        },
+        {
+          "ok": true,
+          "type": "Service"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/services/webflow-development",
+      "status": 200,
+      "redirect": null,
+      "title": "Webflow Development Agency | Ignixel Studio",
+      "description": "Ignixel Studio designs and builds Webflow websites with CMS, integrations and conversion-focused UX. See our healthcare and professional-services Webflow projects.",
+      "canonical": "http://localhost:3000/services/webflow-development",
+      "ogTitle": "Webflow Development Agency",
+      "ogUrl": "http://localhost:3000/services/webflow-development",
+      "ogImage": "http://localhost:3000/opengraph-image",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "http://localhost:3000/opengraph-image",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "Webflow Design & Development for Businesses That Need a Clear, Editable Website"
+      ],
+      "h2": 8,
+      "words": 924,
+      "images": 5,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 0,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "FAQPage"
+        },
+        {
+          "ok": true,
+          "type": "Service"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/services/wordpress-development",
+      "status": 200,
+      "redirect": null,
+      "title": "WordPress Development Agency | Ignixel Studio",
+      "description": "Ignixel Studio designs and develops WordPress websites, including custom plugins and booking integrations, built around conversion. See our WordPress projects.",
+      "canonical": "http://localhost:3000/services/wordpress-development",
+      "ogTitle": "WordPress Development Agency",
+      "ogUrl": "http://localhost:3000/services/wordpress-development",
+      "ogImage": "http://localhost:3000/opengraph-image",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "http://localhost:3000/opengraph-image",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "WordPress Design & Development Built Around Inquiries and Bookings"
+      ],
+      "h2": 8,
+      "words": 788,
+      "images": 4,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 0,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "FAQPage"
+        },
+        {
+          "ok": true,
+          "type": "Service"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/industries",
+      "status": 200,
+      "redirect": null,
+      "title": "Industries We Build Websites For | Ignixel Studio",
+      "description": "Website design and development for healthcare practices, hospitality and vacation-rental businesses, and professional and local service companies.",
+      "canonical": "http://localhost:3000/industries",
+      "ogTitle": "Industries We Build Websites For",
+      "ogUrl": "http://localhost:3000/industries",
+      "ogImage": "http://localhost:3000/opengraph-image",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "http://localhost:3000/opengraph-image",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "Websites Built for the Way Your Industry Decides"
+      ],
+      "h2": 5,
+      "words": 332,
+      "images": 2,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 0,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/industries/healthcare",
+      "status": 200,
+      "redirect": null,
+      "title": "Healthcare Website Design & Development | Ignixel Studio",
+      "description": "Website design and development for clinics, direct primary care and telehealth practices, from patient-focused UX to enrollment and intake integrations.",
+      "canonical": "http://localhost:3000/industries/healthcare",
+      "ogTitle": "Healthcare Website Design &amp; Development",
+      "ogUrl": "http://localhost:3000/industries/healthcare",
+      "ogImage": "http://localhost:3000/opengraph-image",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "http://localhost:3000/opengraph-image",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "Healthcare Website Design for Clinics and Telehealth Practices"
+      ],
+      "h2": 8,
+      "words": 824,
+      "images": 4,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 0,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "FAQPage"
+        },
+        {
+          "ok": true,
+          "type": "Service"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/industries/hospitality",
+      "status": 200,
+      "redirect": null,
+      "title": "Hospitality & Vacation Rental Websites | Ignixel Studio",
+      "description": "Direct-booking website design and development for holiday-home and vacation-rental businesses, including property-management integrations and multilingual builds.",
+      "canonical": "http://localhost:3000/industries/hospitality",
+      "ogTitle": "Hospitality &amp; Vacation Rental Websites",
+      "ogUrl": "http://localhost:3000/industries/hospitality",
+      "ogImage": "http://localhost:3000/opengraph-image",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "http://localhost:3000/opengraph-image",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "Hospitality and Vacation-Rental Websites That Win Direct Bookings"
+      ],
+      "h2": 8,
+      "words": 765,
+      "images": 4,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 0,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "FAQPage"
+        },
+        {
+          "ok": true,
+          "type": "Service"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/industries/professional-services",
+      "status": 200,
+      "redirect": null,
+      "title": "Professional & Service Business Websites | Ignixel Studio",
+      "description": "Website design for consultancies, immigration and education advisers and local service businesses, built to explain complex offers and generate inquiries.",
+      "canonical": "http://localhost:3000/industries/professional-services",
+      "ogTitle": "Professional &amp; Service Business Websites",
+      "ogUrl": "http://localhost:3000/industries/professional-services",
+      "ogImage": "http://localhost:3000/opengraph-image",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "http://localhost:3000/opengraph-image",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "Websites for Professional and Local Service Businesses That Need More Inquiries"
+      ],
+      "h2": 8,
+      "words": 705,
+      "images": 4,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 0,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "FAQPage"
+        },
+        {
+          "ok": true,
+          "type": "Service"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/work",
+      "status": 200,
+      "redirect": null,
+      "title": "Our Work: Website Case Studies | Ignixel Studio",
+      "description": "Selected website, eCommerce and software projects by Ignixel Studio, with the business outcomes they delivered.",
+      "canonical": "http://localhost:3000/work",
+      "ogTitle": "Our Work: Website Case Studies",
+      "ogUrl": "http://localhost:3000/work",
+      "ogImage": "http://localhost:3000/opengraph-image",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "http://localhost:3000/opengraph-image",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "Digital Experiences. Real Business Impact."
+      ],
+      "h2": 2,
+      "words": 665,
+      "images": 14,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 0,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/work/dubai-hospitality-website",
+      "status": 200,
+      "redirect": null,
+      "title": "The Authors Case Study: Bilingual Next.js Booking Platform | Ignixels | Ignixel Studio",
+      "description": "How Ignixels built a bilingual Next.js and Sanity booking platform for The Authors' luxury UAE holiday homes, driving 200,000+ AED in direct bookings.",
+      "canonical": "http://localhost:3000/work/dubai-hospitality-website",
+      "ogTitle": "The Authors Case Study: Bilingual Next.js Booking Platform | Ignixels",
+      "ogUrl": "http://localhost:3000/work/dubai-hospitality-website",
+      "ogImage": "https://dvwshntqinufzywtnugz.supabase.co/storage/v1/object/public/media/projects/0f29fd82-a4cb-48db-9983-c810a352210b.png",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "https://dvwshntqinufzywtnugz.supabase.co/storage/v1/object/public/media/projects/0f29fd82-a4cb-48db-9983-c810a352210b.png",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "The Authors Holiday Homes Website"
+      ],
+      "h2": 6,
+      "words": 742,
+      "images": 4,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 0,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "CreativeWork"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/work/richardson-direct-primary-care",
+      "status": 200,
+      "redirect": null,
+      "title": "Richardson DPC Case Study: Virtual Primary Care Website on Webflow | Ignixels | Ignixel Studio",
+      "description": "How Ignixels designed a compliant, conversion-focused Webflow site for Richardson DPC, a virtual direct primary care practice serving all of North Carolina.",
+      "canonical": "http://localhost:3000/work/richardson-direct-primary-care",
+      "ogTitle": "Richardson DPC Case Study: Virtual Primary Care Website on Webflow | Ignixels",
+      "ogUrl": "http://localhost:3000/work/richardson-direct-primary-care",
+      "ogImage": "https://dvwshntqinufzywtnugz.supabase.co/storage/v1/object/public/media/projects/c9fe8258-323d-4815-8c04-14b9c146081a.png",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "https://dvwshntqinufzywtnugz.supabase.co/storage/v1/object/public/media/projects/c9fe8258-323d-4815-8c04-14b9c146081a.png",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "Healtcare Webflow Website Development"
+      ],
+      "h2": 5,
+      "words": 736,
+      "images": 4,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 0,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "CreativeWork"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/work/immigration-and-education-network",
+      "status": 200,
+      "redirect": null,
+      "title": "Canada Immigration Website on Webflow | Ignixels | Ignixel Studio",
+      "description": "How Ignixels designed a trust-first Webflow website for a Canadian immigration firm, guiding visitors from research to booked consultations.",
+      "canonical": "http://localhost:3000/work/immigration-and-education-network",
+      "ogTitle": "Canada Immigration Website on Webflow | Ignixels",
+      "ogUrl": "http://localhost:3000/work/immigration-and-education-network",
+      "ogImage": "https://dvwshntqinufzywtnugz.supabase.co/storage/v1/object/public/media/projects/5fbc3ed7-028e-4323-bf57-865d6676f72a.png",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "https://dvwshntqinufzywtnugz.supabase.co/storage/v1/object/public/media/projects/5fbc3ed7-028e-4323-bf57-865d6676f72a.png",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "Immigration and professional services"
+      ],
+      "h2": 5,
+      "words": 649,
+      "images": 4,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 0,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "CreativeWork"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/work/premier-metabolic-and-men-s-health",
+      "status": 200,
+      "redirect": null,
+      "title": "Premier Metabolic & Men's Health Case Study: Telehealth Website on Webflow | Ignixels | Ignixel Studio",
+      "description": "How Ignixels built a physician-led Webflow telehealth site for GLP-1 weight loss and ED care, routing visitors straight into online assessments nationwide.",
+      "canonical": "http://localhost:3000/work/premier-metabolic-and-men-s-health",
+      "ogTitle": "Premier Metabolic &amp; Men&#x27;s Health Case Study: Telehealth Website on Webflow | Ignixels",
+      "ogUrl": "http://localhost:3000/work/premier-metabolic-and-men-s-health",
+      "ogImage": "https://dvwshntqinufzywtnugz.supabase.co/storage/v1/object/public/media/projects/d320463f-4bd4-4ff0-9b6c-ace3b21bb469.png",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "https://dvwshntqinufzywtnugz.supabase.co/storage/v1/object/public/media/projects/d320463f-4bd4-4ff0-9b6c-ace3b21bb469.png",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "Premier Metabolic & Men's Health"
+      ],
+      "h2": 5,
+      "words": 699,
+      "images": 4,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 0,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "CreativeWork"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/work/platinum-pacific-rental-website",
+      "status": 200,
+      "redirect": null,
+      "title": "Platinum Pacific Case Study: Custom WordPress Direct Booking Site | Ignixels | Ignixel Studio",
+      "description": "How Ignixels built a WordPress site with a custom booking plugin for Platinum Pacific's Whistler vacation rentals, generating $40K+ in commission-free direct ",
+      "canonical": "http://localhost:3000/work/platinum-pacific-rental-website",
+      "ogTitle": "Platinum Pacific Case Study: Custom WordPress Direct Booking Site | Ignixels",
+      "ogUrl": "http://localhost:3000/work/platinum-pacific-rental-website",
+      "ogImage": "https://dvwshntqinufzywtnugz.supabase.co/storage/v1/object/public/media/projects/9986f09a-3af1-4945-878c-0997449b5cce.png",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "https://dvwshntqinufzywtnugz.supabase.co/storage/v1/object/public/media/projects/9986f09a-3af1-4945-878c-0997449b5cce.png",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "Platinum Pacific Rental Website"
+      ],
+      "h2": 5,
+      "words": 719,
+      "images": 4,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 0,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "CreativeWork"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/work/fullscope-restoration-and-remodeling-website",
+      "status": 200,
+      "redirect": null,
+      "title": "Fullscope Restoration Case Study: Emergency Restoration Website on WordPress | Ignixels | Ignixel Studio",
+      "description": "How Ignixels built a call-first WordPress site for Fullscope Restoration, with service and city pages designed to win emergency leads across Dallas-Fort Worth",
+      "canonical": "http://localhost:3000/work/fullscope-restoration-and-remodeling-website",
+      "ogTitle": "Fullscope Restoration Case Study: Emergency Restoration Website on WordPress | Ignixels",
+      "ogUrl": "http://localhost:3000/work/fullscope-restoration-and-remodeling-website",
+      "ogImage": "https://dvwshntqinufzywtnugz.supabase.co/storage/v1/object/public/media/projects/5dd2e754-3606-42c3-b604-b8a599c9859c.png",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "https://dvwshntqinufzywtnugz.supabase.co/storage/v1/object/public/media/projects/5dd2e754-3606-42c3-b604-b8a599c9859c.png",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "Fullscope Restoration & Remodeling Website"
+      ],
+      "h2": 5,
+      "words": 671,
+      "images": 4,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 0,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "CreativeWork"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/about",
+      "status": 200,
+      "redirect": null,
+      "title": "About Ignixel Studio | Ignixel Studio",
+      "description": "Meet the strategists, designers and engineers behind Ignixel Studio, a digital agency building websites, applications and AI solutions that move businesses forward.",
+      "canonical": "http://localhost:3000/about",
+      "ogTitle": "About Ignixel Studio",
+      "ogUrl": "http://localhost:3000/about",
+      "ogImage": "http://localhost:3000/opengraph-image",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "http://localhost:3000/opengraph-image",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "Building Digital Experiences That Move Businesses Forward."
+      ],
+      "h2": 8,
+      "words": 870,
+      "images": 6,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 0,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "FAQPage"
+        },
+        {
+          "ok": true,
+          "type": "?"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/contact",
+      "status": 200,
+      "redirect": null,
+      "title": "Contact: Start a Project | Ignixel Studio",
+      "description": "Tell Ignixel Studio about your website, application, eCommerce or AI project and get a considered response.",
+      "canonical": "http://localhost:3000/contact",
+      "ogTitle": "Contact: Start a Project",
+      "ogUrl": "http://localhost:3000/contact",
+      "ogImage": "http://localhost:3000/opengraph-image",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "http://localhost:3000/opengraph-image",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "Let's Build Something Together."
+      ],
+      "h2": 2,
+      "words": 311,
+      "images": 2,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 0,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/website-cost-calculator",
+      "status": 200,
+      "redirect": null,
+      "title": "Website Cost Calculator | Ignixel Studio",
+      "description": "Answer a few questions and get an estimated investment range for your website project from Ignixel Studio.",
+      "canonical": "http://localhost:3000/website-cost-calculator",
+      "ogTitle": "Website Cost Calculator",
+      "ogUrl": "http://localhost:3000/website-cost-calculator",
+      "ogImage": "http://localhost:3000/opengraph-image",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "http://localhost:3000/opengraph-image",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "Let's Estimate Your Website Project Cost."
+      ],
+      "h2": 1,
+      "words": 185,
+      "images": 2,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 0,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/solutions",
+      "status": 200,
+      "redirect": null,
+      "title": "Fix Your Website's Biggest Problems | Ignixel Studio",
+      "description": "Website not generating leads, traffic dropping, low conversions or missing from AI search? Find the right Ignixel solution.",
+      "canonical": "http://localhost:3000/solutions",
+      "ogTitle": "Fix Your Website&#x27;s Biggest Problems",
+      "ogUrl": "http://localhost:3000/solutions",
+      "ogImage": "http://localhost:3000/opengraph-image",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "http://localhost:3000/opengraph-image",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "Having a Digital Problem? Let's Find the Right Solution."
+      ],
+      "h2": 8,
+      "words": 526,
+      "images": 2,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 0,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/solutions/website-doesnt-drive-leads",
+      "status": 200,
+      "redirect": null,
+      "title": "My Website Doesn't Drive Leads | Ignixel Studio",
+      "description": "Visitors arrive but few become enquiries. The cause is usually in how the site communicates and guides.",
+      "canonical": "http://localhost:3000/solutions/website-doesnt-drive-leads",
+      "ogTitle": "My Website Doesn&#x27;t Drive Leads",
+      "ogUrl": "http://localhost:3000/solutions/website-doesnt-drive-leads",
+      "ogImage": "http://localhost:3000/opengraph-image",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "http://localhost:3000/opengraph-image",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "“My Website Doesn't Drive Leads”"
+      ],
+      "h2": 5,
+      "words": 339,
+      "images": 2,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 0,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/solutions/website-traffic-going-down",
+      "status": 200,
+      "redirect": null,
+      "title": "My Website Traffic Is Going Down | Ignixel Studio",
+      "description": "A drop in visits is a symptom. We trace it to technical, content or visibility causes.",
+      "canonical": "http://localhost:3000/solutions/website-traffic-going-down",
+      "ogTitle": "My Website Traffic Is Going Down",
+      "ogUrl": "http://localhost:3000/solutions/website-traffic-going-down",
+      "ogImage": "http://localhost:3000/opengraph-image",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "http://localhost:3000/opengraph-image",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "“My Website Traffic Is Going Down”"
+      ],
+      "h2": 5,
+      "words": 324,
+      "images": 2,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 0,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/solutions/website-doesnt-convert",
+      "status": 200,
+      "redirect": null,
+      "title": "My Website Doesn't Convert | Ignixel Studio",
+      "description": "You have the visitors, but they do not take the next step. Friction and doubt are usually the reason.",
+      "canonical": "http://localhost:3000/solutions/website-doesnt-convert",
+      "ogTitle": "My Website Doesn&#x27;t Convert",
+      "ogUrl": "http://localhost:3000/solutions/website-doesnt-convert",
+      "ogImage": "http://localhost:3000/opengraph-image",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "http://localhost:3000/opengraph-image",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "“My Website Doesn't Convert”"
+      ],
+      "h2": 5,
+      "words": 324,
+      "images": 2,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 0,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/solutions/website-not-appearing-in-ai-search",
+      "status": 200,
+      "redirect": null,
+      "title": "My Website Isn't Appearing in AI Search | Ignixel Studio",
+      "description": "AI assistants answer questions by drawing on sources they can understand and trust. If you are absent, the content or structure needs work.",
+      "canonical": "http://localhost:3000/solutions/website-not-appearing-in-ai-search",
+      "ogTitle": "My Website Isn&#x27;t Appearing in AI Search",
+      "ogUrl": "http://localhost:3000/solutions/website-not-appearing-in-ai-search",
+      "ogImage": "http://localhost:3000/opengraph-image",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "http://localhost:3000/opengraph-image",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "“My Website Isn't Appearing in AI Search”"
+      ],
+      "h2": 5,
+      "words": 343,
+      "images": 2,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 0,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/solutions/agency-isnt-driving-results",
+      "status": 200,
+      "redirect": null,
+      "title": "My Agency Isn't Driving Results | Ignixel Studio",
+      "description": "When work is happening but nothing is improving, the issue is often communication and clarity rather than effort.",
+      "canonical": "http://localhost:3000/solutions/agency-isnt-driving-results",
+      "ogTitle": "My Agency Isn&#x27;t Driving Results",
+      "ogUrl": "http://localhost:3000/solutions/agency-isnt-driving-results",
+      "ogImage": "http://localhost:3000/opengraph-image",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "http://localhost:3000/opengraph-image",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "“My Agency Isn't Driving Results”"
+      ],
+      "h2": 5,
+      "words": 321,
+      "images": 2,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 0,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/solutions/website-is-slow-and-hard-to-update",
+      "status": 200,
+      "redirect": null,
+      "title": "My Website Is Slow and Hard to Update | Ignixel Studio",
+      "description": "Pages crawl, every change needs a developer, and the platform feels fragile. That cost shows up in rankings, conversions and team time.",
+      "canonical": "http://localhost:3000/solutions/website-is-slow-and-hard-to-update",
+      "ogTitle": "My Website Is Slow and Hard to Update",
+      "ogUrl": "http://localhost:3000/solutions/website-is-slow-and-hard-to-update",
+      "ogImage": "http://localhost:3000/opengraph-image",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "http://localhost:3000/opengraph-image",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "“My Website Is Slow and Hard to Update”"
+      ],
+      "h2": 5,
+      "words": 346,
+      "images": 2,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 0,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/blog",
+      "status": 200,
+      "redirect": null,
+      "title": "Blog: Web Design, Development & AI Insights | Ignixel Studio",
+      "description": "Practical articles on web design, development, eCommerce and AI to help your business grow online.",
+      "canonical": "http://localhost:3000/blog",
+      "ogTitle": "Blog: Web Design, Development &amp; AI Insights",
+      "ogUrl": "http://localhost:3000/blog",
+      "ogImage": "http://localhost:3000/opengraph-image",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "http://localhost:3000/opengraph-image",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "Ideas for Growing a Digital Business."
+      ],
+      "h2": 2,
+      "words": 307,
+      "images": 5,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 3,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/blog/what-makes-a-business-website-convert",
+      "status": 200,
+      "redirect": null,
+      "title": "What Actually Makes a Business Website Convert | Ignixel Studio",
+      "description": "Traffic is only useful if visitors know what to do next. Here are the structural decisions that turn visits into enquiries.",
+      "canonical": "http://localhost:3000/blog/what-makes-a-business-website-convert",
+      "ogTitle": "What Actually Makes a Business Website Convert | Ignixel Studio",
+      "ogUrl": "http://localhost:3000/blog/what-makes-a-business-website-convert",
+      "ogImage": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;q=70&amp;w=1200&amp;h=800",
+      "ogType": "article",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;q=70&amp;w=1200&amp;h=800",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "What Actually Makes a Business Website Convert"
+      ],
+      "h2": 11,
+      "words": 471,
+      "images": 5,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 2,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "Article"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/blog/shopify-vs-woocommerce-choosing-a-platform",
+      "status": 200,
+      "redirect": null,
+      "title": "Shopify vs WooCommerce: Choosing the Right Platform | Ignixel Studio",
+      "description": "Both can power a great store. The right answer depends on your team, catalogue and growth plans.",
+      "canonical": "http://localhost:3000/blog/shopify-vs-woocommerce-choosing-a-platform",
+      "ogTitle": "Shopify vs WooCommerce: Choosing the Right Platform | Ignixel Studio",
+      "ogUrl": "http://localhost:3000/blog/shopify-vs-woocommerce-choosing-a-platform",
+      "ogImage": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&amp;fit=crop&amp;q=70&amp;w=1200&amp;h=800",
+      "ogType": "article",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&amp;fit=crop&amp;q=70&amp;w=1200&amp;h=800",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "Shopify vs WooCommerce: Choosing the Right Platform"
+      ],
+      "h2": 9,
+      "words": 426,
+      "images": 5,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 2,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "Article"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/blog/preparing-your-website-for-ai-search",
+      "status": 200,
+      "redirect": null,
+      "title": "Preparing Your Website for AI Search | Ignixel Studio",
+      "description": "AI assistants summarise and cite the web. These are the content and technical foundations that make you easier to cite.",
+      "canonical": "http://localhost:3000/blog/preparing-your-website-for-ai-search",
+      "ogTitle": "Preparing Your Website for AI Search | Ignixel Studio",
+      "ogUrl": "http://localhost:3000/blog/preparing-your-website-for-ai-search",
+      "ogImage": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&amp;fit=crop&amp;q=70&amp;w=1200&amp;h=800",
+      "ogType": "article",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&amp;fit=crop&amp;q=70&amp;w=1200&amp;h=800",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "Preparing Your Website for AI Search"
+      ],
+      "h2": 10,
+      "words": 414,
+      "images": 5,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 2,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "Article"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/privacy-policy",
+      "status": 200,
+      "redirect": null,
+      "title": "Privacy Policy | Ignixel Studio",
+      "description": "How Ignixel Studio collects, uses and protects the information you share through its website, forms and calculator.",
+      "canonical": "http://localhost:3000/privacy-policy",
+      "ogTitle": "Privacy Policy",
+      "ogUrl": "http://localhost:3000/privacy-policy",
+      "ogImage": "http://localhost:3000/opengraph-image",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "http://localhost:3000/opengraph-image",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "Privacy Policy"
+      ],
+      "h2": 5,
+      "words": 218,
+      "images": 2,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 0,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/terms",
+      "status": 200,
+      "redirect": null,
+      "title": "Terms & Conditions | Ignixel Studio",
+      "description": "The terms that apply when you use the Ignixel Studio website, including how project estimates and enquiries are handled.",
+      "canonical": "http://localhost:3000/terms",
+      "ogTitle": "Terms &amp; Conditions",
+      "ogUrl": "http://localhost:3000/terms",
+      "ogImage": "http://localhost:3000/opengraph-image",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "twitterImage": "http://localhost:3000/opengraph-image",
+      "robotsMeta": null,
+      "viewport": true,
+      "lang": "en",
+      "h1": [
+        "Terms & Conditions"
+      ],
+      "h2": 4,
+      "words": 205,
+      "images": 2,
+      "imgNoAlt": 0,
+      "imgEmptyAlt": 0,
+      "jsonld": [
+        {
+          "ok": true,
+          "type": "BreadcrumbList"
+        },
+        {
+          "ok": true,
+          "type": "Organization"
+        },
+        {
+          "ok": true,
+          "type": "WebSite"
+        }
+      ]
+    },
+    {
+      "path": "/does-not-exist-404",
+      "status": 404,
+      "redirect": null
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -7,6 +8,10 @@ import { SectionHead } from "@/components/ui/Heading";
 import { BrowserMockup, PhoneMockup } from "@/components/ui/Visuals";
 import { CtaBand } from "@/components/ui/CtaBand";
 import { getCaseImages, getCaseStudies, getCaseStudy } from "@/lib/content";
+import { relatedLandings } from "@/lib/landing";
+import { JsonLd } from "@/components/ui/JsonLd";
+import { ORG_ID } from "@/lib/schema";
+import { absoluteUrl } from "@/lib/seo";
 import { SITE_URL } from "@/lib/supabase/env";
 import { cleanHtml } from "@/lib/html";
 import { toRichHtml } from "@/lib/utils";
@@ -15,8 +20,8 @@ export const revalidate = 60;
 export async function generateStaticParams() { return (await getCaseStudies()).map((c) => ({ slug: c.slug })); }
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const p = await getCaseStudy((await params).slug); if (!p) return {};
-  const title = p.seo_title || `${p.title} Case Study`, description = p.seo_description || p.description || undefined;
-  return { title, description, alternates: { canonical: `/work/${p.slug}` }, openGraph: { title, description, url: `${SITE_URL}/work/${p.slug}`, images: p.featured_image ? [p.featured_image] : undefined } };
+  const title = p.seo_title || (p.title.length > 40 ? p.title : `${p.title} Case Study`), description = p.seo_description || p.description || undefined;
+  return pageMeta({ title, description: description ? description.slice(0, 158) : undefined, path: `/work/${p.slug}`, image: p.featured_image || p.desktop_image });
 }
 
 export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -38,9 +43,11 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
         </div>
         {p.results.length > 0 && <div className="mt-20"><SectionHead eyebrow="Results" title="Measured outcomes" /><dl className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{p.results.map((r) => <div key={r.label} className="card p-6"><dd className="font-heading text-4xl font-semibold text-brand">{r.value}</dd><dt className="mt-1 text-text-2">{r.label}</dt></div>)}</dl></div>}
         {gallery.length > 0 && <ul className="mt-20 grid gap-4 sm:grid-cols-2">{gallery.map((g) => <li key={g.id} className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-line"><Image src={g.url} alt={g.alt || `${p.title} screenshot`} fill sizes="(max-width:640px) 100vw, 600px" className="object-cover object-top" /></li>)}</ul>}
+        {relatedLandings(p).length > 0 && <p className="mt-12 text-text-2">Related: {relatedLandings(p).map((l, i) => <span key={l.slug}>{i > 0 && ", "}<Link href={l.path} className="font-medium text-brand underline-offset-4 hover:underline">{l.navLabel}</Link></span>)}</p>}
         {p.website_url && <p className="mt-12"><a className="btn-ghost" href={p.website_url} target="_blank" rel="noopener noreferrer">Visit live website</a></p>}
       </div></section>
       {others.length > 0 && <section className="section bg-white"><div className="container-x"><SectionHead eyebrow="More work" title="Other projects" /><ul className="mt-sect grid gap-card md:grid-cols-2">{others.map((o) => <li key={o.id}><Link href={`/work/${o.slug}`} className="card block p-7 transition hover:border-brand/40"><p className="eyebrow">{o.industry}</p><h3 className="mt-2 !text-2xl">{o.title}</h3><p className="mt-2 line-clamp-2 text-text-2">{o.description}</p></Link></li>)}</ul></div></section>}
+      <JsonLd data={{ "@context": "https://schema.org", "@type": "CreativeWork", name: p.title, description: p.description, url: absoluteUrl(`/work/${p.slug}`), image: p.featured_image || p.desktop_image || undefined, about: p.industry || undefined, creator: { "@id": ORG_ID }, ...(p.technologies?.length ? { keywords: p.technologies.join(", ") } : {}) }} />
       <CtaBand />
     </>
   );

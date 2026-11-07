@@ -136,11 +136,17 @@ export const SECTION_SCHEMAS: Record<string, Field[]> = {
 
 export const SETTINGS_FIELDS: Field[] = [
   { name: "site_name", label: "Website name", type: "text" }, { name: "tagline", label: "Tagline", type: "text" },
-  { name: "logo_url", label: "Logo (use the official Ignixel logo)", type: "image", folder: "brand" }, { name: "favicon_url", label: "Favicon", type: "image", folder: "brand" },
+  { name: "logo_url", label: "Logo (use the official Ignixel logo)", type: "image", folder: "brand", help: "Images are automatically resized and converted to WebP on upload." }, { name: "favicon_url", label: "Favicon (square)", type: "image", folder: "brand", help: "Re-upload a square image to replace the current large favicon file." },
   { name: "contact_email", label: "Contact email", type: "text" }, { name: "phone", label: "Phone number", type: "text" }, { name: "address", label: "Address", type: "text", full: true },
   { name: "footer_description", label: "Footer description", type: "textarea", rows: 3 }, { name: "copyright", label: "Copyright text", type: "text", help: "Year is added automatically." },
   { name: "seo_title", label: "Default SEO title", type: "text", full: true }, { name: "seo_description", label: "Default meta description", type: "textarea", rows: 3 }, { name: "og_image", label: "Default Open Graph image", type: "image", folder: "brand" },
   { name: "ga_id", label: "Google Analytics ID", type: "text", placeholder: "G-XXXXXXXXXX" }, { name: "meta_pixel_id", label: "Meta Pixel ID", type: "text", placeholder: "1234567890" },
+  { name: "legal_name", label: "Legal company name (for structured data)", type: "text", help: "Only if different from the website name." },
+  { name: "founded_year", label: "Year founded", type: "text", help: "Leave empty unless verified. Published in structured data." },
+  { name: "address_locality", label: "Headquarters city", type: "text", help: "Publishes your real HQ in structured data. Leave empty if you do not want it published." }, { name: "address_region", label: "Headquarters state / region", type: "text" },
+  { name: "address_country", label: "Headquarters country (2-letter code, e.g. US)", type: "text" },
+  { name: "service_countries", label: "Countries you genuinely serve", type: "list", help: "One per line, e.g. United States. Published as service area. Only list countries you actually serve." },
+  { name: "google_site_verification", label: "Google Search Console verification code", type: "text", help: "The content value from the HTML-tag method." }, { name: "bing_site_verification", label: "Bing Webmaster verification code", type: "text" },
   { name: "socials.linkedin", label: "LinkedIn URL", type: "text" }, { name: "socials.x", label: "X / Twitter URL", type: "text" }, { name: "socials.instagram", label: "Instagram URL", type: "text" },
   { name: "socials.github", label: "GitHub URL", type: "text" }, { name: "socials.dribbble", label: "Dribbble URL", type: "text" }, { name: "socials.facebook", label: "Facebook URL", type: "text" },
 ];
@@ -152,4 +158,5 @@ export const ABOUT_FIELDS: Field[] = [
   { name: "different", label: "Differentiator", type: "repeater", shape: stepShape },
   { name: "values", label: "Value", type: "repeater", shape: [...stepShape, { name: "icon", label: "Icon", type: "select", options: ["lightbulb", "award", "shield-check", "rocket", "users", "trending-up", "compass", "handshake"] }] },
   { name: "approach", label: "Our approach", type: "textarea", rows: 5 },
+  { name: "faqs", label: "FAQ (answers shown on About and used for search/AI answers: keep them factual)", type: "repeater", shape: [{ name: "q", label: "Question", type: "text" }, { name: "a", label: "Answer", type: "textarea", rows: 3 }] },
 ];

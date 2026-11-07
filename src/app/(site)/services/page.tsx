@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import { PageHero } from "@/components/ui/PageHero";
 import { ServiceCategoryCard } from "@/components/Cards";
@@ -10,10 +11,7 @@ import { ArrowRight, ArrowUpRight } from "@/components/ui/Ico";
 import { getAllServices, getCategories, getSection } from "@/lib/content";
 
 export const revalidate = 60;
-export const metadata: Metadata = {
-  title: "Services", description: "Web design, web development, eCommerce and AI services from Ignixel Studio: strategy, design and engineering for businesses that want to grow.",
-  alternates: { canonical: "/services" },
-};
+export const metadata: Metadata = pageMeta({ title: "Web Design, Development, eCommerce & AI Services", description: "Web design, web development, eCommerce and AI services from Ignixel Studio: strategy, design and engineering for businesses that want to grow.", path: "/services" });
 
 export default async function ServicesPage() {
   const [cats, subs, proc] = await Promise.all([getCategories(), getAllServices(), getSection("process")]);

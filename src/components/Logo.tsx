@@ -1,7 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
+import Image from "next/image";
+import { canOptimize } from "@/lib/imageHost";
 // Official Ignixel mark (public/brand/ignixel-mark.svg), drawn inline so it stays crisp and recolour-free.
 // An uploaded logo in Admin → Settings overrides it everywhere (header, footer, admin).
-export function Logo({ url, dark = false, className = "h-9" }: { url?: string; dark?: boolean; className?: string }) {
+export function Logo({ url, dark = false, className = "h-9", priority = false }: { url?: string; dark?: boolean; className?: string; priority?: boolean }) {
+  // An uploaded logo may be a huge original (1600px+). Serve a resized copy; fall back to <img> for non-allow-listed hosts.
+  if (url && canOptimize(url)) return <Image src={url} alt="Ignixel Studio" width={96} height={96} sizes="96px" priority={priority} className={`${className} w-auto`} />;
   if (url) return <img src={url} alt="Ignixel Studio" className={`${className} w-auto`} />;
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`} aria-label="Ignixel Studio">

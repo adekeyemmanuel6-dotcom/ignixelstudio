@@ -14,6 +14,7 @@ import { CtaPair } from "@/components/ui/CtaPair";
 import { ProjectTabs } from "./ProjectTabs";
 import { TechTabs } from "./TechTabs";
 import { photo } from "@/lib/images";
+import { INDUSTRY_PATH } from "@/lib/landing";
 import { getAllServices, getCaseStudies, getCategories, getLatestPosts, getSection, getTeam, getTechnologies, getTestimonials } from "@/lib/content";
 
 type C = Record<string, any>;
@@ -64,7 +65,7 @@ export async function Hero({ c }: { c: C }) {
             <li key={b.k} data-float={idx % 2 ? 26 : -4} className={idx % 2 ? "md:mt-14" : ""}>
               <figure>
                 <div data-img-reveal className="relative aspect-[3/4] overflow-hidden rounded-xl bg-ink-2">
-                  <Image src={photo(b.k, 700, 940)} alt="" fill priority={idx < 2} sizes="(min-width:768px) 22vw, 46vw" className="object-cover" />
+                  <Image src={photo(b.k, 700, 940)} alt={`${b.t}: ${b.d}`} fill priority={idx < 2} sizes="(min-width:768px) 22vw, 46vw" className="object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/10 to-transparent" aria-hidden />
                   <figcaption className="absolute inset-x-0 bottom-0 p-4 sm:p-5"><span className="font-heading text-sm tabular-nums text-[#9a9aff]">{b.n}</span><p className="font-heading text-xl font-semibold text-white sm:text-2xl">{b.t}</p><p className="hidden text-base text-white/70 sm:block">{b.d}</p></figcaption>
                 </div>
@@ -227,8 +228,8 @@ export function Industries({ c }: { c: C }) {
         <ul className="mt-sect grid auto-rows-[260px] gap-4 sm:grid-cols-2 lg:auto-rows-[230px] lg:grid-cols-4" data-stagger>
           {items.map((it, i) => (
             <li key={it.name} className={`${SPAN[i] ?? ""}`}>
-              <Link href={it.href || "/services"} className="group relative block h-full overflow-hidden rounded-xl bg-ink-2">
-                <Image src={it.image || photo(IND_PHOTO[it.name] ?? "office", 1000, 1000)} alt="" fill sizes={i === 0 ? "(min-width:1024px) 50vw, 100vw" : "(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw"} className="object-cover transition duration-700 ease-out group-hover:scale-110" />
+              <Link href={INDUSTRY_PATH[it.name] ?? it.href ?? "/services"} className="group relative block h-full overflow-hidden rounded-xl bg-ink-2">
+                <Image src={it.image || photo(IND_PHOTO[it.name] ?? "office", 1000, 1000)} alt={`${it.name} industry`} fill sizes={i === 0 ? "(min-width:1024px) 50vw, 100vw" : "(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw"} className="object-cover transition duration-700 ease-out group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/35 to-ink/10 transition group-hover:from-brand-deep/90" aria-hidden />
                 <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
                   <h3 className={`${i === 0 ? "!text-3xl" : "!text-xl"} !text-white`}>{it.name}</h3>

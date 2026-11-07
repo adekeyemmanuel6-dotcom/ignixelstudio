@@ -38,7 +38,7 @@ export interface BlogCategory { id: string; name: string; slug: string }
 export interface BlogPost {
   id: string; slug: string; title: string; excerpt: string | null; content: string; featured_image: string | null;
   category_id: string | null; status: "draft" | "published" | "scheduled"; published_at: string | null;
-  author_name: string | null; author_title: string | null; author_image: string | null; reading_time: number;
+  author_name: string | null; author_title: string | null; author_image: string | null; reading_time: number; updated_at?: string | null;
   seo_title: string | null; seo_description: string | null; og_image: string | null;
   category?: BlogCategory | null; tags?: { id: string; name: string; slug: string }[];
 }
@@ -58,4 +58,7 @@ export interface SiteSettings {
   og_image: string; ga_id: string; meta_pixel_id: string; brand_primary: string;
   socials: { linkedin: string; x: string; instagram: string; github: string; dribbble: string; facebook: string };
   content_seeded: boolean; content_version?: number;
+  // Entity / SEO facts. Empty = not published in structured data. Fill only with verified information.
+  legal_name: string; founded_year: string; address_locality: string; address_region: string; address_country: string;
+  service_countries: string[]; google_site_verification: string; bing_site_verification: string;
 }

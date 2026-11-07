@@ -34,7 +34,7 @@ export function Header({ logoUrl, categories }: { logoUrl?: string; categories: 
       <a href="#main" className="skip-link">Skip to content</a>
       <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${solid && !open ? "border-b border-line bg-white/85 py-2.5 shadow-sm backdrop-blur-xl" : "bg-transparent py-5"}`}>
         <div className="container-x flex items-center justify-between">
-          <Link href="/" aria-label="Ignixel Studio home"><Logo url={logoUrl} dark={dark} className="h-9" /></Link>
+          <Link href="/" aria-label="Ignixel Studio home"><Logo url={logoUrl} dark={dark} className="h-9" priority /></Link>
 
           <nav aria-label="Main" className="hidden items-center gap-1 lg:flex">
             <Link href="/" className={link("/")}>Home</Link>

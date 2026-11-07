@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
+import { canOptimize } from "@/lib/imageHost";
 
 /** Browser-frame mockup. Uses a real screenshot when provided, otherwise renders a neutral wireframe. */
 export function BrowserMockup({ src, alt, tone = "#010BCC", className = "" }: { src?: string | null; alt: string; tone?: string; className?: string }) {
@@ -37,7 +38,11 @@ export function PhoneMockup({ src, alt, tone = "#010BCC", className = "" }: { sr
   );
 }
 
-export function Avatar({ name, src, className = "" }: { name: string; src?: string | null; className?: string }) {
+/** Portrait/avatar. Remote images go through next/image (resized, modern formats); `className` sizes/positions the wrapper. */
+export function Avatar({ name, src, className = "", sizes = "96px" }: { name: string; src?: string | null; className?: string; sizes?: string }) {
+  if (src && canOptimize(src)) {
+    return <span className={`${/\babsolute\b/.test(className) ? "" : "relative "}block overflow-hidden ${className}`}><Image src={src} alt={name} fill sizes={sizes} className="object-cover object-top" /></span>;
+  }
   if (src) return <img src={src} alt={name} loading="lazy" className={`object-cover ${className}`} />;
   return <div aria-hidden className={`grid place-items-center bg-gradient-to-br from-brand to-brand-deep font-heading font-bold text-white ${className}`}>{name.split(/\s+/).map((p) => p[0]).slice(0, 2).join("")}</div>;
 }

@@ -16,7 +16,7 @@ export function ServiceCategoryCard({ c, subs, i }: { c: ServiceCategory; subs: 
   return (
     <article data-tilt="dark" className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-line bg-white transition-[border-color,box-shadow] duration-500 hover:border-brand/40 hover:shadow-glow">
       <div className="relative aspect-[4/3] overflow-hidden bg-ink">
-        <Image src={src} alt="" fill sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" className="object-cover transition duration-700 ease-out group-hover:scale-110" />
+        <Image src={src} alt={`${c.title} services`} fill sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" className="object-cover transition duration-700 ease-out group-hover:scale-110" />
         <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/15 to-transparent" aria-hidden />
         <span className="absolute left-5 top-5 font-heading text-lg tabular-nums text-white/80">0{i + 1}</span>
         <span className="absolute right-5 top-5 grid h-12 w-12 place-items-center rounded-lg bg-white/90 text-brand transition group-hover:bg-brand group-hover:text-white"><Icon name={c.icon} /></span>
@@ -33,13 +33,13 @@ export function ServiceCategoryCard({ c, subs, i }: { c: ServiceCategory; subs: 
   );
 }
 
-export function SubServiceCard({ s, i }: { s: Service; i: number }) {
+export function SubServiceCard({ s, i, href }: { s: Service; i: number; href?: string }) {
   return (
     <article className="group relative flex h-full flex-col card-pad rounded-xl border border-line bg-white transition duration-300 hover:-translate-y-1 hover:border-brand/40 hover:shadow-card">
       <div className="mb-5 overflow-hidden rounded-xl bg-paper p-3"><BrowserMockup src={s.image_url} alt={`${s.title} illustration`} tone={TONES[i % 4]} className="!shadow-none !border-line" /></div>
       <h3 className="!text-xl">{s.title}</h3>
       <p className="mt-2 flex-1 text-text-2">{s.description}</p>
-      <a href={`#${s.slug}`} className="mt-5 inline-flex items-center gap-1.5 font-semibold text-brand after:absolute after:inset-0">Learn More <ArrowUpRight /></a>
+      <a href={href ?? `#${s.slug}`} className="mt-5 inline-flex items-center gap-1.5 font-semibold text-brand after:absolute after:inset-0">Learn More <ArrowUpRight /></a>
     </article>
   );
 }

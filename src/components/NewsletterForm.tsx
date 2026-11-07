@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Check } from "@/components/ui/Ico";
+import { trackLead } from "@/lib/track";
 
 export function NewsletterForm({ dark }: { dark?: boolean }) {
   const [state, setState] = useState<"idle" | "loading" | "done" | "error">("idle");
@@ -13,7 +14,7 @@ export function NewsletterForm({ dark }: { dark?: boolean }) {
       const r = await fetch("/api/newsletter", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email }) });
       const j = await r.json();
       if (!r.ok) throw new Error(j.error || "Something went wrong");
-      setState("done"); setMsg(j.message); form.reset();
+      setState("done"); setMsg(j.message); form.reset(); trackLead("newsletter");
     } catch (err) { setState("error"); setMsg((err as Error).message); }
   }
   if (state === "done") return <p role="status" className="flex items-center gap-2 font-medium"><Check className="h-5 w-5 text-emerald-500" /> {msg}</p>;

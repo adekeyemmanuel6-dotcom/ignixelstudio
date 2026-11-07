@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import * as icons from "simple-icons";
 import { Calculator } from "@/components/Calculator";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { getCalculator } from "@/lib/content";
 
 export const revalidate = 60;
-export const metadata: Metadata = { title: "Website Cost Calculator", description: "Answer a few questions and get an estimated investment range for your website project from Ignixel Studio.", alternates: { canonical: "/website-cost-calculator" } };
+export const metadata: Metadata = pageMeta({ title: "Website Cost Calculator", description: "Answer a few questions and get an estimated investment range for your website project from Ignixel Studio.", path: "/website-cost-calculator" });
 
 const PLATFORM_ICONS: Record<string, string> = { wordpress: "wordpress", webflow: "webflow", shopify: "shopify", framer: "framer" };
 

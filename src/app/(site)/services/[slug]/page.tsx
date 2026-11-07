@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Check } from "@/components/ui/Ico";
@@ -10,18 +11,22 @@ import { FaqList } from "@/components/ui/Faq";
 import { CtaBand } from "@/components/ui/CtaBand";
 import { Reveal } from "@/components/ui/Reveal";
 import { JsonLd } from "@/components/ui/JsonLd";
-import { getCaseStudies, getCategories, getCategory, getTechnologies } from "@/lib/content";
+import { getCaseStudies, getCategories, getCategory, getTechnologies, getTestimonials } from "@/lib/content";
+import { LandingTemplate } from "@/components/landing/LandingTemplate";
+import { LANDING_PAGES, landingBySlug, SUBSERVICE_PATH } from "@/lib/landing";
 import { SITE_URL } from "@/lib/supabase/env";
+import { ORG_ID } from "@/lib/schema";
 
 export const revalidate = 60;
-export async function generateStaticParams() { return (await getCategories()).map((c) => ({ slug: c.slug })); }
+export async function generateStaticParams() { return [...(await getCategories()).map((c) => ({ slug: c.slug })), ...LANDING_PAGES.filter((l) => l.kind === "platform").map((l) => ({ slug: l.slug }))]; }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const data = await getCategory((await params).slug);
-  if (!data) return {};
+  const slug0 = (await params).slug;
+  const data = await getCategory(slug0);
+  if (!data) { const l = landingBySlug(slug0, "platform"); return l ? pageMeta({ title: l.metaTitle, description: l.metaDescription, path: l.path }) : {}; }
   const { category: c } = data;
   const title = c.seo_title || c.title, description = c.seo_description || c.hero_description || undefined;
-  return { title: { absolute: title }, description, alternates: { canonical: `/services/${c.slug}` }, openGraph: { title, description: description ?? undefined, url: `${SITE_URL}/services/${c.slug}` } };
+  return pageMeta({ title, description, path: `/services/${c.slug}`, absoluteTitle: true });
 }
 
 const COMPARE = [
@@ -34,7 +39,11 @@ const COMPARE = [
 export default async function ServiceCategoryPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const data = await getCategory(slug);
-  if (!data) notFound();
+  if (!data) {
+    const l = landingBySlug(slug, "platform"); if (!l) notFound();
+    const [cases, testimonials] = await Promise.all([getCaseStudies(), getTestimonials()]);
+    return <LandingTemplate l={l} cases={cases} testimonials={testimonials} />;
+  }
   const { category: c, services } = data;
   const [allTech, cases] = await Promise.all([getTechnologies(), getCaseStudies()]);
   const tech = c.technology_slugs.map((s) => allTech.find((t) => t.slug === s)).filter(Boolean) as typeof allTech;
@@ -49,7 +58,7 @@ export default async function ServiceCategoryPage({ params }: { params: Promise<
       <section className="section bg-white" id="services">
         <div className="container-x">
           <SectionHead eyebrow="What We Do" title={`${c.title} services`} description={c.short_description} />
-          <div className="mt-sect grid auto-rows-fr gap-card sm:grid-cols-2 lg:grid-cols-3">{services.map((s, i) => <Reveal key={s.id} className="h-full" delay={(i % 3) * 0.07}><SubServiceCard s={s} i={i} /></Reveal>)}</div>
+          <div className="mt-sect grid auto-rows-fr gap-card sm:grid-cols-2 lg:grid-cols-3">{services.map((s, i) => <Reveal key={s.id} className="h-full" delay={(i % 3) * 0.07}><SubServiceCard s={s} i={i} href={SUBSERVICE_PATH[s.slug]} /></Reveal>)}</div>
         </div>
       </section>
 
@@ -132,7 +141,7 @@ export default async function ServiceCategoryPage({ params }: { params: Promise<
       )}
 
       <CtaBand title={`Ready to talk about ${c.title.toLowerCase()}?`} />
-      <JsonLd data={{ "@context": "https://schema.org", "@type": "Service", name: c.title, description: c.hero_description, url: `${SITE_URL}/services/${c.slug}`, provider: { "@type": "Organization", name: "Ignixel Studio", url: SITE_URL },
+      <JsonLd data={{ "@context": "https://schema.org", "@type": "Service", name: c.title, description: c.hero_description, url: `${SITE_URL}/services/${c.slug}`, provider: { "@id": ORG_ID },
         hasOfferCatalog: { "@type": "OfferCatalog", name: `${c.title} services`, itemListElement: services.map((s) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: s.title, description: s.description } })) } }} />
     </>
   );

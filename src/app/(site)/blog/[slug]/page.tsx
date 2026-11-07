@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -14,15 +15,14 @@ import { getLatestPosts, getPost, getPosts, getSettings } from "@/lib/content";
 import { cleanHtml, withToc } from "@/lib/html";
 import { formatDate } from "@/lib/utils";
 import { SITE_URL } from "@/lib/supabase/env";
+import { ORG_ID } from "@/lib/schema";
 
 export const revalidate = 60;
 export async function generateStaticParams() { return (await getPosts({ perPage: 1000 })).posts.map((p) => ({ slug: p.slug })); }
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const p = await getPost((await params).slug); if (!p) return {};
   const title = p.seo_title || p.title, description = p.seo_description || p.excerpt || undefined, img = p.og_image || p.featured_image || undefined;
-  return { title: { absolute: `${title} | Ignixel Studio` }, description, alternates: { canonical: `/blog/${p.slug}` },
-    openGraph: { type: "article", title, description, url: `${SITE_URL}/blog/${p.slug}`, publishedTime: p.published_at ?? undefined, images: img ? [img] : undefined },
-    twitter: { card: "summary_large_image", title, description, images: img ? [img] : undefined } };
+  return pageMeta({ title: `${title} | Ignixel Studio`, description, path: `/blog/${p.slug}`, image: img, type: "article", absoluteTitle: true, publishedTime: p.published_at, modifiedTime: p.updated_at ?? p.published_at });
 }
 
 export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
@@ -62,7 +62,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       {related.length > 0 && <section className="section mt-12 bg-white"><div className="container-x"><h2 className="!text-h3">Related articles</h2><div className="mt-8 grid gap-card md:grid-cols-2 lg:grid-cols-3">{related.map((r) => <PostCard key={r.id} p={r} />)}</div></div></section>}
       <section className="section bg-white"><div className="container-x grid items-center gap-8 lg:grid-cols-2"><div><h2 className="!text-h3">Enjoyed this? Get the next one by email.</h2></div><NewsletterForm /></div></section>
       <CtaBand title="Want to put this into practice?" description="Talk to our team about your website, store or AI project." />
-      <JsonLd data={{ "@context": "https://schema.org", "@type": "Article", headline: p.title, description: p.excerpt, image: p.og_image || p.featured_image || undefined, datePublished: p.published_at, author: { "@type": "Person", name: p.author_name }, publisher: { "@type": "Organization", name: settings.site_name, url: SITE_URL }, mainEntityOfPage: url }} />
+      <JsonLd data={{ "@context": "https://schema.org", "@type": "Article", headline: p.title, description: p.excerpt, image: p.og_image || p.featured_image || undefined, datePublished: p.published_at, dateModified: p.updated_at ?? p.published_at, author: { "@type": "Person", name: p.author_name || settings.site_name }, publisher: { "@id": ORG_ID }, mainEntityOfPage: url, ...(p.category ? { articleSection: p.category.name } : {}) }} />
     </>
   );
 }

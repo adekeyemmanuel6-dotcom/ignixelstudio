@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { Mail, Phone, MapPin, CheckCircle2, Quote } from "@/components/ui/Ico";
 import { InquiryForm } from "@/components/InquiryForm";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { getCategories, getSettings, getTestimonials } from "@/lib/content";
 
 export const revalidate = 60;
-export const metadata: Metadata = { title: "Contact: Start a Project", description: "Tell Ignixel Studio about your website, application, eCommerce or AI project and get a considered response.", alternates: { canonical: "/contact" } };
+export const metadata: Metadata = pageMeta({ title: "Contact: Start a Project", description: "Tell Ignixel Studio about your website, application, eCommerce or AI project and get a considered response.", path: "/contact" });
 
 export default async function ContactPage() {
   const [cats, s, ts] = await Promise.all([getCategories(), getSettings(), getTestimonials()]);

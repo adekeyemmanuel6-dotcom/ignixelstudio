@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import { Search } from "@/components/ui/Ico";
 import { PageHero } from "@/components/ui/PageHero";
@@ -6,7 +7,7 @@ import { PostCard } from "@/components/Cards";
 import { NewsletterForm } from "@/components/NewsletterForm";
 import { getBlogCategories, getPosts } from "@/lib/content";
 
-export const metadata: Metadata = { title: "Blog: Insights on Web Design, Development, eCommerce & AI", description: "Practical articles on web design, development, eCommerce and AI to help your business grow online.", alternates: { canonical: "/blog" } };
+export const metadata: Metadata = pageMeta({ title: "Blog: Web Design, Development & AI Insights", description: "Practical articles on web design, development, eCommerce and AI to help your business grow online.", path: "/blog" });
 
 export default async function BlogPage({ searchParams }: { searchParams: Promise<{ category?: string; q?: string; page?: string }> }) {
   const sp = await searchParams;

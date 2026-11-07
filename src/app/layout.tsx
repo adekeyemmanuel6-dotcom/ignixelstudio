@@ -12,9 +12,9 @@ export async function generateMetadata(): Promise<Metadata> {
     title: { default: s.seo_title, template: `%s | ${s.site_name}` },
     description: s.seo_description,
     applicationName: s.site_name,
-    alternates: { canonical: "/" },
     icons: s.favicon_url ? { icon: s.favicon_url } : undefined,
-    openGraph: { type: "website", siteName: s.site_name, title: s.seo_title, description: s.seo_description, url: SITE_URL, images: s.og_image ? [s.og_image] : undefined },
+    openGraph: { type: "website", siteName: s.site_name, title: s.seo_title, description: s.seo_description, url: SITE_URL, locale: "en_US", images: s.og_image ? [s.og_image] : undefined },
+    verification: { google: s.google_site_verification || undefined, other: s.bing_site_verification ? { "msvalidate.01": s.bing_site_verification } : undefined },
     twitter: { card: "summary_large_image", title: s.seo_title, description: s.seo_description, images: s.og_image ? [s.og_image] : undefined },
   };
 }

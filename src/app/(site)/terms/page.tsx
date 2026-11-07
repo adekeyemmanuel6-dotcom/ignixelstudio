@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import sanitizeHtml from "sanitize-html";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { getLegal } from "@/lib/content";
 
 export const revalidate = 60;
-export const metadata: Metadata = { title: "Terms & Conditions", alternates: { canonical: "/terms" }, robots: { index: true, follow: true } };
+export const metadata: Metadata = pageMeta({ title: "Terms & Conditions", description: "The terms that apply when you use the Ignixel Studio website, including how project estimates and enquiries are handled.", path: "/terms" });
 
 export default async function Page() {
   const html = sanitizeHtml((await getLegal()).terms, { allowedTags: sanitizeHtml.defaults.allowedTags.concat(["h1", "h2", "h3"]) });

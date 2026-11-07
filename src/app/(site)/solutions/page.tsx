@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import { ArrowUpRight, Check } from "@/components/ui/Ico";
 import { PageHero } from "@/components/ui/PageHero";
@@ -7,7 +8,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { getSection } from "@/lib/content";
 
 export const revalidate = 60;
-export const metadata: Metadata = { title: "Solutions: Fix Your Website's Biggest Problems", description: "Website not generating leads, traffic dropping, low conversions or missing from AI search? Find the right Ignixel solution.", alternates: { canonical: "/solutions" } };
+export const metadata: Metadata = pageMeta({ title: "Fix Your Website's Biggest Problems", description: "Website not generating leads, traffic dropping, low conversions or missing from AI search? Find the right Ignixel solution.", path: "/solutions" });
 
 export default async function SolutionsPage() {
   const c = await getSection("solutions");

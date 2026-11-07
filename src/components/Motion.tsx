@@ -32,16 +32,13 @@ export function Motion() {
         const q = <T extends Element = HTMLElement>(sel: string) => gsap.utils.toArray<T>(sel);
 
         // Headline reveals (line masks). autoSplit re-splits on resize/font load.
-        q("[data-split]").forEach((el) => {
+        // Below-the-fold headings only. Hero titles ([data-hero-title]) are revealed by CSS so the LCP never waits on JavaScript.
+        q("[data-split]:not([data-hero-title])").forEach((el) => {
           SplitText.create(el, {
             type: "lines", mask: "lines", autoSplit: true, linesClass: "split-line", maskClass: "split-mask",
-            onSplit: (self) => { gsap.set(el, { visibility: "visible" }); return gsap.from(self.lines, { yPercent: 110, duration: 1.1, ease: "expo.out", stagger: 0.09, delay: el.hasAttribute("data-hero-title") ? 0.1 : 0, scrollTrigger: el.hasAttribute("data-hero-title") ? undefined : { trigger: el, start: "top 88%", once: true } }); },
+            onSplit: (self) => { gsap.set(el, { visibility: "visible" }); return gsap.from(self.lines, { yPercent: 110, duration: 1.1, ease: "expo.out", stagger: 0.09, scrollTrigger: { trigger: el, start: "top 88%", once: true } }); },
           });
         });
-
-        // Hero entrance
-        const heroItems = q("[data-hero-item]");
-        if (heroItems.length) gsap.fromTo(heroItems, { autoAlpha: 0, y: 36 }, { autoAlpha: 1, y: 0, duration: 1, ease: "power3.out", stagger: 0.12, delay: 0.35 });
 
         // Scroll reveals
         q("[data-reveal]").forEach((el) => {

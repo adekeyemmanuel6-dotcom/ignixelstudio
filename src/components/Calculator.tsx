@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { trackLead } from "@/lib/track";
 import { ArrowLeft, ArrowRight, Check, Download } from "@/components/ui/Ico";
 import type { CalcQuestion, CalcSettings } from "@/lib/types";
 
@@ -37,7 +38,7 @@ export function Calculator({ settings, questions, icons }: { settings: CalcSetti
     try {
       const r = await fetch("/api/calculator", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ answers, contact: { ...contact, hp: undefined }, hp: contact.hp }) });
       const j = await r.json(); if (!r.ok) throw new Error(j.error || "Something went wrong.");
-      setResult(j); go(1);
+      setResult(j); go(1); trackLead("calculator", { value: Math.round((j.min + j.max) / 2), currency: j.currency });
     } catch (x) { setErr((x as Error).message); } finally { setBusy(false); }
   }
 

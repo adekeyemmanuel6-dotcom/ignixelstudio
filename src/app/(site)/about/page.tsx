@@ -1,18 +1,25 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionHead } from "@/components/ui/Heading";
 import { TeamGrid } from "@/components/team/TeamGrid";
 import { CtaBand } from "@/components/ui/CtaBand";
 import { Reveal } from "@/components/ui/Reveal";
 import { Icon } from "@/components/ui/Icon";
-import { getAbout, getTeam } from "@/lib/content";
+import { getAbout, getSettings, getTeam } from "@/lib/content";
+import { FaqList } from "@/components/ui/Faq";
+import { JsonLd } from "@/components/ui/JsonLd";
+import { peopleLd } from "@/lib/schema";
 
 export const revalidate = 60;
-export const metadata: Metadata = { title: "About Ignixel Studio", description: "Meet the strategists, designers and engineers behind Ignixel Studio, a digital agency building websites, applications and AI solutions that move businesses forward.", alternates: { canonical: "/about" } };
+export const metadata: Metadata = pageMeta({ title: "About Ignixel Studio", description: "Meet the strategists, designers and engineers behind Ignixel Studio, a digital agency building websites, applications and AI solutions that move businesses forward.", path: "/about" });
 const CATS = ["Leadership", "Design", "Development", "Marketing", "Operations"] as const;
 
 export default async function AboutPage() {
-  const [a, team] = await Promise.all([getAbout(), getTeam()]);
+  const [a, team, st] = await Promise.all([getAbout(), getTeam(), getSettings()]);
+  const loc = [st.address_locality, st.address_region].filter(Boolean).join(", ") || st.address;
+  const faqs = [...((a.faqs as { q: string; a: string }[]) ?? [])];
+  if (loc) faqs.splice(1, 0, { q: "Where is Ignixel Studio based?", a: `Ignixel Studio is based in ${loc}.${st.service_countries?.length ? ` We work with clients in ${st.service_countries.join(", ")}.` : ""}` });
   return (
     <>
       <PageHero crumbs={[{ name: "About" }]} eyebrow="About Ignixel" title={a.hero_headline} description={a.hero_intro} ctas={[{ label: "Start a Project", href: "/contact" }, { label: "Meet the Team", href: "#team", secondary: true }]} />
@@ -50,6 +57,8 @@ export default async function AboutPage() {
         <SectionHead eyebrow="Our approach" title="From discovery to launch, and beyond" /><p className="text-lg text-text-2">{a.approach}</p>
       </div></section>
 
+      {faqs.length > 0 && <section className="section bg-white"><div className="container-x grid gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-16"><SectionHead eyebrow="About Ignixel Studio" title="Common questions, answered" /><FaqList faqs={faqs} /></div></section>}
+      {team.length > 0 && <JsonLd data={peopleLd(team)} />}
       <CtaBand title="Let's Create Something Exceptional Together." description="Tell us what you're building and we'll show you how we'd approach it." secondary={null} />
     </>
   );

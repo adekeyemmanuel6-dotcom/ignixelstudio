@@ -26,7 +26,7 @@ export function TeamGrid({ members }: { members: TeamMember[] }) {
               <button type="button" onClick={() => open(m)} aria-haspopup="dialog" aria-label={`View profile: ${m.full_name}, ${m.job_title}`}
                 className="relative block aspect-[3/4] w-full overflow-hidden rounded-xl bg-ink-2 text-left focus-visible:outline-offset-4">
                 <Avatar name={m.full_name} src={m.photo_url}
-                  className="absolute inset-0 h-full w-full object-cover object-top text-6xl transition-[transform,filter] duration-500 ease-out [filter:grayscale(.85)_contrast(1.04)] group-hover:scale-[1.04] group-hover:[filter:grayscale(0)_contrast(1)] motion-reduce:transition-none motion-reduce:group-hover:scale-100" />
+                  sizes="(min-width:1024px) 25vw, (min-width:768px) 50vw, 100vw" className="absolute inset-0 h-full w-full text-6xl transition-[transform,filter] duration-500 ease-out [filter:grayscale(.85)_contrast(1.04)] group-hover:scale-[1.04] group-hover:[filter:grayscale(0)_contrast(1)] motion-reduce:transition-none motion-reduce:group-hover:scale-100" />
                 <span aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-black/85 via-black/40 to-transparent transition-opacity duration-500 group-hover:opacity-100" />
                 <span className="absolute inset-x-0 bottom-0 block p-4 pr-16 sm:p-5 sm:pr-16">
                   <span className="block font-heading text-xl font-semibold leading-tight text-white sm:text-[1.4rem]">{m.full_name}</span>
@@ -77,7 +77,7 @@ function ProfileDialog({ m, onClose }: { m: TeamMember; onClose: () => void }) {
           <Ico name="close" className="h-6 w-6" />
         </button>
         <div className="relative aspect-[4/3] bg-ink-2 md:aspect-auto md:min-h-[420px]">
-          <Avatar name={m.full_name} src={m.photo_url} className="absolute inset-0 h-full w-full object-cover object-top text-7xl" />
+          <Avatar name={m.full_name} src={m.photo_url} sizes="(min-width:768px) 300px, 100vw" className="absolute inset-0 h-full w-full text-7xl" />
         </div>
         <div className="flex flex-col p-6 sm:p-8">
           <p className="eyebrow">{m.category}</p>

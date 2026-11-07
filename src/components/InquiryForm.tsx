@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { CheckCircle2, ArrowRight } from "@/components/ui/Ico";
+import { trackLead } from "@/lib/track";
 import Link from "next/link";
 
 const BUDGETS = ["Under $5,000", "$5,000 – $10,000", "$10,000 – $25,000", "$25,000 – $50,000", "$50,000+", "Not sure yet"];
@@ -30,7 +31,7 @@ export function InquiryForm({ services, variant = "hero" }: { services: string[]
       const r = await fetch("/api/inquiry", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...data, source: variant }) });
       const j = await r.json().catch(() => ({}));
       if (!r.ok) throw new Error(j.error || "Something went wrong. Please try again.");
-      setState("done"); form.reset();
+      setState("done"); form.reset(); trackLead(variant === "hero" ? "hero_form" : "contact_form", { service: data.service || undefined });
     } catch (err) { setState("error"); setServerError((err as Error).message); }
   }
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Check } from "lucide-react";
@@ -15,7 +16,7 @@ const find = async (slug: string) => ((await getSection("solutions")).items as I
 export async function generateStaticParams() { return (((await getSection("solutions")).items as Item[]) ?? []).map((s) => ({ slug: s.slug })); }
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const s = await find((await params).slug); if (!s) return {};
-  return { title: s.problem, description: s.summary, alternates: { canonical: `/solutions/${s.slug}` } };
+  return pageMeta({ title: s.problem, description: s.summary, path: `/solutions/${s.slug}` });
 }
 
 export default async function SolutionPage({ params }: { params: Promise<{ slug: string }> }) {

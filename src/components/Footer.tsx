@@ -26,6 +26,9 @@ export async function Footer() {
             <nav aria-label="Services">
               <h3 className="mb-4 !text-base font-semibold uppercase tracking-wider text-white/50">Services</h3>
               <ul className="space-y-2.5">{cats.map((c) => <li key={c.slug}><Link className="hover:text-white" href={`/services/${c.slug}`}>{c.title}</Link></li>)}
+                <li><Link className="hover:text-white" href="/services/webflow-development">Webflow Development</Link></li>
+                <li><Link className="hover:text-white" href="/services/wordpress-development">WordPress Development</Link></li>
+                <li><Link className="hover:text-white" href="/industries">Industries</Link></li>
                 <li><Link className="hover:text-white" href="/solutions">Solutions</Link></li></ul>
             </nav>
             <nav aria-label="Company">

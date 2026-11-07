@@ -5,14 +5,13 @@ import { BackToTop } from "@/components/BackToTop";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/ui/JsonLd";
-import { getCategories, getSettings } from "@/lib/content";
-import { SITE_URL } from "@/lib/supabase/env";
+import { getCategories, getSettings, getTeam } from "@/lib/content";
+import { organizationLd, websiteLd } from "@/lib/schema";
 
 export const revalidate = 60;
 
 export default async function SiteLayout({ children }: { children: React.ReactNode }) {
-  const [s, cats] = await Promise.all([getSettings(), getCategories()]);
-  const sameAs = Object.values(s.socials).filter(Boolean);
+  const [s, cats, team] = await Promise.all([getSettings(), getCategories(), getTeam()]);
   return (
     <>
       <Header logoUrl={s.logo_url || undefined} categories={cats.map((c) => ({ slug: c.slug, title: c.title }))} />
@@ -21,7 +20,8 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
       <BackToTop />
       <main id="main">{children}</main>
       <Footer />
-      <JsonLd data={{ "@context": "https://schema.org", "@type": "Organization", name: s.site_name, url: SITE_URL, logo: s.logo_url || `${SITE_URL}/brand/ignixel-mark.svg`, email: s.contact_email || undefined, telephone: s.phone || undefined, description: s.seo_description, sameAs }} />
+      <JsonLd data={organizationLd(s, team)} />
+      <JsonLd data={websiteLd(s)} />
       {/^G-[A-Z0-9]+$/i.test(s.ga_id) && (
         <>
           <Script src={`https://www.googletagmanager.com/gtag/js?id=${s.ga_id}`} strategy="afterInteractive" />

@@ -11,11 +11,13 @@ export const defaultSettings: SiteSettings = {
   contact_email: "hello@ignixel.studio", phone: "", address: "",
   footer_description: "Ignixel Studio designs and builds high-performance websites, web applications, eCommerce platforms and AI-powered solutions that help businesses build authority and grow.",
   copyright: "Ignixel Studio. All rights reserved.",
-  seo_title: "Ignixel Studio — Web Design, Development & AI Solutions",
+  seo_title: "Ignixel Studio | Web Design & Development Agency",
   seo_description: "Ignixel Studio designs and builds high-performance websites, web applications, eCommerce platforms and AI-powered solutions that help businesses establish authority and grow.",
   og_image: "", ga_id: "", meta_pixel_id: "", brand_primary: "#010BCC",
   socials: { linkedin: "", x: "", instagram: "", github: "", dribbble: "", facebook: "" },
   content_seeded: false,
+  legal_name: "", founded_year: "", address_locality: "", address_region: "", address_country: "",
+  service_countries: [], google_site_verification: "", bing_site_verification: "",
 };
 
 /** Bump when default copy/images change; the admin dashboard then offers "Apply latest default content". */
@@ -402,6 +404,16 @@ export const defaultAbout = {
     { title: "Innovation", description: "Using new technology where it genuinely helps.", icon: "rocket" },
     { title: "Collaboration", description: "Working as an extension of your team.", icon: "users" },
     { title: "Growth", description: "Building for our clients' future, and our own.", icon: "trending-up" },
+  ],
+  faqs: [
+    { q: "What is Ignixel Studio?", a: "Ignixel Studio (Ignite + Pixels) is a digital design and development agency. We help businesses build websites, eCommerce experiences, custom web applications and AI-powered solutions, with strategy, design and engineering handled by one team." },
+    { q: "What services does Ignixel Studio provide?", a: "Website design and UI/UX design, website development, Webflow and WordPress development, eCommerce and custom web application development, website redesign, landing page design, website migration, and API and AI integrations." },
+    { q: "Does Ignixel Studio build Webflow websites?", a: "Yes. Our Webflow work includes a direct primary care practice, a telehealth practice and an immigration and education network. Each is available as a case study in our portfolio." },
+    { q: "Does Ignixel Studio build WordPress websites?", a: "Yes. Our WordPress work includes a vacation-rental site with a custom booking plugin connected to a property management system, and a restoration and remodeling company site designed for local search and fast contact." },
+    { q: "Does Ignixel Studio provide healthcare website development?", a: "Yes. We have designed and built websites for a direct primary care practice and a physician-owned telehealth practice, including enrollment and patient-intake journeys." },
+    { q: "What makes Ignixel Studio different?", a: "Strategy, design and engineering sit in one team, so what is promised in a proposal is what gets built. We design around how visitors decide, then build for speed, clarity and easy content management." },
+    { q: "How can businesses hire Ignixel Studio?", a: "Send a project inquiry or use the website cost calculator for an indicative range. We reply with scoping questions and next steps." },
+    { q: "What is the Ignixel Studio development process?", a: "Five stages: Discover, Strategize, Design, Develop, and Launch & Grow. Each stage ends with something you can review before the next begins." },
   ],
   approach: "We work with clients from first conversation to long after launch: discovery to understand the business, strategy to agree scope and architecture, design to validate the experience, development to build and test it, then support and iteration once it is live.",
 };
