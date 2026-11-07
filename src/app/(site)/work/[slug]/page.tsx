@@ -21,6 +21,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
   const p = await getCaseStudy((await params).slug);
   if (!p) notFound();
   const gallery = await getCaseImages(p.id);
+  const hasImages = Boolean(p.desktop_image || p.featured_image || p.mobile_image);
   const others = (await getCaseStudies()).filter((x) => x.slug !== p.slug).slice(0, 2);
   return (
     <>
@@ -28,8 +29,8 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
         <dl className="mt-8 flex flex-wrap gap-x-10 gap-y-4">{p.client_name && <div><dt className="text-white/50">Client</dt><dd className="font-medium text-white">{p.client_name}</dd></div>}{p.services.length > 0 && <div><dt className="text-white/50">Services</dt><dd className="font-medium text-white">{p.services.join(", ")}</dd></div>}{p.technologies.length > 0 && <div><dt className="text-white/50">Technology</dt><dd className="font-medium text-white">{p.technologies.join(", ")}</dd></div>}</dl>
       </PageHero>
       <section className="section bg-white"><div className="container-x">
-        <div className="relative mx-auto max-w-5xl"><BrowserMockup src={p.desktop_image || p.featured_image} alt={`${p.title} desktop`} className="!border-line" />{(p.mobile_image || true) && <PhoneMockup src={p.mobile_image} alt={`${p.title} mobile`} className="absolute -bottom-8 right-2 sm:-right-8" />}</div>
-        <div className="mt-24 grid gap-12 lg:grid-cols-2">
+        {(hasImages || p.is_placeholder) && <div className="relative mx-auto mb-24 max-w-5xl"><BrowserMockup src={p.desktop_image || p.featured_image} alt={`${p.title} desktop`} className="!border-line" />{(p.mobile_image || p.is_placeholder) && <PhoneMockup src={p.mobile_image} alt={`${p.title} mobile`} className="absolute -bottom-8 right-2 sm:-right-8" />}</div>}
+        <div className="grid gap-12 lg:grid-cols-2">
           <div><SectionHead eyebrow="Challenge" title="The challenge" /><p className="mt-5 text-lg text-text-2">{p.challenge}</p></div>
           <div><SectionHead eyebrow="Solution" title="Our solution" /><p className="mt-5 text-lg text-text-2">{p.solution}</p></div>
         </div>
