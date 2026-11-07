@@ -99,6 +99,21 @@ export function Motion() {
           });
         }
 
+        // Safety net: if a scroll reveal ever fails to run (layout shifted after init, trigger mis-measured, etc.),
+        // force the element visible shortly after it enters the viewport so the page can never show permanent blank areas.
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((en) => {
+            if (!en.isIntersecting) return;
+            const el = en.target as HTMLElement; io.unobserve(el);
+            window.setTimeout(() => {
+              const cs = getComputedStyle(el);
+              if (cs.opacity === "0" || cs.visibility === "hidden") gsap.to(el, { autoAlpha: 1, y: 0, duration: 0.6, overwrite: "auto" });
+              if (el.hasAttribute("data-img-reveal") && (cs.clipPath || "").startsWith("inset(100%")) gsap.to(el, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.6, overwrite: "auto" });
+            }, 1800);
+          });
+        }, { rootMargin: "0px 0px -4% 0px" });
+        q("[data-reveal],[data-stagger] > *,[data-img-reveal]").forEach((t) => io.observe(t));
+
         // Magnetic buttons
         if (fine) {
           q("[data-magnetic]").forEach((el) => {
@@ -110,6 +125,7 @@ export function Motion() {
             return () => { el.removeEventListener("mousemove", move); el.removeEventListener("mouseleave", leave); };
           });
         }
+        return () => io.disconnect();
       });
     } catch (e) {
       console.warn("Motion disabled:", e);
