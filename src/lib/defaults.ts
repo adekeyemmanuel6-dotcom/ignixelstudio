@@ -13,7 +13,7 @@ export const defaultSettings: SiteSettings = {
   copyright: "Ignixel Studio. All rights reserved.",
   seo_title: "Ignixel Studio — Web Design, Development & AI Solutions",
   seo_description: "Ignixel Studio designs and builds high-performance websites, web applications, eCommerce platforms and AI-powered solutions that help businesses establish authority and grow.",
-  og_image: "", ga_id: "", meta_pixel_id: "", brand_primary: "#1010E8",
+  og_image: "", ga_id: "", meta_pixel_id: "", brand_primary: "#010BCC",
   socials: { linkedin: "", x: "", instagram: "", github: "", dribbble: "", facebook: "" },
   content_seeded: false,
 };
@@ -28,7 +28,7 @@ const id = (s: string) => `default-${s}`;
 
 export const defaultCategories: ServiceCategory[] = [
   {
-    id: id("web-design"), slug: "web-design", title: "Web Design", image_url: photo("wireframe", 900, 1200), icon: "palette", sort_order: 1, published: true, cta_label: "Start a Design Project",
+    id: id("web-design"), slug: "web-design", title: "Web Design", image_url: photo("wireframe", 1200, 900), icon: "palette", sort_order: 1, published: true, cta_label: "Start a Design Project",
     short_description: "Strategic, user-focused interfaces that turn first impressions into lasting connections.",
     hero_headline: "Web Design That Turns First Impressions Into Lasting Connections.",
     hero_description: "We create strategic, user-focused digital experiences that combine beautiful interfaces, intuitive navigation, and conversion-driven design.",
@@ -51,7 +51,7 @@ export const defaultCategories: ServiceCategory[] = [
     ],
   },
   {
-    id: id("web-development"), slug: "web-development", title: "Web Development", image_url: photo("webdev", 900, 1200), icon: "code", sort_order: 2, published: true, cta_label: "Discuss Your Build",
+    id: id("web-development"), slug: "web-development", title: "Web Development", image_url: photo("webdev", 1200, 900), icon: "code", sort_order: 2, published: true, cta_label: "Discuss Your Build",
     short_description: "Reliable, scalable websites, web apps and integrations engineered for performance.",
     hero_headline: "Web Development Built for Performance, Scale and Possibility.",
     hero_description: "We engineer reliable, scalable digital solutions that help businesses streamline operations, improve user experiences, and turn complex ideas into functional products.",
@@ -77,7 +77,7 @@ export const defaultCategories: ServiceCategory[] = [
     ],
   },
   {
-    id: id("ecommerce-applications"), slug: "ecommerce-applications", title: "Ecommerce & Applications", image_url: photo("ecommerce", 900, 1200), icon: "shopping-bag", sort_order: 3, published: true, cta_label: "Plan Your Store",
+    id: id("ecommerce-applications"), slug: "ecommerce-applications", title: "Ecommerce & Applications", image_url: photo("ecommerce", 1200, 900), icon: "shopping-bag", sort_order: 3, published: true, cta_label: "Plan Your Store",
     short_description: "Online stores and commerce experiences that make buying easier and growth measurable.",
     hero_headline: "eCommerce Experiences Designed to Sell More.",
     hero_description: "We create high-performing online stores and digital commerce experiences that make shopping easier, improve customer journeys, and support business growth.",
@@ -105,7 +105,7 @@ export const defaultCategories: ServiceCategory[] = [
     ],
   },
   {
-    id: id("ai-services"), slug: "ai-services", title: "AI Services", image_url: photo("ai", 900, 1200), icon: "sparkles", sort_order: 4, published: true, cta_label: "Explore AI for Your Business",
+    id: id("ai-services"), slug: "ai-services", title: "AI Services", image_url: photo("ai", 1200, 900), icon: "sparkles", sort_order: 4, published: true, cta_label: "Explore AI for Your Business",
     short_description: "AI strategy, automation, agents and integrations that remove busywork and improve visibility.",
     hero_headline: "Turn Artificial Intelligence Into a Competitive Advantage.",
     hero_description: "We help businesses integrate intelligent technologies, automate repetitive tasks, improve digital visibility, and build AI-powered experiences.",
@@ -359,7 +359,7 @@ export const defaultHomepageSections: HomepageSection[] = [
     heading: "Industries We Serve", description: "Sector context shapes good digital decisions. These are the environments we work in most.",
     items: [
       { name: "Healthcare", image: photo("healthcare", 900, 900), description: "Clear, accessible patient and provider experiences.", href: "/services/web-design", tone: "#0e7490" },
-      { name: "SaaS & Technology", image: photo("saas", 900, 900), description: "Product sites, web apps and dashboards built to scale.", href: "/services/web-development", tone: "#1010E8" },
+      { name: "SaaS & Technology", image: photo("saas", 900, 900), description: "Product sites, web apps and dashboards built to scale.", href: "/services/web-development", tone: "#010BCC" },
       { name: "Professional Services", image: photo("services", 900, 900), description: "Authority-building sites that generate qualified enquiries.", href: "/solutions/website-doesnt-drive-leads", tone: "#334155" },
       { name: "Real Estate", image: photo("realestate", 900, 900), description: "Listings, search and lead capture that feel effortless.", href: "/services/web-development", tone: "#9a3412" },
       { name: "eCommerce & Retail", image: photo("retail", 900, 900), description: "Stores designed around browsing, trust and checkout.", href: "/services/ecommerce-applications", tone: "#be185d" },

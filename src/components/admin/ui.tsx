@@ -3,8 +3,8 @@ import { useEffect, type ReactNode } from "react";
 import { X } from "lucide-react";
 
 export const inputCls = "w-full rounded-lg border border-line bg-white px-3.5 py-2.5 text-base text-text placeholder:text-text-2/60 focus:border-brand focus:outline-none focus:ring-4 focus:ring-brand/10 disabled:bg-paper";
-export const btn = "inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg px-4 py-2 text-base font-semibold transition disabled:opacity-50";
-export const btnPrimary = `${btn} bg-brand text-white hover:bg-[#2a2af0]`;
+export const btn = "inline-flex min-h-[44px] items-center justify-center gap-2 rounded-[5px] px-4 py-2 text-base font-semibold transition disabled:opacity-50";
+export const btnPrimary = `${btn} bg-brand text-white hover:bg-[#1722e0]`;
 export const btnGhost = `${btn} border border-line bg-white text-text hover:border-brand hover:text-brand`;
 export const btnDanger = `${btn} border border-red-200 bg-white text-red-600 hover:bg-red-50`;
 

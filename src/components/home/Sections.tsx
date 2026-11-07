@@ -34,7 +34,7 @@ export async function Hero({ c }: { c: C }) {
         <div className="grid gap-14 lg:grid-cols-[1.12fr_0.88fr] lg:items-start lg:gap-16">
           <div className="lg:pt-6">
             <p className="eyebrow mb-7" data-hero-item>{c.label}</p>
-            <h1 data-split data-hero-title className="!text-[clamp(2.6rem,5.3vw,4.9rem)] !leading-[1.03]">{c.headline}</h1>
+            <h1 data-split data-hero-title className="!text-[clamp(2.6rem,5.3vw,4.9rem)] !leading-none">{c.headline}</h1>
             <p className="lead mt-8 max-w-xl" data-hero-item>{c.description}</p>
             <div className="mt-10 flex flex-wrap gap-3" data-hero-item>
               <Link href={c.primary_href || "/contact"} className="btn-primary !min-h-[56px] !px-8" data-magnetic>{c.primary_label} <ArrowRight /></Link>

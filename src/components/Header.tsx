@@ -27,7 +27,7 @@ export function Header({ logoUrl, categories }: { logoUrl?: string; categories: 
   const lightHero = LIGHT_HERO.some((r) => r.test(pathname));
   const solid = scrolled || lightHero || open;
   const dark = !solid; // white text over dark hero
-  const link = (href: string) => `rounded-full px-4 py-2 text-base font-medium transition ${dark ? "hover:text-[#9a9aff]" : "hover:text-brand"} ${pathname === href || (href !== "/" && pathname.startsWith(href)) ? (dark ? "text-[#9a9aff]" : "text-brand") : dark ? "text-white/90" : "text-text"}`;
+  const link = (href: string) => `rounded-[5px] px-4 py-2 text-base font-medium transition ${dark ? "hover:text-[#9a9aff]" : "hover:text-brand"} ${pathname === href || (href !== "/" && pathname.startsWith(href)) ? (dark ? "text-[#9a9aff]" : "text-brand") : dark ? "text-white/90" : "text-text"}`;
 
   return (
     <>
@@ -59,7 +59,7 @@ export function Header({ logoUrl, categories }: { logoUrl?: string; categories: 
             <Link href="/contact" className="btn-primary !min-h-[44px] !py-2">Let&apos;s Talk</Link>
           </div>
 
-          <button type="button" className={`grid h-12 w-12 place-items-center rounded-full lg:hidden ${dark ? "text-white" : "text-text"}`} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen((o) => !o)}>
+          <button type="button" className={`grid h-12 w-12 place-items-center rounded-[5px] lg:hidden ${dark ? "text-white" : "text-text"}`} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen((o) => !o)}>
             {open ? <X /> : <Menu />}
           </button>
         </div>

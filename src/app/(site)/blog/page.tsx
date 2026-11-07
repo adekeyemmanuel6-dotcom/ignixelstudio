@@ -15,7 +15,7 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
   const filtered = Boolean(sp.category || sp.q || page > 1);
   const [first, ...rest] = posts;
   const qs = (over: Record<string, string | undefined>) => { const p = new URLSearchParams(); const m = { category: sp.category, q: sp.q, ...over }; Object.entries(m).forEach(([k, v]) => v && p.set(k, v)); const s = p.toString(); return s ? `/blog?${s}` : "/blog"; };
-  const pill = (active: boolean) => `rounded-full border px-4 py-2 text-base font-medium transition ${active ? "border-brand bg-brand text-white" : "border-line bg-white hover:border-brand hover:text-brand"}`;
+  const pill = (active: boolean) => `rounded-[5px] border px-4 py-2 text-base font-medium transition ${active ? "border-brand bg-brand text-white" : "border-line bg-white hover:border-brand hover:text-brand"}`;
 
   return (
     <>
@@ -44,7 +44,7 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
         {pages > 1 && (
           <nav aria-label="Pagination" className="mt-14 flex flex-wrap items-center justify-center gap-2">
             {page > 1 && <Link className="btn-ghost" href={qs({ page: String(page - 1) })}>Previous</Link>}
-            {Array.from({ length: pages }, (_, i) => i + 1).map((n) => <Link key={n} href={qs({ page: String(n) })} aria-current={n === page ? "page" : undefined} className={`grid h-12 w-12 place-items-center rounded-full border font-medium ${n === page ? "border-brand bg-brand text-white" : "border-line hover:border-brand"}`}>{n}</Link>)}
+            {Array.from({ length: pages }, (_, i) => i + 1).map((n) => <Link key={n} href={qs({ page: String(n) })} aria-current={n === page ? "page" : undefined} className={`grid h-12 w-12 place-items-center rounded-[5px] border font-medium ${n === page ? "border-brand bg-brand text-white" : "border-line hover:border-brand"}`}>{n}</Link>)}
             {page < pages && <Link className="btn-ghost" href={qs({ page: String(page + 1) })}>Next</Link>}
           </nav>
         )}

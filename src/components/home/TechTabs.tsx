@@ -23,7 +23,7 @@ export function TechTabs({ tabs }: { tabs: { label: string; count: number; node:
       <div role="tablist" aria-label="Technology categories" className="flex flex-wrap gap-2">
         {tabs.map((t, idx) => (
           <button key={t.label} ref={(el) => { refs.current[idx] = el; }} role="tab" id={`ttab-${idx}`} aria-selected={i === idx} aria-controls="tpanel" tabIndex={i === idx ? 0 : -1} onClick={() => setI(idx)} onKeyDown={(e) => onKey(e, idx)}
-            className={`rounded-full border px-5 py-2.5 text-base font-semibold transition ${i === idx ? "border-ink bg-ink text-white" : "border-line bg-white text-text hover:border-brand hover:text-brand"}`}>
+            className={`rounded-[5px] border px-5 py-2.5 text-base font-semibold transition ${i === idx ? "border-ink bg-ink text-white" : "border-line bg-white text-text hover:border-brand hover:text-brand"}`}>
             {t.label} <span className={i === idx ? "text-white/60" : "text-text-2"}>{t.count}</span>
           </button>
         ))}

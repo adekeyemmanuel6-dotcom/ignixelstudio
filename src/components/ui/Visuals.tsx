@@ -9,7 +9,7 @@ export function AbstractGraphic({ className = "" }: { className?: string }) {
       <svg viewBox="0 0 400 400" className="relative h-full w-full">
         <defs>
           <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#4a4aff" /><stop offset="1" stopColor="#08086F" /></linearGradient>
-          <linearGradient id="g2" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stopColor="#1010E8" stopOpacity=".1" /><stop offset="1" stopColor="#8b8bff" stopOpacity=".7" /></linearGradient>
+          <linearGradient id="g2" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stopColor="#010BCC" stopOpacity=".1" /><stop offset="1" stopColor="#8b8bff" stopOpacity=".7" /></linearGradient>
         </defs>
         {[0, 1, 2, 3, 4].map((i) => <circle key={i} cx="200" cy="200" r={60 + i * 34} fill="none" stroke="url(#g2)" strokeWidth="1" strokeDasharray={i % 2 ? "2 8" : "none"} opacity={1 - i * 0.14} />)}
         <rect x="120" y="120" width="160" height="160" rx="36" fill="url(#g1)" transform="rotate(12 200 200)" />
@@ -22,7 +22,7 @@ export function AbstractGraphic({ className = "" }: { className?: string }) {
 }
 
 /** Browser-frame mockup. Uses a real screenshot when provided, otherwise renders a neutral wireframe. */
-export function BrowserMockup({ src, alt, tone = "#1010E8", className = "" }: { src?: string | null; alt: string; tone?: string; className?: string }) {
+export function BrowserMockup({ src, alt, tone = "#010BCC", className = "" }: { src?: string | null; alt: string; tone?: string; className?: string }) {
   return (
     <div className={`overflow-hidden rounded-2xl border border-white/10 bg-white shadow-2xl ${className}`}>
       <div className="flex items-center gap-1.5 border-b border-line bg-paper px-4 py-2.5" aria-hidden>
@@ -45,7 +45,7 @@ export function BrowserMockup({ src, alt, tone = "#1010E8", className = "" }: { 
   );
 }
 
-export function PhoneMockup({ src, alt, tone = "#1010E8", className = "" }: { src?: string | null; alt: string; tone?: string; className?: string }) {
+export function PhoneMockup({ src, alt, tone = "#010BCC", className = "" }: { src?: string | null; alt: string; tone?: string; className?: string }) {
   return (
     <div className={`w-[34%] overflow-hidden rounded-[1.6rem] border-[5px] border-ink bg-white shadow-2xl ${className}`}>
       {src ? <div className="relative aspect-[9/18]"><Image src={src} alt={alt} fill sizes="160px" className="object-cover object-top" /></div> :

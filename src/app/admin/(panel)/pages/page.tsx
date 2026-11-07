@@ -24,7 +24,7 @@ export default function PagesAdmin() {
   }
   return (
     <div><PageTitle title="About & Legal" description="Company story, mission, values, and legal pages." actions={<button className={btnPrimary} disabled={busy} onClick={save}>{busy ? "Saving…" : "Save changes"}</button>} />
-      <div role="tablist" className="mb-5 flex gap-2">{(["about", "legal"] as const).map((t) => <button key={t} role="tab" aria-selected={tab === t} onClick={() => setTab(t)} className={`rounded-full px-5 py-2 font-semibold ${tab === t ? "bg-brand text-white" : "bg-white border border-line"}`}>{t === "about" ? "About page" : "Privacy & Terms"}</button>)}</div>
+      <div role="tablist" className="mb-5 flex gap-2">{(["about", "legal"] as const).map((t) => <button key={t} role="tab" aria-selected={tab === t} onClick={() => setTab(t)} className={`rounded-[5px] px-5 py-2 font-semibold ${tab === t ? "bg-brand text-white" : "bg-white border border-line"}`}>{t === "about" ? "About page" : "Privacy & Terms"}</button>)}</div>
       <div className="rounded-2xl border border-line bg-white p-5 sm:p-8">{tab === "about" ? <FormFields fields={ABOUT_FIELDS} value={about} onChange={setAbout} /> : <FormFields fields={LEGAL} value={legal} onChange={setLegal} />}</div>
       <p className="mt-3 text-text-2">Team members are managed under <a className="text-brand underline" href="/admin/team">Team</a>.</p></div>
   );

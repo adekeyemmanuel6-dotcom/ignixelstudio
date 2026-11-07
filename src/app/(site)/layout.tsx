@@ -17,7 +17,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
       <Motion />
       <main id="main">{children}</main>
       <Footer />
-      <JsonLd data={{ "@context": "https://schema.org", "@type": "Organization", name: s.site_name, url: SITE_URL, logo: s.logo_url || undefined, email: s.contact_email || undefined, telephone: s.phone || undefined, description: s.seo_description, sameAs }} />
+      <JsonLd data={{ "@context": "https://schema.org", "@type": "Organization", name: s.site_name, url: SITE_URL, logo: s.logo_url || `${SITE_URL}/brand/ignixel-mark.svg`, email: s.contact_email || undefined, telephone: s.phone || undefined, description: s.seo_description, sameAs }} />
       {/^G-[A-Z0-9]+$/i.test(s.ga_id) && (
         <>
           <Script src={`https://www.googletagmanager.com/gtag/js?id=${s.ga_id}`} strategy="afterInteractive" />

@@ -8,14 +8,14 @@ import { Icon } from "./ui/Icon";
 import { formatDate } from "@/lib/utils";
 import { photo, PHOTO } from "@/lib/images";
 
-const TONES = ["#1010E8", "#0e7490", "#7c3aed", "#be185d"];
+const TONES = ["#010BCC", "#0e7490", "#7c3aed", "#be185d"];
 
 const SVC_PHOTO = { "web-design": "wireframe", "web-development": "webdev", "ecommerce-applications": "ecommerce", "ai-services": "ai" } as const;
 export function ServiceCategoryCard({ c, subs, i }: { c: ServiceCategory; subs: Service[]; i: number }) {
-  const src = c.image_url || photo((SVC_PHOTO as Record<string, keyof typeof PHOTO>)[c.slug] ?? "office", 900, 1200);
+  const src = c.image_url || photo((SVC_PHOTO as Record<string, keyof typeof PHOTO>)[c.slug] ?? "office", 1200, 900);
   return (
     <article className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-line bg-white transition duration-500 hover:-translate-y-1.5 hover:border-brand/40 hover:shadow-glow">
-      <div className="relative aspect-[3/4] overflow-hidden bg-ink">
+      <div className="relative aspect-[4/3] overflow-hidden bg-ink">
         <Image src={src} alt="" fill sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" className="object-cover transition duration-700 ease-out group-hover:scale-110" />
         <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/15 to-transparent" aria-hidden />
         <span className="absolute left-5 top-5 font-heading text-lg tabular-nums text-white/80">0{i + 1}</span>

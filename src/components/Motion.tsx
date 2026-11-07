@@ -34,7 +34,7 @@ export function Motion() {
         // Headline reveals (line masks). autoSplit re-splits on resize/font load.
         q("[data-split]").forEach((el) => {
           SplitText.create(el, {
-            type: "lines", mask: "lines", autoSplit: true, linesClass: "split-line",
+            type: "lines", mask: "lines", autoSplit: true, linesClass: "split-line", maskClass: "split-mask",
             onSplit: (self) => { gsap.set(el, { visibility: "visible" }); return gsap.from(self.lines, { yPercent: 110, duration: 1.1, ease: "expo.out", stagger: 0.09, delay: el.hasAttribute("data-hero-title") ? 0.1 : 0, scrollTrigger: el.hasAttribute("data-hero-title") ? undefined : { trigger: el, start: "top 88%", once: true } }); },
           });
         });
