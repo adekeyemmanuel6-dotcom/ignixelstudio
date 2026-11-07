@@ -20,11 +20,11 @@ export function TechTabs({ tabs }: { tabs: { label: string; count: number; node:
   };
   return (
     <div>
-      <div role="tablist" aria-label="Technology categories" className="flex flex-wrap gap-2">
+      <div role="tablist" aria-label="Technology categories" className="grid gap-2 sm:flex sm:flex-wrap">
         {tabs.map((t, idx) => (
           <button key={t.label} ref={(el) => { refs.current[idx] = el; }} role="tab" id={`ttab-${idx}`} aria-selected={i === idx} aria-controls="tpanel" tabIndex={i === idx ? 0 : -1} onClick={() => setI(idx)} onKeyDown={(e) => onKey(e, idx)}
-            className={`rounded-[5px] border px-5 py-2.5 text-base font-semibold transition ${i === idx ? "border-ink bg-ink text-white" : "border-line bg-white text-text hover:border-brand hover:text-brand"}`}>
-            {t.label} <span className={i === idx ? "text-white/60" : "text-text-2"}>{t.count}</span>
+            className={`flex min-h-[var(--button-height)] w-full items-center justify-between gap-3 rounded-[5px] border px-5 text-left text-base font-semibold transition sm:w-auto sm:justify-start ${i === idx ? "border-ink bg-ink text-white" : "border-line bg-white text-text hover:border-brand hover:text-brand"}`}>
+            <span>{t.label}</span> <span className={i === idx ? "text-white/60" : "text-text-2"}>{t.count}</span>
           </button>
         ))}
       </div>

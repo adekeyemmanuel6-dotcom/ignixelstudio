@@ -17,7 +17,6 @@ export async function Footer() {
           <div>
             <Logo url={s.logo_url} dark className="h-10" />
             <p className="mt-5 max-w-md text-white/70">{s.footer_description}</p>
-            <p className="mt-3 font-heading text-lg text-white">Ignixel <span className="text-[#6fdc5a]">=</span> Ignite + Pixels</p>
             <div className="mt-7 max-w-md">
               <h2 className="mb-3 font-heading !text-xl">Get practical insights by email</h2>
               <NewsletterForm dark />
