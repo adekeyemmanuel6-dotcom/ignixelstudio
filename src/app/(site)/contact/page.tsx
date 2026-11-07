@@ -17,7 +17,7 @@ export default async function ContactPage() {
         <div className="mt-8 grid gap-12 lg:grid-cols-2 lg:gap-20">
           <div>
             <p className="eyebrow mb-5">Contact</p>
-            <h1>Let&apos;s Build Something Together.</h1>
+            <h1 className="!text-[clamp(2rem,4.4vw,3.5rem)] !leading-[1.05]">Let&apos;s Build Something Together.</h1>
             <p className="lead mt-6">Share what you&apos;re working on and where you want to get to. We&apos;ll come back with honest advice and clear next steps.</p>
             <ul className="mt-8 space-y-3">{["A considered reply from a senior team member", "Practical recommendations, not a generic pitch", "A clear scope, timeline and investment range"].map((b) => <li key={b} className="flex gap-3"><CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-[#8b8bff]" />{b}</li>)}</ul>
             {t && <figure className="mt-10 rounded-2xl border border-white/10 bg-white/5 p-6"><Quote className="h-6 w-6 text-[#8b8bff]" /><blockquote className="mt-3 text-lg text-white">{t.quote}</blockquote><figcaption className="mt-3 text-white/60">{t.client_name}, {t.company}</figcaption></figure>}

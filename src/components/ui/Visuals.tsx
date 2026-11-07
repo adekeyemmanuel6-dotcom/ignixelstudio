@@ -1,25 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
 
-/** Abstract technology-inspired hero graphic (pure SVG/CSS, no assets). */
-export function AbstractGraphic({ className = "" }: { className?: string }) {
-  return (
-    <div className={`relative aspect-square w-full max-w-[520px] ${className}`} aria-hidden>
-      <div className="absolute inset-0 animate-float rounded-full bg-brand/30 blur-[90px]" />
-      <svg viewBox="0 0 400 400" className="relative h-full w-full">
-        <defs>
-          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#4a4aff" /><stop offset="1" stopColor="#08086F" /></linearGradient>
-          <linearGradient id="g2" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stopColor="#010BCC" stopOpacity=".1" /><stop offset="1" stopColor="#8b8bff" stopOpacity=".7" /></linearGradient>
-        </defs>
-        {[0, 1, 2, 3, 4].map((i) => <circle key={i} cx="200" cy="200" r={60 + i * 34} fill="none" stroke="url(#g2)" strokeWidth="1" strokeDasharray={i % 2 ? "2 8" : "none"} opacity={1 - i * 0.14} />)}
-        <rect x="120" y="120" width="160" height="160" rx="36" fill="url(#g1)" transform="rotate(12 200 200)" />
-        <rect x="150" y="150" width="100" height="100" rx="24" fill="none" stroke="#fff" strokeOpacity=".4" transform="rotate(12 200 200)" />
-        {[[70, 90], [330, 120], [90, 320], [320, 310], [200, 40]].map(([x, y], i) => <circle key={i} cx={x} cy={y} r="5" fill="#8b8bff" />)}
-      </svg>
-    </div>
-  );
-}
-
 /** Browser-frame mockup. Uses a real screenshot when provided, otherwise renders a neutral wireframe. */
 export function BrowserMockup({ src, alt, tone = "#010BCC", className = "" }: { src?: string | null; alt: string; tone?: string; className?: string }) {
   return (

@@ -92,7 +92,7 @@ export async function Services({ c }: { c: C }) {
     <section className="section bg-white">
       <div className="container-x">
         <div className="flex flex-wrap items-end justify-between gap-6"><SectionHead eyebrow="What we do" title={c.heading} description={c.description} /><Link href="/services" className="btn-ghost" data-magnetic>All services <ArrowRight /></Link></div>
-        <div className="mt-sect grid items-stretch gap-card sm:grid-cols-2 lg:grid-cols-4" data-stagger>
+        <div className="mt-sect grid auto-rows-fr items-stretch gap-card sm:grid-cols-2 lg:grid-cols-4" data-stagger>
           {cats.map((cat, i) => <ServiceCategoryCard key={cat.id} c={cat} subs={subs.filter((s) => s.category_id === cat.id)} i={i} />)}
         </div>
       </div>

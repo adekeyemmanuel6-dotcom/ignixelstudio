@@ -49,7 +49,7 @@ export default async function ServiceCategoryPage({ params }: { params: Promise<
       <section className="section bg-white" id="services">
         <div className="container-x">
           <SectionHead eyebrow="What We Do" title={`${c.title} services`} description={c.short_description} />
-          <div className="mt-sect grid gap-card sm:grid-cols-2 lg:grid-cols-3">{services.map((s, i) => <Reveal key={s.id} delay={(i % 3) * 0.07}><SubServiceCard s={s} i={i} /></Reveal>)}</div>
+          <div className="mt-sect grid auto-rows-fr gap-card sm:grid-cols-2 lg:grid-cols-3">{services.map((s, i) => <Reveal key={s.id} className="h-full" delay={(i % 3) * 0.07}><SubServiceCard s={s} i={i} /></Reveal>)}</div>
         </div>
       </section>
 

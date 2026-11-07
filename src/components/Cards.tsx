@@ -35,7 +35,7 @@ export function ServiceCategoryCard({ c, subs, i }: { c: ServiceCategory; subs: 
 
 export function SubServiceCard({ s, i }: { s: Service; i: number }) {
   return (
-    <article className="group relative flex flex-col card-pad rounded-2xl border border-line bg-white transition duration-300 hover:-translate-y-1 hover:border-brand/40 hover:shadow-card">
+    <article className="group relative flex h-full flex-col card-pad rounded-xl border border-line bg-white transition duration-300 hover:-translate-y-1 hover:border-brand/40 hover:shadow-card">
       <div className="mb-5 overflow-hidden rounded-xl bg-paper p-3"><BrowserMockup src={s.image_url} alt={`${s.title} illustration`} tone={TONES[i % 4]} className="!shadow-none !border-line" /></div>
       <h3 className="!text-xl">{s.title}</h3>
       <p className="mt-2 flex-1 text-text-2">{s.description}</p>

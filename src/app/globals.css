@@ -48,6 +48,7 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   .pt-sect { padding-top: var(--section-y); }
   .pb-sect { padding-bottom: var(--section-y); }
   .hero-pad { padding-top: calc(var(--header-h) + var(--section-y) * .75); padding-bottom: var(--section-y); }
+  .hero-pad-sm { padding-top: calc(var(--header-h) + var(--section-y) * .45); padding-bottom: calc(var(--section-y) * .7); }
   .pt-hero { padding-top: calc(var(--header-h) + var(--section-y) * .75); }
   .mt-sect { margin-top: var(--head-gap); }
   .gap-card { gap: var(--card-gap); }
@@ -140,5 +141,5 @@ section.bg-white + section.bg-white { border-top: 1px solid #E5E8F0; }
 [data-tilt]:hover::after { opacity: 1; }
 .cursor-dot, .cursor-ring { position: fixed; left: 0; top: 0; z-index: 120; pointer-events: none; opacity: 0; mix-blend-mode: difference; border-radius: 9999px; background: #fff; }
 .cursor-dot { width: 7px; height: 7px; }
-.cursor-ring { width: 40px; height: 40px; background: transparent; border: 1.5px solid #fff; }
+.cursor-ring { width: 30px; height: 30px; background: transparent; border: 1.5px solid #fff; }
 @media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) { .cursor-dot, .cursor-ring { display: none; } }

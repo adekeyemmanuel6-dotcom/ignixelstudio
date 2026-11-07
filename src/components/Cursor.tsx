@@ -22,8 +22,8 @@ export function Cursor() {
       const t = e.target as Element | null;
       const text = t?.closest("input,textarea");
       const hot = !text && t?.closest(INTERACTIVE);
-      gsap.to(r, { scale: text ? 0.4 : hot ? 1.6 : 1, backgroundColor: hot ? "rgba(255,255,255,.22)" : "rgba(255,255,255,0)", duration: 0.35, ease: "power3.out" });
-      gsap.to(d, { scale: hot ? 0 : 1, duration: 0.25 });
+      gsap.to(r, { scale: text ? 0.5 : hot ? 1.35 : 1, duration: 0.3, ease: "power3.out" });
+      gsap.to(d, { scale: hot ? 0.6 : 1, duration: 0.25 });
     };
     const down = () => gsap.to(r, { scale: "-=0.35", duration: 0.2 });
     const up = (e: MouseEvent) => over(e);
