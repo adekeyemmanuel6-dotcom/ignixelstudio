@@ -68,3 +68,15 @@ profiles, site_settings (`general`, `about`, `legal`), homepage_sections, servic
 - Imagery: curated Unsplash photos in `src/lib/images.ts` (3:4 crops for services, hero band, project and team cards). Replace via the admin image fields or edit that file.
 - **GSAP** (`src/components/Motion.tsx`): one `gsap.matchMedia` context, reverted on route change, skipped entirely for `prefers-reduced-motion`. Markup opts in with data attributes: `data-split`, `data-reveal`, `data-stagger`, `data-img-reveal`, `data-parallax`, `data-float`, `data-magnetic`, `data-progress`. If GSAP fails, content is shown after 5 s (`html[data-motion="off"]`).
 - After deploying new defaults, the admin Dashboard shows **Apply latest content** to refresh homepage copy/order/images in the database.
+
+## Layout & component tokens (`src/app/globals.css`)
+Everything below is driven by CSS variables at the top of `globals.css`; change a token, not individual components.
+| Token | ≤374 | 375–430 | 431–767 | 768–1023 | ≥1024 |
+|---|---|---|---|---|---|
+| `--page-pad` (gutter) | 16 | 20 | 24 | 32 | 48 |
+| `--section-y` (section spacing) | 48 | 56 | 64 | 80 | 112 |
+| `--button-height` | 48 | 48 | 48 | 52 | 52 |
+- Cards: `--card-gap` 16→24, `--card-pad` 20→32. Heading→content: `--head-gap`. Content max width: `--content-max` (1300px).
+- Utilities: `.container-x`, `.page-x`, `.section`, `.hero-pad`, `.pt-hero`, `.pt-sect`/`.pb-sect`, `.mt-sect`, `.gap-card`, `.card-pad`, `.team-list` (always one card per row).
+- Buttons: `.btn-primary`, `.btn-secondary` / `.btn-secondary-dark`, `.btn-dark`, `.btn-white`, `.btn-block`. All share height, 5px radius, 160px min-width (≥768px) and icon size.
+- Two buttons together: use `<CtaPair>` (`components/ui/CtaPair.tsx`) or the `.cta-pair` class. Equal 50/50 columns, stacks full-width under 480px, 12px gap. Use `.cta-stack` for vertical stacks.
