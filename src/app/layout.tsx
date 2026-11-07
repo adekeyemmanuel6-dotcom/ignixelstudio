@@ -22,8 +22,8 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const craftwork = process.env.NEXT_PUBLIC_CRAFTWORK_FONT === "true";
   return (
-    <html lang="en">
-      <head>{craftwork && <link rel="stylesheet" href="/fonts/craftwork.css" />}</head>
+    <html lang="en" suppressHydrationWarning>
+      <head><script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js');setTimeout(function(){if(!document.documentElement.dataset.motion)document.documentElement.dataset.motion='off'},5000)" }} />{craftwork && <link rel="stylesheet" href="/fonts/craftwork.css" />}</head>
       <body>{children}</body>
     </html>
   );

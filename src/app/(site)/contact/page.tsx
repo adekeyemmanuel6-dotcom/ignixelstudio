@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Mail, Phone, MapPin, CheckCircle2, Quote } from "lucide-react";
+import { Mail, Phone, MapPin, CheckCircle2, Quote } from "@/components/ui/Ico";
 import { InquiryForm } from "@/components/InquiryForm";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { getCategories, getSettings, getTestimonials } from "@/lib/content";

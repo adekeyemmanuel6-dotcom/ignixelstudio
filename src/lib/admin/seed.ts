@@ -22,7 +22,7 @@ export async function installStarterContent(db: SupabaseClient) {
   if (await empty("blog_categories")) {
     const cats = await ins("blog_categories", D.defaultBlogCategories.map(strip));
     if (await empty("blog_posts")) await ins("blog_posts", D.defaultPosts.map((p, i) => ({
-      slug: p.slug, title: p.title, excerpt: p.excerpt, content: p.content, reading_time: p.reading_time, status: "published",
+      slug: p.slug, title: p.title, excerpt: p.excerpt, content: p.content, featured_image: (p as { featured_image?: string }).featured_image ?? null, reading_time: p.reading_time, status: "published",
       published_at: new Date(Date.UTC(2026, 8 - i, 15)).toISOString(), category_id: cats.find((c) => c.slug === p.category)?.id, author_name: "Ignixel Team",
     })));
   }
@@ -41,6 +41,23 @@ export async function installStarterContent(db: SupabaseClient) {
   if (!have.has("about")) await up("about", D.defaultAbout);
   if (!have.has("legal")) await up("legal", D.defaultLegal);
   const { data: gen } = await db.from("site_settings").select("value").eq("key", "general").maybeSingle();
-  await up("general", { ...D.defaultSettings, ...(gen?.value ?? {}), content_seeded: true });
+  await up("general", { ...D.defaultSettings, ...(gen?.value ?? {}), content_seeded: true, content_version: D.CONTENT_VERSION });
   return log;
+}
+
+/** Re-applies the latest default homepage copy/order and fills missing images. Overwrites homepage section text, so the admin confirms first. */
+export async function applyContentUpdate(db: SupabaseClient) {
+  for (const sec of D.defaultHomepageSections) {
+    const { data: row } = await db.from("homepage_sections").select("id").eq("key", sec.key).maybeSingle();
+    const payload = { title: sec.title, sort_order: sec.sort_order, content: sec.content };
+    const { error } = row ? await db.from("homepage_sections").update(payload).eq("id", row.id) : await db.from("homepage_sections").insert({ key: sec.key, enabled: true, ...payload });
+    if (error) throw new Error(error.message);
+  }
+  for (const c of D.defaultCategories) if (c.image_url) await db.from("service_categories").update({ image_url: c.image_url }).eq("slug", c.slug).is("image_url", null);
+  for (const [i, c] of D.defaultCaseStudies.entries()) if (c.featured_image) await db.from("case_studies").update({ featured_image: c.featured_image }).eq("slug", c.slug).eq("is_placeholder", true).is("featured_image", null).then(() => i);
+  for (const p of D.defaultPosts) { const img = (p as { featured_image?: string }).featured_image; if (img) await db.from("blog_posts").update({ featured_image: img }).eq("slug", p.slug).is("featured_image", null); }
+  const { data: about } = await db.from("site_settings").select("value").eq("key", "about").maybeSingle();
+  await db.from("site_settings").upsert({ key: "about", value: { brand_note: D.defaultAbout.brand_note, ...(about?.value ?? {}) } }, { onConflict: "key" });
+  const { data: gen } = await db.from("site_settings").select("value").eq("key", "general").maybeSingle();
+  await db.from("site_settings").upsert({ key: "general", value: { ...(gen?.value ?? {}), content_version: D.CONTENT_VERSION } }, { onConflict: "key" });
 }

@@ -15,10 +15,10 @@ export function PageHero({ crumbs, eyebrow, title, description, ctas, visual = t
         <Breadcrumbs items={crumbs} dark />
         <div className={`mt-8 grid items-center gap-12 ${visual ? "lg:grid-cols-[1.3fr_1fr]" : ""}`}>
           <div>
-            {eyebrow && <p className="eyebrow mb-5">{eyebrow}</p>}
-            <h1 className="max-w-4xl">{title}</h1>
-            {description && <p className="lead mt-6 max-w-2xl">{description}</p>}
-            {ctas && <div className="mt-9 flex flex-wrap gap-3">{ctas.map((c) => <Link key={c.href + c.label} href={c.href} className={c.secondary ? "btn-ghost-dark" : "btn-primary"}>{c.label}</Link>)}</div>}
+            {eyebrow && <p className="eyebrow mb-5" data-hero-item>{eyebrow}</p>}
+            <h1 className="max-w-4xl" data-split data-hero-title>{title}</h1>
+            {description && <p className="lead mt-6 max-w-2xl" data-hero-item>{description}</p>}
+            {ctas && <div className="mt-9 flex flex-wrap gap-3" data-hero-item>{ctas.map((c) => <Link key={c.href + c.label} href={c.href} data-magnetic className={c.secondary ? "btn-ghost-dark" : "btn-primary"}>{c.label}</Link>)}</div>}
             {children}
           </div>
           {visual && <div className="hidden justify-center lg:flex"><AbstractGraphic /></div>}

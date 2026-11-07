@@ -10,7 +10,7 @@ export function Logo({ url, dark = false, className = "h-9" }: { url?: string; d
         <path d="M13 11h6v18h-6zM21 11h6l-6 9 6 9h-6l-6-9z" fill="#fff" />
       </svg>
       <span className={`font-heading text-[1.35rem] font-semibold leading-none tracking-tight ${dark ? "text-white" : "text-text"}`}>
-        Ignixel<span className="text-brand"> Studio</span>
+        Ignixel<span className={dark ? "text-[#8b8bff]" : "text-brand"}> Studio</span>
       </span>
     </span>
   );

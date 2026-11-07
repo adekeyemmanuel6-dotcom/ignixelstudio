@@ -1,6 +1,7 @@
 // Starter content. Used (a) as a fallback until the database is seeded, and (b) by the admin
 // "Install starter content" action. Everything here is editable in /admin afterwards.
 // Nothing here invents clients, awards, statistics or testimonials: placeholders are flagged `is_placeholder`.
+import { photo } from "./images";
 import type { BlogCategory, CaseStudy, ServiceCategory, Service, SiteSettings, TeamMember, Technology, Testimonial, HomepageSection } from "./types";
 
 export const defaultSettings: SiteSettings = {
@@ -17,6 +18,9 @@ export const defaultSettings: SiteSettings = {
   content_seeded: false,
 };
 
+/** Bump when default copy/images change; the admin dashboard then offers "Apply latest default content". */
+export const CONTENT_VERSION = 2;
+
 const faq = (q: string, a: string) => ({ q, a });
 const st = (title: string, description: string) => ({ title, description });
 
@@ -24,7 +28,7 @@ const id = (s: string) => `default-${s}`;
 
 export const defaultCategories: ServiceCategory[] = [
   {
-    id: id("web-design"), slug: "web-design", title: "Web Design", icon: "palette", sort_order: 1, published: true, image_url: null, cta_label: "Start a Design Project",
+    id: id("web-design"), slug: "web-design", title: "Web Design", image_url: photo("wireframe", 900, 1200), icon: "palette", sort_order: 1, published: true, cta_label: "Start a Design Project",
     short_description: "Strategic, user-focused interfaces that turn first impressions into lasting connections.",
     hero_headline: "Web Design That Turns First Impressions Into Lasting Connections.",
     hero_description: "We create strategic, user-focused digital experiences that combine beautiful interfaces, intuitive navigation, and conversion-driven design.",
@@ -47,7 +51,7 @@ export const defaultCategories: ServiceCategory[] = [
     ],
   },
   {
-    id: id("web-development"), slug: "web-development", title: "Web Development", icon: "code", sort_order: 2, published: true, image_url: null, cta_label: "Discuss Your Build",
+    id: id("web-development"), slug: "web-development", title: "Web Development", image_url: photo("webdev", 900, 1200), icon: "code", sort_order: 2, published: true, cta_label: "Discuss Your Build",
     short_description: "Reliable, scalable websites, web apps and integrations engineered for performance.",
     hero_headline: "Web Development Built for Performance, Scale and Possibility.",
     hero_description: "We engineer reliable, scalable digital solutions that help businesses streamline operations, improve user experiences, and turn complex ideas into functional products.",
@@ -73,7 +77,7 @@ export const defaultCategories: ServiceCategory[] = [
     ],
   },
   {
-    id: id("ecommerce-applications"), slug: "ecommerce-applications", title: "Ecommerce & Applications", icon: "shopping-bag", sort_order: 3, published: true, image_url: null, cta_label: "Plan Your Store",
+    id: id("ecommerce-applications"), slug: "ecommerce-applications", title: "Ecommerce & Applications", image_url: photo("ecommerce", 900, 1200), icon: "shopping-bag", sort_order: 3, published: true, cta_label: "Plan Your Store",
     short_description: "Online stores and commerce experiences that make buying easier and growth measurable.",
     hero_headline: "eCommerce Experiences Designed to Sell More.",
     hero_description: "We create high-performing online stores and digital commerce experiences that make shopping easier, improve customer journeys, and support business growth.",
@@ -101,7 +105,7 @@ export const defaultCategories: ServiceCategory[] = [
     ],
   },
   {
-    id: id("ai-services"), slug: "ai-services", title: "AI Services", icon: "sparkles", sort_order: 4, published: true, image_url: null, cta_label: "Explore AI for Your Business",
+    id: id("ai-services"), slug: "ai-services", title: "AI Services", image_url: photo("ai", 900, 1200), icon: "sparkles", sort_order: 4, published: true, cta_label: "Explore AI for Your Business",
     short_description: "AI strategy, automation, agents and integrations that remove busywork and improve visibility.",
     hero_headline: "Turn Artificial Intelligence Into a Competitive Advantage.",
     hero_description: "We help businesses integrate intelligent technologies, automate repetitive tasks, improve digital visibility, and build AI-powered experiences.",
@@ -240,7 +244,7 @@ export const defaultCaseStudies: CaseStudy[] = [1, 2, 3].map((n) => ({
   services: [["Web Design", "Web Development"], ["Shopify Development", "Store Design"], ["Website Redesign", "SEO"]][n - 1],
   description: "Placeholder project. Replace this description with a short summary of the client, the goal and what Ignixel delivered.",
   challenge: "Describe the business challenge this project addressed.", solution: "Describe the approach, design decisions and build.",
-  featured_image: null, desktop_image: null, mobile_image: null, technologies: [["Next.js", "Supabase"], ["Shopify"], ["Webflow"]][n - 1],
+  featured_image: [photo("digital", 900, 1200), photo("ecommerce", 900, 1200), photo("services", 900, 1200)][n - 1], desktop_image: null, mobile_image: null, technologies: [["Next.js", "Supabase"], ["Shopify"], ["Webflow"]][n - 1],
   results: [], website_url: null, featured: true, published: true, is_placeholder: true, seo_title: null, seo_description: null, sort_order: n,
 }));
 
@@ -270,30 +274,33 @@ export const defaultPosts = [
   {
     slug: "what-makes-a-business-website-convert", title: "What Actually Makes a Business Website Convert", category: "web-design",
     excerpt: "Traffic is only useful if visitors know what to do next. Here are the structural decisions that turn visits into enquiries.", reading_time: 5,
+    featured_image: photo("analytics", 1200, 800),
     content: `<h2>Start with one clear job for every page</h2><p>Pages that try to do everything convert poorly. Decide whether a page exists to inform, qualify or capture an enquiry, then remove anything that competes with that purpose.</p><h2>Say what you do in the first screen</h2><p>A visitor should understand who you help, what you offer and what to do next without scrolling. Specific, plain language outperforms clever slogans.</p><h2>Put trust where doubt appears</h2><p>Place proof such as client logos, case studies and process explanations next to the calls to action, where hesitation actually happens.</p><h2>Make the next step small</h2><p>A short form with clear expectations beats a long one. Tell people what happens after they submit.</p><h2>Measure, then improve</h2><p>Track form starts, completions and drop-off. Small, evidence-led changes compound over time.</p>`,
   },
   {
     slug: "shopify-vs-woocommerce-choosing-a-platform", title: "Shopify vs WooCommerce: Choosing the Right Platform", category: "ecommerce",
     excerpt: "Both can power a great store. The right answer depends on your team, catalogue and growth plans.", reading_time: 6,
+    featured_image: photo("ecommerce", 1200, 800),
     content: `<h2>Choose Shopify when speed and simplicity matter</h2><p>Shopify handles hosting, security and checkout for you, which lets small teams focus on products and marketing.</p><h2>Choose WooCommerce when you need control</h2><p>WooCommerce runs on WordPress and can be customised at code level. It suits content-led stores and unusual requirements, with more responsibility for maintenance.</p><h2>Questions to ask</h2><ul><li>Who will manage the store day to day?</li><li>How complex is the catalogue and pricing?</li><li>Which integrations are essential?</li><li>What is the long-term running cost?</li></ul><p>If you are unsure, <a href="/contact">talk to us</a> and we will recommend an option based on your situation.</p>`,
   },
   {
     slug: "preparing-your-website-for-ai-search", title: "Preparing Your Website for AI Search", category: "ai-automation",
     excerpt: "AI assistants summarise and cite the web. These are the content and technical foundations that make you easier to cite.", reading_time: 5,
+    featured_image: photo("ai", 1200, 800),
     content: `<h2>Be the clearest source on your topic</h2><p>AI systems favour pages that answer a question directly and completely. Structure content with descriptive headings, concise definitions and supporting detail.</p><h2>Make facts easy to extract</h2><p>Use semantic HTML, structured data and consistent naming for your company, services and people.</p><h2>Build topical depth</h2><p>A cluster of related, well-linked articles signals expertise more reliably than one isolated page.</p><h2>Keep it technically accessible</h2><p>Fast, crawlable pages with clean markup and an up-to-date sitemap are the baseline for any search visibility.</p>`,
   },
 ];
 
 export const defaultHomepageSections: HomepageSection[] = [
   { id: id("s-hero"), key: "hero", title: "Hero", enabled: true, sort_order: 1, content: {
-    label: "Web design, development & AI studio", headline: "Digital Experiences Built to Move Your Business Forward.",
-    description: "We design and develop powerful websites, digital products, and AI-powered solutions that help ambitious businesses stand out, work smarter, and grow.",
+    label: "Design and Development agency for scaling and regulated companies", headline: "Ignite every dead pixel and start generating real results.",
+    description: "We combine experienced product, design, development and AI technologies to help companies define, build, and scale complex digital products.",
     primary_label: "Start a Project", primary_href: "/contact", secondary_label: "Explore Our Work", secondary_href: "/work",
-    trust: "Strategy, design and engineering under one roof.",
+    trust: "Strategy, design, engineering and AI under one accountable team.",
   } },
   { id: id("s-trusted"), key: "trusted", title: "Platforms & technology strip", enabled: true, sort_order: 2, content: { heading: "Platforms and technologies we build with" } },
   { id: id("s-services"), key: "services", title: "Services overview", enabled: true, sort_order: 3, content: { heading: "Everything You Need to Build, Launch and Grow.", description: "Four connected disciplines, one accountable team." } },
-  { id: id("s-solutions"), key: "solutions", title: "Challenges we solve", enabled: true, sort_order: 4, content: {
+  { id: id("s-solutions"), key: "solutions", title: "Challenges we solve", enabled: true, sort_order: 7, content: {
     heading: "Having a Digital Problem? Let's Find the Right Solution.", description: "Start with the problem you are facing. We will show you where to look and how we would fix it.",
     items: [
       { slug: "website-doesnt-drive-leads", problem: "My Website Doesn't Drive Leads", cta: "Improve My Website Leads",
@@ -316,11 +323,15 @@ export const defaultHomepageSections: HomepageSection[] = [
         summary: "When work is happening but nothing is improving, the issue is often communication and clarity rather than effort.",
         issues: ["Poor communication", "Unclear deliverables", "Lack of strategy", "Weak execution", "No measurable progress"],
         approach: "We start with a transparent review of goals and current work, define deliverables and measures, and run projects with regular, plain-language reporting." },
+      { slug: "website-is-slow-and-hard-to-update", problem: "My Website Is Slow and Hard to Update", cta: "Speed Up My Website",
+        summary: "Pages crawl, every change needs a developer, and the platform feels fragile. That cost shows up in rankings, conversions and team time.",
+        issues: ["Heavy pages and unoptimised images", "Plugin or template bloat", "Outdated platform or codebase", "No editor-friendly CMS", "Security and maintenance gaps"],
+        approach: "We profile real-world performance, remove what slows the site down, and rebuild or replatform where needed, so pages load fast and your team can update content without a developer." },
     ],
   } },
-  { id: id("s-projects"), key: "projects", title: "Featured projects", enabled: true, sort_order: 5, content: { heading: "Digital Experiences. Real Business Impact.", description: "Selected projects, shown with the outcomes that matter to each client.", cta_label: "View All Projects" } },
-  { id: id("s-why"), key: "why", title: "Why choose Ignixel", enabled: true, sort_order: 6, content: {
-    heading: "More Than a Digital Agency. Your Technology Growth Partner.",
+  { id: id("s-projects"), key: "projects", title: "Featured projects", enabled: true, sort_order: 4, content: { heading: "Digital Experiences. Real Business Impact.", description: "Selected projects, shown with the outcomes that matter to each client.", cta_label: "View All Projects" } },
+  { id: id("s-why"), key: "why", title: "Why choose Ignixel", enabled: true, sort_order: 5, content: {
+    heading: "A strong digital presence starts with a smart strategy.",
     items: [
       { title: "Strategy Before Execution", description: "We define goals, audience and scope first so every design and build decision has a reason.", icon: "compass" },
       { title: "Design That Drives Action", description: "Interfaces shaped around how people read, decide and act, not just how they look.", icon: "mouse-pointer-click" },
@@ -330,7 +341,7 @@ export const defaultHomepageSections: HomepageSection[] = [
       { title: "Long-Term Partnership", description: "Support and improvement after launch, so your site keeps earning its place.", icon: "handshake" },
     ],
   } },
-  { id: id("s-process"), key: "process", title: "How we work", enabled: true, sort_order: 7, content: {
+  { id: id("s-process"), key: "process", title: "How we work", enabled: true, sort_order: 6, content: {
     heading: "How We Work", description: "A clear five-stage process from first conversation to continuous improvement.",
     items: [
       { title: "Discover", description: "Understand the business, audience, objectives, and challenges." },
@@ -347,16 +358,16 @@ export const defaultHomepageSections: HomepageSection[] = [
   { id: id("s-industries"), key: "industries", title: "Industries", enabled: true, sort_order: 9, content: {
     heading: "Industries We Serve", description: "Sector context shapes good digital decisions. These are the environments we work in most.",
     items: [
-      { name: "Healthcare", description: "Clear, accessible patient and provider experiences.", href: "/services/web-design", tone: "#0e7490" },
-      { name: "SaaS & Technology", description: "Product sites, web apps and dashboards built to scale.", href: "/services/web-development", tone: "#1010E8" },
-      { name: "Professional Services", description: "Authority-building sites that generate qualified enquiries.", href: "/solutions/website-doesnt-drive-leads", tone: "#334155" },
-      { name: "Real Estate", description: "Listings, search and lead capture that feel effortless.", href: "/services/web-development", tone: "#9a3412" },
-      { name: "eCommerce & Retail", description: "Stores designed around browsing, trust and checkout.", href: "/services/ecommerce-applications", tone: "#be185d" },
-      { name: "Logistics", description: "Portals and tracking tools that simplify operations.", href: "/services/web-development", tone: "#0f766e" },
-      { name: "Education", description: "Learning platforms and institutional sites people can navigate.", href: "/services/web-design", tone: "#6d28d9" },
-      { name: "Finance", description: "Credible, secure digital experiences for regulated environments.", href: "/services/web-development", tone: "#1e3a8a" },
-      { name: "Hospitality", description: "Booking-led sites that reflect the guest experience.", href: "/services/web-design", tone: "#b45309" },
-      { name: "Manufacturing", description: "Catalogues, quoting and B2B portals that support sales.", href: "/services/ai-services", tone: "#475569" },
+      { name: "Healthcare", image: photo("healthcare", 900, 900), description: "Clear, accessible patient and provider experiences.", href: "/services/web-design", tone: "#0e7490" },
+      { name: "SaaS & Technology", image: photo("saas", 900, 900), description: "Product sites, web apps and dashboards built to scale.", href: "/services/web-development", tone: "#1010E8" },
+      { name: "Professional Services", image: photo("services", 900, 900), description: "Authority-building sites that generate qualified enquiries.", href: "/solutions/website-doesnt-drive-leads", tone: "#334155" },
+      { name: "Real Estate", image: photo("realestate", 900, 900), description: "Listings, search and lead capture that feel effortless.", href: "/services/web-development", tone: "#9a3412" },
+      { name: "eCommerce & Retail", image: photo("retail", 900, 900), description: "Stores designed around browsing, trust and checkout.", href: "/services/ecommerce-applications", tone: "#be185d" },
+      { name: "Logistics", image: photo("logistics", 900, 900), description: "Portals and tracking tools that simplify operations.", href: "/services/web-development", tone: "#0f766e" },
+      { name: "Education", image: photo("education", 900, 900), description: "Learning platforms and institutional sites people can navigate.", href: "/services/web-design", tone: "#6d28d9" },
+      { name: "Finance", image: photo("finance", 900, 900), description: "Credible, secure digital experiences for regulated environments.", href: "/services/web-development", tone: "#1e3a8a" },
+      { name: "Hospitality", image: photo("hospitality", 900, 900), description: "Booking-led sites that reflect the guest experience.", href: "/services/web-design", tone: "#b45309" },
+      { name: "Manufacturing", image: photo("manufacturing", 900, 900), description: "Catalogues, quoting and B2B portals that support sales.", href: "/services/ai-services", tone: "#475569" },
     ],
   } },
   { id: id("s-testimonials"), key: "testimonials", title: "Testimonials", enabled: true, sort_order: 10, content: { heading: "What Clients Say", description: "Verified client feedback appears here once added in the admin." } },
@@ -371,6 +382,7 @@ export const defaultHomepageSections: HomepageSection[] = [
 export const defaultAbout = {
   hero_headline: "Building Digital Experiences That Move Businesses Forward.",
   hero_intro: "Ignixel Studio is a digital agency that designs and builds websites, web applications, eCommerce platforms and AI-powered solutions. We work with ambitious businesses that want their digital presence to establish authority, improve customer experience and support growth. What sets us apart is that strategy, design and engineering sit in one team, so what is promised in a proposal is what is built.",
+  brand_note: "Ignixel = Ignite + Pixels. Our name is our approach: we light up every pixel of your digital presence so it does real work for your business.",
   story_heading: "Our Story",
   story: "Add the story of how Ignixel Studio began, what you believe about digital work and how the studio has grown. Edit this text in Admin → About & Legal.",
   mission: "To help ambitious businesses transform ideas into meaningful digital experiences through strategy, design, technology, and innovation.",

@@ -1,10 +1,10 @@
-import { Palette, Code, ShoppingBag, Sparkles, Compass, MousePointerClick, Layers, Cpu, MessageSquare, Handshake, Lightbulb, Award, ShieldCheck, Rocket, Users, TrendingUp, Star, type LucideIcon } from "lucide-react";
-const map: Record<string, LucideIcon> = {
-  palette: Palette, code: Code, "shopping-bag": ShoppingBag, sparkles: Sparkles, compass: Compass, "mouse-pointer-click": MousePointerClick,
-  layers: Layers, cpu: Cpu, "message-square": MessageSquare, handshake: Handshake, lightbulb: Lightbulb, award: Award, "shield-check": ShieldCheck,
-  rocket: Rocket, users: Users, "trending-up": TrendingUp,
+import { Ico } from "./Ico";
+// Maps icon names stored in the CMS (admin dropdowns) to Google Material Symbols.
+const MAP: Record<string, string> = {
+  palette: "palette", code: "code", "shopping-bag": "shopping_bag", sparkles: "bolt", compass: "explore",
+  "mouse-pointer-click": "ads_click", layers: "layers", cpu: "memory", "message-square": "forum", handshake: "handshake",
+  lightbulb: "lightbulb", award: "workspace_premium", "shield-check": "verified_user", rocket: "rocket_launch", users: "groups", "trending-up": "trending_up",
 };
 export function Icon({ name, className = "h-6 w-6" }: { name?: string | null; className?: string }) {
-  const C = (name && map[name]) || Star;
-  return <C className={className} aria-hidden />;
+  return <Ico name={(name && MAP[name]) || "star"} className={className} />;
 }

@@ -1,4 +1,4 @@
-import { ChevronDown } from "lucide-react";
+import { ChevronDown } from "@/components/ui/Ico";
 import type { FAQ } from "@/lib/types";
 import { JsonLd } from "./JsonLd";
 

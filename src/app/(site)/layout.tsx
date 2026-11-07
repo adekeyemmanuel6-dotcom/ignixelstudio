@@ -1,4 +1,5 @@
 import Script from "next/script";
+import { Motion } from "@/components/Motion";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/ui/JsonLd";
@@ -13,6 +14,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
   return (
     <>
       <Header logoUrl={s.logo_url || undefined} categories={cats.map((c) => ({ slug: c.slug, title: c.title }))} />
+      <Motion />
       <main id="main">{children}</main>
       <Footer />
       <JsonLd data={{ "@context": "https://schema.org", "@type": "Organization", name: s.site_name, url: SITE_URL, logo: s.logo_url || undefined, email: s.contact_email || undefined, telephone: s.phone || undefined, description: s.seo_description, sameAs }} />

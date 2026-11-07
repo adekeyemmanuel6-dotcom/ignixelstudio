@@ -1,28 +1,32 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight, Globe, Quote } from "lucide-react";
+import { ArrowUpRight, Globe, Quote } from "@/components/ui/Ico";
 import { Social } from "./ui/Social";
 import type { BlogPost, CaseStudy, Service, ServiceCategory, TeamMember, Testimonial } from "@/lib/types";
 import { BrowserMockup, PhoneMockup, Avatar } from "./ui/Visuals";
 import { Icon } from "./ui/Icon";
 import { formatDate } from "@/lib/utils";
+import { photo, PHOTO } from "@/lib/images";
 
 const TONES = ["#1010E8", "#0e7490", "#7c3aed", "#be185d"];
 
+const SVC_PHOTO = { "web-design": "wireframe", "web-development": "webdev", "ecommerce-applications": "ecommerce", "ai-services": "ai" } as const;
 export function ServiceCategoryCard({ c, subs, i }: { c: ServiceCategory; subs: Service[]; i: number }) {
+  const src = c.image_url || photo((SVC_PHOTO as Record<string, keyof typeof PHOTO>)[c.slug] ?? "office", 900, 1200);
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-3xl border border-line bg-white shadow-card transition duration-300 hover:-translate-y-1.5 hover:border-brand/40 hover:shadow-glow">
-      <div className="relative overflow-hidden bg-paper p-6 pb-0">
-        <div className="absolute inset-0 grid-bg-light" aria-hidden />
-        <div className="relative translate-y-3 transition duration-500 group-hover:translate-y-0 group-hover:scale-[1.02]"><BrowserMockup src={c.image_url} alt={`${c.title} preview`} tone={TONES[i % 4]} className="!shadow-card !border-line" /></div>
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-line bg-white transition duration-500 hover:-translate-y-1.5 hover:border-brand/40 hover:shadow-glow">
+      <div className="relative aspect-[3/4] overflow-hidden bg-ink">
+        <Image src={src} alt="" fill sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" className="object-cover transition duration-700 ease-out group-hover:scale-110" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/15 to-transparent" aria-hidden />
+        <span className="absolute left-5 top-5 font-heading text-lg tabular-nums text-white/80">0{i + 1}</span>
+        <span className="absolute right-5 top-5 grid h-12 w-12 place-items-center rounded-lg bg-white/90 text-brand transition group-hover:bg-brand group-hover:text-white"><Icon name={c.icon} /></span>
+        <h3 className="absolute inset-x-5 bottom-5 !text-[1.7rem] !leading-tight !text-white">{c.title}</h3>
       </div>
-      <div className="flex flex-1 flex-col p-7">
-        <span className="mb-4 grid h-12 w-12 place-items-center rounded-xl bg-brand-soft text-brand"><Icon name={c.icon} /></span>
-        <h3 className="!text-2xl">{c.title}</h3>
-        <p className="mt-3 text-text-2">{c.short_description}</p>
-        <ul className="mt-5 flex flex-wrap gap-2">{subs.slice(0, 5).map((s) => <li key={s.id} className="rounded-full border border-line bg-paper px-3 py-1 text-base">{s.title}</li>)}</ul>
-        <Link href={`/services/${c.slug}`} className="mt-7 inline-flex items-center gap-2 font-semibold text-brand after:absolute after:inset-0 after:content-['']">
-          View Service <ArrowUpRight className="h-5 w-5 transition group-hover:translate-x-1 group-hover:-translate-y-1" />
+      <div className="flex flex-1 flex-col p-6">
+        <p className="text-text-2">{c.short_description}</p>
+        <ul className="mt-5 space-y-2">{subs.slice(0, 4).map((s) => <li key={s.id} className="flex items-start gap-2.5"><span aria-hidden className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />{s.title}</li>)}</ul>
+        <Link href={`/services/${c.slug}`} className="mt-auto inline-flex items-center gap-2 pt-7 font-semibold text-brand after:absolute after:inset-0 after:content-['']">
+          <span className="link-u">View Service</span> <ArrowUpRight className="h-5 w-5 transition group-hover:translate-x-1 group-hover:-translate-y-1" />
         </Link>
       </div>
     </article>
@@ -89,7 +93,7 @@ export function TeamCard({ m }: { m: TeamMember }) {
   const links = [[m.linkedin_url, "linkedin", "LinkedIn"], [m.twitter_url, "x", "X"], [m.website_url, "web", "Website"]] as const;
   return (
     <article className="group">
-      <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-paper">
+      <div className="relative aspect-[3/4] overflow-hidden rounded-xl bg-paper">
         <Avatar name={m.full_name} src={m.photo_url} className="h-full w-full text-6xl transition duration-500 group-hover:scale-105" />
         <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 to-transparent p-5 pt-16 opacity-0 transition group-hover:opacity-100 group-focus-within:opacity-100">
           <ul className="flex gap-2">{links.filter(([u]) => u).map(([u, k, n]) => <li key={n}><a href={u!} target="_blank" rel="noopener noreferrer" aria-label={`${m.full_name} on ${n}`} className="grid h-11 w-11 place-items-center rounded-full bg-white text-brand">{k === "web" ? <Globe className="h-5 w-5" /> : <Social name={k} />}</a></li>)}</ul>

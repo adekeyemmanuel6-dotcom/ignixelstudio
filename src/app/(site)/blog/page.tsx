@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Search } from "lucide-react";
+import { Search } from "@/components/ui/Ico";
 import { PageHero } from "@/components/ui/PageHero";
 import { PostCard } from "@/components/Cards";
 import { NewsletterForm } from "@/components/NewsletterForm";

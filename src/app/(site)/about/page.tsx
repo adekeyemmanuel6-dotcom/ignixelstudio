@@ -17,6 +17,8 @@ export default async function AboutPage() {
     <>
       <PageHero crumbs={[{ name: "About" }]} eyebrow="About Ignixel" title={a.hero_headline} description={a.hero_intro} ctas={[{ label: "Start a Project", href: "/contact" }, { label: "Meet the Team", href: "#team", secondary: true }]} />
 
+      {a.brand_note && <section className="bg-white pt-16"><div className="container-x"><p className="max-w-4xl font-heading text-[clamp(1.5rem,3vw,2.4rem)] font-medium leading-snug" data-reveal>{a.brand_note}</p></div></section>}
+
       <section className="section bg-white"><div className="container-x grid gap-12 lg:grid-cols-[1fr_1.4fr]">
         <SectionHead eyebrow="Our story" title={a.story_heading} />
         <Reveal><div className="prose-ig whitespace-pre-line text-lg text-text-2">{a.story}</div></Reveal>

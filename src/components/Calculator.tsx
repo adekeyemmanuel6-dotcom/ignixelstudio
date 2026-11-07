@@ -3,7 +3,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ArrowLeft, ArrowRight, Check, Download } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Download } from "@/components/ui/Ico";
 import type { CalcQuestion, CalcSettings } from "@/lib/types";
 
 type Result = { min: number; max: number; currency: string; symbol: string; complexity: string; platform: string | null; answers: { question: string; answer: string }[]; demo?: boolean };

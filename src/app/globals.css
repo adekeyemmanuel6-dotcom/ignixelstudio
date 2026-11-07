@@ -19,11 +19,11 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 }
 
 @layer components {
-  .container-x { @apply mx-auto w-full max-w-[1280px] px-5 sm:px-8; }
+  .container-x { @apply mx-auto w-full max-w-[1300px] px-5 sm:px-8; }
   .section { @apply py-20 sm:py-28; }
-  .eyebrow { @apply inline-flex items-center gap-2 text-base font-semibold uppercase tracking-[0.12em] text-brand; }
-  .dark-surface .eyebrow { @apply text-[#9a9aff]; }
-  .eyebrow::before { content: ""; @apply h-px w-8 bg-current opacity-70; }
+  .eyebrow { @apply inline-flex items-center gap-2.5 text-base font-medium uppercase leading-snug tracking-[0.08em] text-[#0b3b38]; }
+  .eyebrow::before { content: ""; @apply h-2.5 w-2.5 shrink-0 rounded-full bg-[#6fdc5a]; box-shadow: 0 0 0 4px rgba(111,220,90,.18); }
+  .dark-surface .eyebrow { @apply text-[#d4efe6]; }
   .dark-surface { @apply bg-ink text-white/80; }
   .dark-surface h1, .dark-surface h2, .dark-surface h3, .dark-surface h4, .dark-surface h5 { @apply text-white; }
   .lead { @apply text-lg sm:text-xl leading-relaxed text-text-2; }
@@ -52,8 +52,21 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   .prose-ig pre { @apply my-6 overflow-x-auto rounded-xl bg-ink p-5 text-base text-white; } .prose-ig code { @apply rounded bg-paper px-1.5 py-0.5 text-[0.9em]; } .prose-ig pre code { @apply bg-transparent p-0; }
   .prose-ig img { @apply my-8 rounded-2xl; }
 }
-.page-enter { animation: pageIn .5s cubic-bezier(.2,.7,.2,1) both; }
-@keyframes pageIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.page-enter { animation: pageIn .45s ease-out both; }
+@keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ── Motion hooks (driven by GSAP in components/Motion.tsx) ──
+   Hidden only while JS motion is pending/on; if GSAP is unavailable or the user prefers reduced motion,
+   html[data-motion="off"] shows everything immediately. */
+html.js:not([data-motion="off"]) [data-reveal],
+html.js:not([data-motion="off"]) [data-stagger] > *,
+html.js:not([data-motion="off"]) [data-hero-item] { opacity: 0; }
+html.js:not([data-motion="off"]) [data-split] { visibility: hidden; }
+html.js:not([data-motion="off"]) [data-img-reveal] { clip-path: inset(100% 0 0 0); }
+@media (prefers-reduced-motion: reduce) { [data-reveal], [data-stagger] > *, [data-hero-item] { opacity: 1 !important; } [data-img-reveal] { clip-path: none !important; } }
+.link-u { background: linear-gradient(currentColor, currentColor) 0 100% / 0 1.5px no-repeat; transition: background-size .35s cubic-bezier(.2,.7,.2,1); }
+.link-u:hover, .link-u[aria-current="page"], .group:hover .link-u { background-size: 100% 1.5px; }
+.ring-glow { box-shadow: 0 0 0 1px rgba(255,255,255,.08), 0 40px 90px -30px rgba(16,16,232,.55); }
 .skip-link { position: absolute; left: -9999px; top: 8px; z-index: 100; background: #1010E8; color: #fff; padding: 10px 16px; border-radius: 8px; }
 .skip-link:focus { left: 12px; }
 .tt-editor .ProseMirror { min-height: 340px; outline: none; padding: 16px; }

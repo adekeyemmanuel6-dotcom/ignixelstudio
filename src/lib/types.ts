@@ -57,5 +57,5 @@ export interface SiteSettings {
   address: string; footer_description: string; copyright: string; seo_title: string; seo_description: string;
   og_image: string; ga_id: string; meta_pixel_id: string; brand_primary: string;
   socials: { linkedin: string; x: string; instagram: string; github: string; dribbble: string; facebook: string };
-  content_seeded: boolean;
+  content_seeded: boolean; content_version?: number;
 }

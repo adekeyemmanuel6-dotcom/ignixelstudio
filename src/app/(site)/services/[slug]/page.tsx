@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { Check } from "lucide-react";
+import { Check } from "@/components/ui/Ico";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionHead } from "@/components/ui/Heading";
 import { SubServiceCard, ProjectShowcase } from "@/components/Cards";

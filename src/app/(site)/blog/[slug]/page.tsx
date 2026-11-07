@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { Mail } from "lucide-react";
+import { Mail } from "@/components/ui/Ico";
 import { Social } from "@/components/ui/Social";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { PostCard } from "@/components/Cards";

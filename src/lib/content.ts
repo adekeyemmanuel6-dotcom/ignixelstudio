@@ -84,7 +84,7 @@ export const getTeam = cache(async () =>
 // ───────── blog ─────────
 const defaultPostsFull = (): BlogPost[] =>
   D.defaultPosts.map((p, i) => ({
-    id: `default-post-${i}`, slug: p.slug, title: p.title, excerpt: p.excerpt, content: p.content, featured_image: null,
+    id: `default-post-${i}`, slug: p.slug, title: p.title, excerpt: p.excerpt, content: p.content, featured_image: (p as { featured_image?: string }).featured_image ?? null,
     category_id: D.defaultBlogCategories.find((c) => c.slug === p.category)?.id ?? null, status: "published" as const,
     published_at: new Date(Date.UTC(2026, 8 - i, 15)).toISOString(), author_name: "Ignixel Team", author_title: "Studio", author_image: null,
     reading_time: p.reading_time, seo_title: null, seo_description: null, og_image: null,

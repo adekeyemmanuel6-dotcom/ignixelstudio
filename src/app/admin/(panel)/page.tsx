@@ -4,7 +4,8 @@ import { useState } from "react";
 import { BookOpen, Briefcase, Calculator, Edit3, FileEdit, Inbox, Sparkles, Users, Wand2 } from "lucide-react";
 import { useAdmin, useAsync } from "@/lib/admin/ctx";
 import { btnPrimary, ErrorBox, PageTitle, Spinner } from "@/components/admin/ui";
-import { installStarterContent } from "@/lib/admin/seed";
+import { applyContentUpdate, installStarterContent } from "@/lib/admin/seed";
+import { CONTENT_VERSION } from "@/lib/defaults";
 import { formatDate } from "@/lib/utils";
 
 export default function Dashboard() {
@@ -18,13 +19,19 @@ export default function Dashboard() {
       db.from("leads").select("id,name,email,source,status,summary,created_at").order("created_at", { ascending: false }).limit(6).then((r) => r.data ?? []),
       db.from("site_settings").select("value").eq("key", "general").maybeSingle().then((r) => r.data?.value),
     ]);
-    return { inq, newLeads, calc, pub, draft, cases, team, recent, seeded: !!general?.content_seeded };
+    return { inq, newLeads, calc, pub, draft, cases, team, recent, seeded: !!general?.content_seeded, outdated: !!general?.content_seeded && (general?.content_version ?? 1) < CONTENT_VERSION };
   }, []);
 
   async function seed() {
     setBusy(true);
     try { const log = await installStarterContent(db); toast("ok", `Starter content installed (${log.length} groups)`); publish(); reload(); }
     catch (e) { toast("err", (e as Error).message + (role !== "admin" ? " (only admins can install starter content)" : "")); }
+    setBusy(false);
+  }
+  async function update() {
+    if (!window.confirm("This replaces the homepage section text, order and the hero with the latest defaults (it will overwrite homepage edits you made in Admin → Homepage). Continue?")) return;
+    setBusy(true);
+    try { await applyContentUpdate(db); toast("ok", "Latest content applied"); publish(); reload(); } catch (e) { toast("err", (e as Error).message); }
     setBusy(false);
   }
   if (loading && !data) return <Spinner />;
@@ -34,6 +41,12 @@ export default function Dashboard() {
   return (
     <div>
       <PageTitle title="Dashboard" description="An overview of leads and content." />
+      {d.outdated && (
+        <div className="mb-6 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-emerald-300 bg-emerald-50 p-5">
+          <div><h2 className="!text-xl">New website content is available</h2><p className="mt-1 max-w-2xl text-text-2">The redesigned homepage ships with new hero copy, a sixth challenge, section order and images. Apply it to your database. It overwrites homepage section text only.</p></div>
+          <button onClick={update} disabled={busy} className={btnPrimary}>{busy ? "Applying…" : "Apply latest content"}</button>
+        </div>
+      )}
       {!d.seeded && (
         <div className="mb-6 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-brand/30 bg-brand-soft p-5">
           <div><h2 className="!text-xl">Install starter content</h2><p className="mt-1 max-w-2xl text-text-2">Your database is empty, so the website is showing built-in defaults. Install them into the database to edit everything from this dashboard. Existing data is never overwritten.</p></div>

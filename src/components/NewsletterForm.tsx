@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Check } from "lucide-react";
+import { Check } from "@/components/ui/Ico";
 
 export function NewsletterForm({ dark }: { dark?: boolean }) {
   const [state, setState] = useState<"idle" | "loading" | "done" | "error">("idle");

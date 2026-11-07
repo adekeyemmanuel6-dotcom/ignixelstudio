@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ChevronDown, Menu, X, ArrowUpRight } from "lucide-react";
+import { ChevronDown, Menu, X, ArrowUpRight } from "@/components/ui/Ico";
 import { Logo } from "./Logo";
 
 type Cat = { slug: string; title: string };
@@ -27,7 +27,7 @@ export function Header({ logoUrl, categories }: { logoUrl?: string; categories: 
   const lightHero = LIGHT_HERO.some((r) => r.test(pathname));
   const solid = scrolled || lightHero || open;
   const dark = !solid; // white text over dark hero
-  const link = (href: string) => `rounded-full px-4 py-2 text-base font-medium transition hover:text-brand ${pathname === href || (href !== "/" && pathname.startsWith(href)) ? "text-brand" : dark ? "text-white/90" : "text-text"}`;
+  const link = (href: string) => `rounded-full px-4 py-2 text-base font-medium transition ${dark ? "hover:text-[#9a9aff]" : "hover:text-brand"} ${pathname === href || (href !== "/" && pathname.startsWith(href)) ? (dark ? "text-[#9a9aff]" : "text-brand") : dark ? "text-white/90" : "text-text"}`;
 
   return (
     <>
